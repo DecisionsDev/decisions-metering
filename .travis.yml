@@ -1,0 +1,15 @@
+
+language: java
+
+jdk:
+  - openjdk8
+
+install:
+- ls -la 
+- chmod +x preparebuild.sh
+- "./preparebuild.sh"
+script: mvn test -Dodm.home=$PWD/../install
+
+cache:
+  directories:
+  - $HOME/.m2

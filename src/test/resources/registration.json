@@ -1,0 +1,308 @@
+{
+    "startTime": 298706743300122,
+    "sendTime": 298706798208194,
+    "adminUiUrl": null,
+    "products": [
+        {
+            "name": "IBM Operational Decision Manager - Decision Server",
+            "persistentId": "abc123def456ghi789",
+            "version": "8.10.4",
+            "apar": [],
+            "productSpecificData": null
+        }
+    ],
+    "operatingSystem": "Mac OS X",
+    "operatingSystemVersion": "10.15.2",
+    "customerTagData": [],
+    "cloudServicesUsed": [],
+    "groups": [],
+    "metrics": [
+        {
+            "sliceAggregationMethods": [
+                "SUM"
+            ],
+            "rangeAggregationMethods": [
+                "SUM",
+                "MIN_SUM",
+                "MAX_SUM",
+                "AVG_SUM"
+            ],
+            "metricType": "DECISIONS",
+            "name": "Decisions",
+            "groupAggregations": [
+                {
+                    "sliceAggregationMethods": [
+                        "SUM"
+                    ],
+                    "rangeAggregationMethods": [
+                        "SUM",
+                        "MIN_SUM",
+                        "MAX_SUM",
+                        "AVG_SUM"
+                    ]
+                }
+            ],
+            "min": 0,
+            "translatedUnits": {
+                "fr": "décisions",
+                "ru": "решения",
+                "ja": "意思決定",
+                "zh_TW": "決策",
+                "it": "decisioni",
+                "ko": "의사결정",
+                "pt_BR": "automação",
+                "de": "Entscheidungen",
+                "es": "decisiones",
+                "zh": "决策",
+                "en": "decisions",
+                "sv": "beslut",
+                "nl": "beslissingen",
+                "pl": "decyzje"
+            },
+            "units": "decisions",
+            "translatedName": {
+                "fr": "Décisions",
+                "ru": "Решения",
+                "ja": "意思決定",
+                "zh_TW": "決策",
+                "it": "Decisioni",
+                "ko": "의사결정",
+                "pt_BR": "Decisões",
+                "de": "Entscheidungen",
+                "es": "Decisiones",
+                "zh": "决策",
+                "en": "Decisions",
+                "sv": "Beslut",
+                "nl": "Beslissingen",
+                "pl": "Decyzje"
+            }
+        },
+        {
+            "sliceAggregationMethods": [
+                "SUM"
+            ],
+            "rangeAggregationMethods": [
+                "SUM",
+                "MIN_SUM",
+                "MAX_SUM",
+                "AVG_SUM"
+            ],
+            "metricType": "DECISION_UNITS",
+            "name": "Decisions Units",
+            "groupAggregations": [
+                {
+                    "sliceAggregationMethods": [
+                        "SUM"
+                    ],
+                    "rangeAggregationMethods": [
+                        "SUM",
+                        "MIN_SUM",
+                        "MAX_SUM",
+                        "AVG_SUM"
+                    ]
+                }
+            ],
+            "min": 0,
+            "translatedUnits": {
+                "fr": "unités",
+                "ru": "единицы измерения",
+                "ja": "ユニット",
+                "zh_TW": "單元",
+                "it": "unità",
+                "ko": "단위",
+                "pt_BR": "unidades",
+                "de": "Einheiten",
+                "es": "unidades",
+                "zh": "单元",
+                "en": "units",
+                "sv": "enheter",
+                "nl": "eenheden",
+                "pl": "jednostki"
+            },
+            "units": "units",
+            "translatedName": {
+                "fr": "Unités de décision",
+                "ru": "Единицы показателя принятия решения",
+                "ja": "意思決定ユニット",
+                "zh_TW": "決策單元",
+                "it": "Unità di decisioni",
+                "ko": "의사결정 단위",
+                "pt_BR": "Unidades de decisões",
+                "de": "Entscheidungseinheiten",
+                "es": "Unidades de decisiones",
+                "zh": "决策单元",
+                "en": "Decisions Units",
+                "sv": "Beslutsenheter",
+                "nl": "Beslissingseenheden",
+                "pl": "Jednostki decyzyjne"
+            }
+        },
+        {
+            "sliceAggregationMethods": [
+                "SUM"
+            ],
+            "rangeAggregationMethods": [
+                "SUM",
+                "AVG_SUM"
+            ],
+            "metricType": "RULES_EVALUATED_SUM",
+            "name": "Evaluated Rules (cumulated)",
+            "groupAggregations": [
+                {
+                    "sliceAggregationMethods": [
+                        "SUM"
+                    ],
+                    "rangeAggregationMethods": [
+                        "SUM",
+                        "AVG_SUM"
+                    ]
+                }
+            ],
+            "min": 0,
+            "translatedUnits": {
+                "fr": "règles",
+                "ru": "правила",
+                "ja": "ルール",
+                "zh_TW": "規則",
+                "it": "regole",
+                "ko": "규칙",
+                "pt_BR": "regras",
+                "de": "Regeln",
+                "es": "reglas",
+                "zh": "规则",
+                "en": "rules",
+                "sv": "regler",
+                "nl": "regels",
+                "pl": "reguły"
+            },
+            "units": "rules",
+            "translatedName": {
+                "fr": "Règles évaluées (cumul)",
+                "ru": "Вычисленные правила (совокупно)",
+                "ja": "評価対象ルール (累積)",
+                "zh_TW": "已評估的規則（累積）",
+                "it": "Regole valutate (accumulate)",
+                "ko": "평가된 규칙(누적)",
+                "pt_BR": "Regras avaliadas (acumuladas)",
+                "de": "Ausgewertete Regeln (kumuliert)",
+                "es": "Reglas evaluadas (acumulado)",
+                "zh": "已评估的规则（累积）",
+                "en": "Evaluated Rules (cumulated)",
+                "sv": "Utvärderade regler (ackumulerat)",
+                "nl": "Geëvalueerde regels (accumulatief)",
+                "pl": "Wartościowane reguły (łącznie)"
+            }
+        },
+        {
+            "sliceAggregationMethods": [
+                "MIN"
+            ],
+            "rangeAggregationMethods": [
+                "MIN"
+            ],
+            "metricType": "RULES_EVALUATED_MIN",
+            "name": "Evaluated Rules (minimum)",
+            "groupAggregations": [
+                {
+                    "sliceAggregationMethods": [
+                        "MIN"
+                    ],
+                    "rangeAggregationMethods": [
+                        "MIN"
+                    ]
+                }
+            ],
+            "min": 0,
+            "translatedUnits": {
+                "fr": "règles",
+                "ru": "правила",
+                "ja": "ルール",
+                "zh_TW": "規則",
+                "it": "regole",
+                "ko": "규칙",
+                "pt_BR": "regras",
+                "de": "Regeln",
+                "es": "reglas",
+                "zh": "规则",
+                "en": "rules",
+                "sv": "regler",
+                "nl": "regels",
+                "pl": "reguły"
+            },
+            "units": "rules",
+            "translatedName": {
+                "fr": "Règles évaluées (minimum)",
+                "ru": "Вычисленные правила (мин)",
+                "ja": "評価対象ルール (最小)",
+                "zh_TW": "已評估的規則（下限）",
+                "it": "Regole valutate (minimo)",
+                "ko": "평가된 규칙(최소)",
+                "pt_BR": "Regras avaliadas (mínimo)",
+                "de": "Ausgewertete Regeln (Minimum)",
+                "es": "Reglas evaluadas (mínimo)",
+                "zh": "已评估的规则（最小值）",
+                "en": "Evaluated Rules (minimum)",
+                "sv": "Utvärderade regler (minimum)",
+                "nl": "Geëvalueerde regels (minimum)",
+                "pl": "Wartościowane reguły (minimum)"
+            }
+        },
+        {
+            "sliceAggregationMethods": [
+                "MAX"
+            ],
+            "rangeAggregationMethods": [
+                "MAX"
+            ],
+            "metricType": "RULES_EVALUATED_MAX",
+            "name": "Evaluated Rules (maximum)",
+            "groupAggregations": [
+                {
+                    "sliceAggregationMethods": [
+                        "MAX"
+                    ],
+                    "rangeAggregationMethods": [
+                        "MAX"
+                    ]
+                }
+            ],
+            "min": 0,
+            "translatedUnits": {
+                "fr": "règles",
+                "ru": "правила",
+                "ja": "ルール",
+                "zh_TW": "規則",
+                "it": "regole",
+                "ko": "규칙",
+                "pt_BR": "regras",
+                "de": "Regeln",
+                "es": "reglas",
+                "zh": "规则",
+                "en": "rules",
+                "sv": "regler",
+                "nl": "regels",
+                "pl": "reguły"
+            },
+            "units": "rules",
+            "translatedName": {
+                "fr": "Règles évaluées (maximum)",
+                "ru": "Вычисленные правила (макс)",
+                "ja": "評価対象ルール (最大)",
+                "zh_TW": "已評估的規則（上限）",
+                "it": "Regole valutate (massimo)",
+                "ko": "평가된 규칙(최대)",
+                "pt_BR": "Regras avaliadas (máximo)",
+                "de": "Ausgewertete Regeln (Maximum)",
+                "es": "Reglas evaluadas (máximo)",
+                "zh": "已评估的规则（最大值）",
+                "en": "Evaluated Rules (maximum)",
+                "sv": "Utvärderade regler (maximum)",
+                "nl": "Geëvalueerde regels (maximum)",
+                "pl": "Wartościowane reguły (maksimum)"
+            }
+        }
+    ],
+    "hostName": "my.host.name",
+    "instanceIdentifier": "my.instance.id",
+    "installDirectory": "/my/application/server/instance/HTDS/WEB-INF/lib/jrules-res-execution.jar"
+}

@@ -1,0 +1,32 @@
+	{
+		"startTime": 0,
+		"endTime": 0,
+		"environmentType": "Production",
+		"productSpecificData": null,
+		"usageList": [
+			{
+				"metricType": "REGISTERED_USERS",
+				"metricValue": 1
+			},
+			{
+				"metricType": "ALL_ARTIFACTS",
+				"metricValue": 1
+			},
+			{
+				"metricType": "ALL_ARTIFACTS_BILLABLE",
+				"metricValue": 1
+			},
+			{
+				"metricType": "RULE_ARTIFACTS",
+				"metricValue": 1
+			},
+			{
+				"metricType": "RULE_ARTIFACTS_BILLABLE",
+				"metricValue": 1
+			}
+		],
+		"hostName": "my.host.name",
+		"instanceIdentifier": "my.instance.id",
+		"installDirectory": "/"
+	}
+

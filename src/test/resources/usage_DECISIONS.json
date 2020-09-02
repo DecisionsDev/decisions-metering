@@ -1,0 +1,31 @@
+{
+    "startTime": 0,
+    "endTime": 0,
+    "environmentType": null,
+    "productSpecificData": null,
+    "usageList": [
+        {
+            "metricType": "DECISIONS",
+            "metricValue": 0
+        },
+        {
+            "metricType": "DECISION_UNITS",
+            "metricValue": 0
+        },
+        {
+            "metricType": "RULES_EVALUATED_SUM",
+            "metricValue": 0
+        },
+        {
+            "metricType": "RULES_EVALUATED_MIN",
+            "metricValue": 0
+        },
+        {
+            "metricType": "RULES_EVALUATED_MAX",
+            "metricValue": 0
+        }
+    ],
+    "hostName": "my.host.name",
+    "instanceIdentifier": "my.instance.id",
+    "installDirectory": "/my/application/server/instance/HTDS/WEB-INF/lib/jrules-res-execution.jar"
+}
