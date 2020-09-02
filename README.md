@@ -92,7 +92,7 @@ com.ibm.rules.metering.databaseFilePath | ./odm_usage_metering.data | The file p
 com.ibm.rules.metering.databaseUser | odm | The user name of the database that is used by the service internally.
 com.ibm.rules.metering.databasePassword | odm_metering | The password of the database that is used by the service internally.
 
-## Enable HTTPS in ODM usage metering service
+## Enabling HTTPS in ODM usage metering service
 
 Add following parameters when running the service:
 
