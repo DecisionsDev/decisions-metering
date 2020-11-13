@@ -1,0 +1,7 @@
+<server>
+	<!-- metering service -->
+    <springBootApplication id="metering-spring-boot"
+                           location="metering-service.jar"
+                           name="metering-service" />
+
+</server>

@@ -1,0 +1,15 @@
+<server description="executionserver">
+
+	<!-- feature manager -->
+	<include optional="true" location="./featureManager.xml"/>
+
+	<!-- http session config -->
+	<include optional="true" location="./httpSession.xml"/>
+
+	<!-- include application declaration -->
+	<include optional="true" location="./application.xml"/>
+
+	<!-- http endpoint -->
+	<httpEndpoint id="defaultHttpEndpoint" enableWelcomePage="true" host="*" httpPort="8888" httpsPort="9999" />
+
+</server>
