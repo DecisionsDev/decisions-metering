@@ -19,19 +19,19 @@ The metering parameters are described in [Setting up Decision Server to integrat
     The following command generates a DecisionService.war file with the metering feature enabled.
 
         cd <odm_install_dir>/executionserver/bin
-        <odm_install_dir>/shared/tools/ant/bin/ant -f ressetup.xml -Dmetering.war.in=../applicationservers/tomcat8/DecisionService.war -Dmetering.war.out=<my_output_dir>/DecisionService.war -Dmetering.enable=true -Dmetering.server.url=http://<odmmeteringservicehost>:<odmmeteringserviceport> -Dmetering.api.key=<irrelevant,putanything> -Dmetering.instance.identifier=setup-metering
+        <odm_install_dir>/shared/tools/ant/bin/ant -f ressetup.xml -Dmetering.war.in=../applicationservers/tomcat8/DecisionService.war -Dmetering.war.out=<my_output_dir>/DecisionService.war -Dmetering.enable=true -Dmetering.server.url=http://<odmmeteringservicehost>:<odmmeteringserviceport> -Dmetering.api.key=<irrelevant,putanything> -Dmetering.instance.identifier=<meteringclientID> -Dmetering.send.usages=true setup-metering
         
     *Testing and simulation*
     
     The following command generates a DecisionRunner.war file with the metering feature enabled.
 
         cd <odm_install_dir>/executionserver/bin
-        <odm_install_dir>/shared/tools/ant/bin/ant -f ressetup.xml -Dmetering.war.in=../applicationservers/tomcat8/DecisionRunner.war -Dmetering.war.out=<my_output_dir>/DecisionRunner.war -Dmetering.enable=true -Dmetering.server.url=http://<odmmeteringservicehost>:<odmmeteringserviceport> -Dmetering.api.key=<irrelevant,putanything> -Dmetering.instance.identifier=setup-metering
+        <odm_install_dir>/shared/tools/ant/bin/ant -f ressetup.xml -Dmetering.war.in=../applicationservers/tomcat8/DecisionRunner.war -Dmetering.war.out=<my_output_dir>/DecisionRunner.war -Dmetering.enable=true -Dmetering.server.url=http://<odmmeteringservicehost>:<odmmeteringserviceport> -Dmetering.api.key=<irrelevant,putanything> -Dmetering.instance.identifier=<meteringclientID> -Dmetering.send.usages=true setup-metering
 
     The following command generates a testing.war file with the metering feature enabled.
 
         cd <odm_install_dir>/executionserver/bin
-        <odm_install_dir>/shared/tools/ant/bin/ant -f ressetup.xml -Dmetering.war.in=../applicationservers/tomcat8/testing.war -Dmetering.war.out=<my_output_dir>/testing.war -Dmetering.enable=true -Dmetering.server.url=http://<odmmeteringservicehost>:<odmmeteringserviceport> -Dmetering.api.key=<irrelevant,putanything> -Dmetering.instance.identifier=setup-metering
+        <odm_install_dir>/shared/tools/ant/bin/ant -f ressetup.xml -Dmetering.war.in=../applicationservers/tomcat8/testing.war -Dmetering.war.out=<my_output_dir>/testing.war -Dmetering.enable=true -Dmetering.server.url=http://<odmmeteringservicehost>:<odmmeteringserviceport> -Dmetering.api.key=<irrelevant,putanything> -Dmetering.instance.identifier=<meteringclientID> -Dmetering.send.usages=true setup-metering
 
 2. Deploy the generated output files to your application server by copying the files to the Tomcat webapps directory.
 3. Optional: When more than one Decision Server instance connects to the metering service, in particular in the case of a cluster, each instance must be uniquely identified by using the attributes metering.install.directory and metering.instance.identifier.

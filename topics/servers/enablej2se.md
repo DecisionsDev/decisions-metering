@@ -9,7 +9,7 @@ You enable the metering feature in a Java SE environment as described below. The
 1. Run the following command to generate a ra.xml file with the metering feature enabled:
 
           cd <odm_install_dir>/executionserver/bin
-          <odm_install_dir>/shared/tools/ant/bin/ant -f ressetup.xml -Dxu.config.in=ra.xml -Dxu.config.out=<my_output_dir>/ra-out.xml -Dmetering.enable=true -Dmetering.server.url=http://<odmmeteringservicehost>:<odmmeteringserviceport> -Dmetering.api.key=<irrelevant,putanything> -Dmetering.instance.identifier=setup-metering
+          <odm_install_dir>/shared/tools/ant/bin/ant -f ressetup.xml -Dxu.config.in=ra.xml -Dxu.config.out=<my_output_dir>/ra-out.xml -Dmetering.enable=true -Dmetering.server.url=http://<odmmeteringservicehost>:<odmmeteringserviceport> -Dmetering.api.key=<irrelevant,putanything> -Dmetering.instance.identifier=<meteringclientID> -Dmetering.send.usages=true setup-metering
          
    The ra-out.xml file is generated, and the metering feature is enabled, for example:
 

@@ -18,7 +18,7 @@ The metering parameters are described in [Setting up Decision Server to integrat
     The execution unit (XU) is packaged as a .rar file and is shared by all the Decision Server runtime features (HTDS, testing and simulation) that are installed on the same node as the XU. For example, for WebSphere Application Server (WAS):
 
         cd <odm_install_dir>/executionserver/bin
-        <odm_install_dir>/shared/tools/ant/bin/ant -f ressetup.xml -Dxu.in=../applicationservers/WebSphere/jrules-res-xu-WAS.rar -Dxu.out=<my_output_dir>/jrules-res-xu-WAS.rar -Dmetering.enable=true -Dmetering.server.url=http://<odmmeteringservicehost>:<odmmeteringserviceport> -Dmetering.api.key=<irrelevant,putanything> -Dmetering.instance.identifier=setup-metering
+        <odm_install_dir>/shared/tools/ant/bin/ant -f ressetup.xml -Dxu.in=../applicationservers/WebSphere/jrules-res-xu-WAS.rar -Dxu.out=<my_output_dir>/jrules-res-xu-WAS.rar -Dmetering.enable=true -Dmetering.server.url=http://<odmmeteringservicehost>:<odmmeteringserviceport> -Dmetering.api.key=<irrelevant,putanything> -Dmetering.instance.identifier=<meteringclientID> -Dmetering.send.usages=true setup-metering
 
 2. Refer to your application server guide to deploy the XU. For WAS, deploy the generated output file from the WAS administrative console:
     
