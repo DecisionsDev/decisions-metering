@@ -1,0 +1,74 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name:  {{ template "odm.test.fullname" . }}
+  labels:
+    app: {{ template "fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+{{ include "odm-additional-labels" . | indent 4 }}
+  annotations:
+    helm.sh/hook: test-success
+spec:
+{{ include "odm-serviceAccountName" . | indent 2 }}
+  hostNetwork: false
+  hostPID: false
+  hostIPC: false
+  securityContext:
+    runAsNonRoot: true
+    {{- if .Values.customization.runAsUser }}
+    runAsUser: 1000
+    fsGroup: 10000
+    {{- end }}
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: beta.kubernetes.io/arch
+            operator: In
+            values:
+            {{- if .Values.image.arch }}
+            - {{ .Values.image.arch }}
+            {{- else }}
+            - {{ template "ibm-odm-metering-service.arch" . }}
+            {{- end }}
+  containers:
+  - name: {{ template "odm.test.fullname" . }}
+{{ include "image.tagOrDigest" (dict "containerName" "metering-service" "root" .) | indent 4  }}
+    resources:
+      requests:
+        cpu: 500m
+        memory: 512Mi
+      limits:
+        cpu: 2
+        memory: 4096Mi
+    securityContext:
+      {{- if .Values.customization.runAsUser }}
+      runAsUser: 1000
+      {{- end }}
+      runAsNonRoot: true
+      privileged: false
+      readOnlyRootFilesystem: false
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+        - ALL
+    env:
+      - name: ODMSERVER
+        value: {{ template "fullname" . }}
+    command: ["/bin/bash", "-c", "/tests/suite.sh"]
+    volumeMounts:
+      - name: tests
+        mountPath: /tests
+  volumes:
+    - name: tests
+      configMap:
+        defaultMode: 0755
+        name: {{ template "odm.test-configmap.fullname" . }}
+  restartPolicy: Never
+  {{- if (not (empty .Values.image.pullSecrets )) }}
+  imagePullSecrets:
+  - name: {{ .Values.image.pullSecrets }}
+  {{- end }}

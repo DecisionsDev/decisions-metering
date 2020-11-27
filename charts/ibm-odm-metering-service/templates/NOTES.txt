@@ -1,0 +1,53 @@
+{{- if ne .Values.license "accept" -}}
+{{ .Files.Get "LICENSES/LICENSE-LI" }}
+--------------------------------------------------------------------------------
+Please read and accept the license agreement.
+
+To accept the license:
+
+  - Delete the release {{ .Release.Name }}
+    helm del {{ .Release.Name }}
+
+  - Launch the installation with the parameter license set to 'accept'
+    helm install {{ .Release.Name }} --set license=accept metering-service
+
+{{- else -}}
+{{ .Release.Name }} is ready to use. {{ .Release.Name }} is an instance of the {{ .Chart.Name }} chart.
+
+{{ .Release.Name }} uses version {{ .Values.image.tag }} of the IBM® Operational Decision Manager (ODM) components.
+
+Get the application URLs by running these commands:
+
+{{- if .Values.service.enableRoute -}}
+
+  export ROUTE=$(oc get routes {{ .Release.Name }}-route -o jsonpath='{.spec.host}')
+
+  -- Metering URL :  $ echo http://$ROUTE
+
+{{- else -}}
+
+  export NODE_PORT=$(kubectl get --namespace {{ .Release.Namespace }} -o jsonpath="{.spec.ports[0].nodePort}" services {{ template "fullname" . }})
+  export NODE_IP=$(kubectl get nodes --namespace {{ .Release.Namespace }} -o jsonpath="{.items[0].status.addresses[0].address}")
+
+  -- Metering URL : $ echo http://$NODE_IP:$NODE_PORT/decisioncenter
+
+
+
+{{- end }}
+
+To learn more about the {{ .Release.Name }} release, try:
+
+  $ helm status {{ .Release.Name }}
+  $ helm get {{ .Release.Name }}
+
+
+{{- if .Values.persistence.useDynamicProvisioning }}
+
+Your PersistenceVolumeClaim is configured with Dynamic Provisioning.
+{{- else }}
+
+Your PersistenceVolumeClaim is not created dynamically.
+You should  create a Persistence Volume in your cluster or use the persistence.useDynamicProvisioning=true
+charts parameter.
+{{- end }}
+{{- end }}
