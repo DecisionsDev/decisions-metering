@@ -56,12 +56,12 @@ spec:
         persistentVolumeClaim:
           claimName: {{ template "odm.persistenceclaim.fullname" . }}
       {{- end }}
-      - name: {{ template "odm-jvm-options-volume.fullname" . }}
+      - name: {{ template "odm-metering-options-volume.fullname" . }}
         configMap:
-          name: {{ template "odm.jvm-options-configmap.fullname" . }}
+          name: {{ template "odm.metering-options-configmap.fullname" . }}
           items:
-           - key: jvm-options
-             path: jvm.options
+           - key: metering-options
+             path: bootstrap.properties
       containers:
         - name: {{ .Chart.Name }}
 {{ include "image.tagOrDigest" (dict "containerName" "metering-service" "root" .) | indent 10  }}
@@ -70,21 +70,17 @@ spec:
           env:
           - name: LICENSE
             value: "{{ .Values.license }}"
-          - name: LOGGING_LEVEL
-            value: "{{ .Values.customization.loggingLevel }}"
-          - name: PROCESSING_RATE
-            value: "{{ .Values.customization.processingRate }}"
-          - name: PROCESSING_INITIAL_DELAY
-            value: "{{ .Values.customization.processingInitialDelay }}"
+
           ports:
           - containerPort: 8888
           volumeMounts:
           {{- if  .Values.persistence.enabled  }}
           - name: {{ template "fullname" . }}-volume
-            mountPath: /config/dbdata/
+            mountPath: /config/storage
           {{- end }}
-          - name: {{ template "odm-jvm-options-volume.fullname" . }}
-            mountPath: {{ template "odm-jvm-options-dir" . }}
+          - name: {{ template "odm-metering-options-volume.fullname" . }}
+            mountPath: {{ template "odm-metering-options-dir" . }}
+            subPath: bootstrap.properties
           readinessProbe:
             httpGet:
               scheme: HTTP

@@ -68,9 +68,9 @@ livenessProbe:
 
 customization:
   runAsUser: 
-  loggingLevel: 'INFO'
-  processingInitialDelay: 60000
-  processingRate: 60000
+  loggingLevel: 'DEBUG'
+  processingInitialDelay: 600
+  processingRate: 600
 
 networkPolicy:
   # Enable creation of NetworkPolicy resources.

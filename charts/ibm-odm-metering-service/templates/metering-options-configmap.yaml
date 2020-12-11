@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name:  {{ template "odm.metering-options-configmap.fullname" . }}
+  labels:
+    app: {{ template "fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+{{ include "odm-additional-labels" . | indent 4 }}
+data:
+  metering-options: |
+    METERING_LOGGINGLEVEL={{ .Values.customization.loggingLevel }}
+    METERING_PROCESSINGRATE={{ .Values.customization.processingRate }}
+    METERING_PROCESSING_INITIAL_DELAY={{ .Values.customization.processingInitialDelay }}

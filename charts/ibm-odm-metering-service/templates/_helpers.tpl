@@ -45,16 +45,16 @@ We truncate at 63 chars because some Kubernetes name fields are limited to this 
 {{- printf "%s"  $reponame |  trimSuffix "/" -}}
 {{- end -}}
 
-{{- define "odm.jvm-options-configmap.fullname" -}}
-{{- printf "%s-%s" .Release.Name "odm-jvm-options-configmap" | trunc 63 | trimSuffix "-" -}}
+{{- define "odm.metering-options-configmap.fullname" -}}
+{{- printf "%s-%s" .Release.Name "odm-metering-options-configmap" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
-{{- define "odm-jvm-options-volume.fullname" -}}
-{{- printf "%s-%s" .Release.Name "odm-jvm-options-volume" | trunc 63 | trimSuffix "-" -}}
+{{- define "odm-metering-options-volume.fullname" -}}
+{{- printf "%s-%s" .Release.Name "odm-metering-options-volume" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
-{{- define "odm-jvm-options-dir" -}}
-"/config/configDropins/overrides"
+{{- define "odm-metering-options-dir" -}}
+"/config/bootstrap.properties"
 {{- end -}}
 {{/*
 Check if tag contains specific platform suffix and if not set based on kube platform

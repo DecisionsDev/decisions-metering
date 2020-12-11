@@ -10,6 +10,8 @@ services:
           - ODMVERSION=$ODMVERSION
           - FROMLIBERTY=$FROMLIBERTY
           - FROMLIBERTYBUILD=$FROMLIBERTY
+    volumes:
+      - ./metering-options:/config/bootstrap.properties
     ports:
     - 8888:8888
 

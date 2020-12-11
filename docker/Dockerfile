@@ -11,6 +11,7 @@ ENV SCRIPT /scripts
 ENV APPS /config/apps
 
 RUN mkdir $INSTALLSCRIPT && mkdir $SCRIPT
+RUN mkdir /config/ILMT /config/storage
 COPY $ODMDOCKERDIR/scripts $SCRIPT
 COPY $ODMDOCKERDIR/installscripts $INSTALLSCRIPT
 COPY $ODMDOCKERDIR/wlp* /opt/wlppackage/

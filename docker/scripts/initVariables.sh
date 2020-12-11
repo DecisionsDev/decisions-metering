@@ -21,6 +21,3 @@ then
   export CONTEXT_ROOT=""
 fi
 
-# Generate jvm.options with the env parameters
-touch /config/apps/jvm.options
-echo "qsdfkqsdf" >> /config/apps/jvm.options
