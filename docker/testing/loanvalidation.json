@@ -1,0 +1,39 @@
+{
+  "loan": {
+    "numberOfMonthlyPayments": 3,
+    "startDate": "2006-08-19T19:27:14.000+0200",
+    "amount": 3,
+    "loanToValue": 10517320
+  },
+  "borrower": {
+    "firstName": "string",
+    "lastName": "string",
+    "birth": "2008-09-29T03:49:45.000+0200",
+    "SSN": {
+      "areaNumber": "string",
+      "groupCode": "string",
+      "serialNumber": "string"
+    },
+    "yearlyIncome": 3,
+    "zipCode": "string",
+    "creditScore": 3,
+    "spouse": {
+      "birth": "2020-11-18T09:45:09.353+0100",
+      "SSN": {
+        "areaNumber": "",
+        "groupCode": "",
+        "serialNumber": ""
+      },
+      "yearlyIncome": 0,
+      "creditScore": 0,
+      "latestBankruptcy": {
+        "chapter": 0
+      }
+    },
+    "latestBankruptcy": {
+      "date": "2014-09-19T01:18:33.000+0200",
+      "chapter": 3,
+      "reason": "string"
+    }
+  }
+}
