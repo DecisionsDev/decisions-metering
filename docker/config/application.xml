@@ -3,7 +3,7 @@
     <springBootApplication id="metering-spring-boot"
                            location="metering-service.jar"
                            name="metering-service" >
-        <applicationArgument>--com.ibm.rules.metering.databaseFilePath=/config/storage</applicationArgument>
+        <applicationArgument>--com.ibm.rules.metering.databaseFilePath=/config/storage/DB/persistence</applicationArgument>
         <applicationArgument>--com.ibm.rules.metering.ILMToutputDirectory=/config/storage/ILMT/</applicationArgument>
         <applicationArgument>--com.ibm.rules.metering.processingInitialDelay=${METERING_PROCESSING_INITIAL_DELAY}</applicationArgument>
         <applicationArgument>--com.ibm.rules.metering.processingRate=${METERING_PROCESSINGRATE}</applicationArgument>

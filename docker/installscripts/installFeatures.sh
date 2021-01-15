@@ -5,6 +5,7 @@ echo "Install the feature list for ODM on Liberty"
 ROOTFEATUREDIR=/opt/wlppackage
 PACKAGELIST="servlet-4.0 springBoot-2.0"
 ls /opt/wlppackage/
+rm /opt/wlppackage/.donotremoved
 if [ ! -d $ROOTFEATUREDIR/features ]; then
   mkdir -p $ROOTFEATUREDIR
   echo "Downloading features list : $PACKAGELIST"
