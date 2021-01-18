@@ -14,5 +14,6 @@ services:
       - ./metering-options:/config/bootstrap.properties
     ports:
     - 8888:8888
+    - 9999:9999
 
 

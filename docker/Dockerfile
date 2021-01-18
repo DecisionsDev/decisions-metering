@@ -60,8 +60,7 @@ COPY --from=oidc-liberty-builder /scripts /scripts
 # TODO ?
 # COPY --from=builder  --chown=1001:0 /licenses /licenses
 USER 1001
-EXPOSE 8888
-
+EXPOSE 8888 9999
 
 ENTRYPOINT ["/scripts/runserver.sh"]
 CMD ["/scripts/runserver.sh"]
