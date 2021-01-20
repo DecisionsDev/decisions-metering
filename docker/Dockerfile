@@ -19,8 +19,8 @@ COPY $ODMDOCKERDIR/wlp* /opt/wlppackage/
 RUN $INSTALLSCRIPT/installFeatures.sh
 COPY --chown=1001:0 $ODMDOCKERDIR/config /config
 COPY --chown=1001:0 $ODMDOCKERDIR/security/ltpa.keys /config/resources/security/ltpa.keys
-COPY --chown=1001:0 $ODMDOCKERDIR/security/keystore.jks /config/security/keystore.jks
-COPY --chown=1001:0 $ODMDOCKERDIR/security/truststore.jks /config/security/truststore.jks
+COPY --chown=1001:0 $ODMDOCKERDIR/certificate/server.crt /config/resources/certificate/server.crt
+COPY --chown=1001:0 $ODMDOCKERDIR/certificate/server.key /config/resources/certificate/server.key
 COPY ./target/metering-service.jar $APPS
 
 RUN chmod -R 777 /config $SCRIPT

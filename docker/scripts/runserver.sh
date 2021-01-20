@@ -20,7 +20,6 @@ fi;
 #        sed -i 's|RELEASE_NAME|'$HOSTNAME'|g' /config/httpSession.xml
 #fi
 
-#$SCRIPT/configureTlsSecurity.sh
-
+$SCRIPT/configureTlsSecurity.sh
 
 /opt/ibm/wlp/bin/server run defaultServer

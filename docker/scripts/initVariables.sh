@@ -21,3 +21,12 @@ then
   export CONTEXT_ROOT=""
 fi
 
+if [ ! "$METERING_KEYSTORE_PASSWORD" ]
+then
+  export METERING_KEYSTORE_PASSWORD=changeme
+fi
+
+if [ ! "$METERING_KEYSTORE_ALIAS" ]
+then
+  export METERING_KEYSTORE_ALIAS=odmicpserver
+fi

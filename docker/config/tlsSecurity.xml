@@ -1,6 +1,5 @@
 <server>
   <sslDefault sslRef="odmDefaultSSLConfig" />
-  <ssl id="odmDefaultSSLConfig" keyStoreRef="odmDefaultKeyStore" trustStoreRef="odmDefaultTrustStore" sslProtocol="TLSv1.2" enabledCiphers="TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 TLS_RSA_WITH_AES_256_GCM_SHA384 TLS_RSA_WITH_AES_128_GCM_SHA256" />
-  <keyStore id="odmDefaultKeyStore" location="/config/security/keystore.jks" password="changeme" type="JKS" />
-  <keyStore id="odmDefaultTrustStore" location="/config/security/truststore.jks" password="changeme" type="JKS" />
+  <ssl id="odmDefaultSSLConfig" keyStoreRef="odmDefaultKeyStore" sslProtocol="TLSv1.2" enabledCiphers="TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 TLS_RSA_WITH_AES_256_GCM_SHA384 TLS_RSA_WITH_AES_128_GCM_SHA256" />
+  <keyStore id="odmDefaultKeyStore" location="/config/resources/security/keystore.jks" password="METERING_KEYSTORE_PASSWORD" type="JKS" />
 </server>
