@@ -11,9 +11,9 @@ metadata:
 spec:
   type: NodePort
   ports:
-    - port: 8888
+    - port: 9999
       name: odm-port
-      targetPort: 8888
+      targetPort: 9999
       protocol: TCP
   selector:
     run: {{ template "name" . }}

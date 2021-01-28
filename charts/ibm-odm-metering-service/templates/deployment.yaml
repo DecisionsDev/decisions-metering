@@ -72,7 +72,7 @@ spec:
             value: "{{ .Values.license }}"
 
           ports:
-          - containerPort: 8888
+          - containerPort: 9999
           volumeMounts:
           {{- if  .Values.persistence.enabled  }}
           - name: {{ template "fullname" . }}-volume
@@ -83,17 +83,17 @@ spec:
             subPath: bootstrap.properties
           readinessProbe:
             httpGet:
-              scheme: HTTP
-              path: /
-              port: 8888
+              scheme: HTTPS
+              path: /actuator/health
+              port: 9999
             initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
             periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
             failureThreshold: {{ .Values.readinessProbe.failureThreshold }}
           livenessProbe:
             httpGet:
-              scheme: HTTP
-              path: /
-              port: 8888
+              scheme: HTTPS
+              path: /actuator/health
+              port: 9999
             initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
             periodSeconds: {{ .Values.livenessProbe.periodSeconds }}
             failureThreshold: {{ .Values.livenessProbe.failureThreshold }}

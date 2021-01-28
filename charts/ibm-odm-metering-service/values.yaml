@@ -38,14 +38,14 @@ serviceAccountName: ""
 
 service:
   enableRoute: true
-  hostname: ""
-
+#  hostname: "mycluster-lon02-b-700720-c1ae67eb6fa71bbdf749597a7134d538-0000.eu-gb.containers.appdomain.cloud"
+  hostname: "apps.9.20.212.178.nip.io"
 resources:
   requests:
-    cpu: 0.25
-    memory: 1024Mi
+    cpu: 1
+    memory: 2048Mi
   limits:
-    cpu: 0.5
+    cpu: 1
     memory: 2048Mi
 
 persistence:
@@ -57,7 +57,7 @@ persistence:
       storage: 2Gi
 
 readinessProbe:
-  initialDelaySeconds: 10
+  initialDelaySeconds: 30
   periodSeconds: 5
   failureThreshold: 45
 
@@ -69,8 +69,8 @@ livenessProbe:
 customization:
   runAsUser: 
   loggingLevel: 'DEBUG'
-  processingInitialDelay: 600
-  processingRate: 600
+  processingInitialDelay: 6000
+  processingRate: 60000
 
 networkPolicy:
   # Enable creation of NetworkPolicy resources.
