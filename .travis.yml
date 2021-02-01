@@ -40,4 +40,5 @@ install:
 - ls -la 
 - chmod +x preparebuild.sh
 - "./preparebuild.sh"
+# TODO Remove the skipTests=true
 script: mvn install -DskipTests=true -Dodm.home=$PWD/../install
