@@ -48,7 +48,7 @@ script:
 - sudo docker-compose up -d 
 - echo ${ARTIFACTORY_PWD} | sudo docker login ${ARTIFACTORY_URL} --username ${ARTIFACTORY_USER} --password-stdin
 - sudo docker-compose up -d
-- export REPOSITORY=ARTIFACTORY_URL
+- export REPOSITORY=$ARTIFACTORY_URL
 - sudo docker-compose -f docker/testing/docker-compose-metering.yml up -d
 - sleep 10
 - sudo docker-compose -f docker/testing/docker-compose-metering.yml logs
