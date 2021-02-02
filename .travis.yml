@@ -35,7 +35,7 @@ before_install:
 - docker --version
 - docker-compose version
 - curl https://hey-release.s3.us-east-2.amazonaws.com/hey_linux_amd64 --output hey && ls -la && chmod +x hey && sudo mv hey /usr/local/bin
-- hey
+
 
 
 install:
@@ -51,4 +51,5 @@ script:
 - sudo docker-compose -f docker/testing/docker-compose-metering.yml up -d
 - sleep 10
 - sudo docker-compose -f docker/testing/docker-compose-metering.yml logs
-
+- cd docker/testing/
+- ./test.sh
