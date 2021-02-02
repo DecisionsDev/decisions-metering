@@ -1,23 +1,9 @@
 version: '3'
 services:
-  metering-service:
-    image: myrepo/metering-service:8.10.5.0-amd64
-    ports:
-    - 8888:8888
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://metering-service:8888"]
-      interval: 1m30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
-    environment:
-      - METERING_LOGGINGLEVEL=DEBUG
-      - METERING_PROCESSINGRATE=6000
-      - METERING_PROCESSING_INITIAL_DELAY=6000
-  
+
 
   dbserver:
-    image: $REPOSITORY/dbserver:$ODMVERSION
+    image: $REPOSITORY/dbserver:$ODM_VERSION-amd64
 
     ports:
     - 5432:5432
@@ -33,7 +19,7 @@ services:
 #      - ./pgdata:/pgdata
 
   odm-decisionserverconsole:
-    image: $REPOSITORY/odm-decisionserverconsole:$ODMVERSION
+    image: $REPOSITORY/odm-decisionserverconsole:$ODM_VERSION-amd64
     environment:
       - POSTGRESQL_USER=odmusr
       - POSTGRESQL_PASSWORD=odmpwd
@@ -50,6 +36,10 @@ services:
     - 1883:1883
     - 9843:9443
     volumes:
-    - ./plugin-configuration.properties:/config/baiemitterconfig/plugin-configuration.properties
+    - ./plugin-configuration.properties:/config/pluginconfig/plugin-configuration.properties
 
-  
+networks:
+  default:
+    external:
+      name: decisions-metering_default
+ 
