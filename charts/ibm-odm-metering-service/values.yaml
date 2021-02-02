@@ -39,7 +39,8 @@ serviceAccountName: ""
 service:
   enableRoute: true
 #  hostname: "mycluster-lon02-b-700720-c1ae67eb6fa71bbdf749597a7134d538-0000.eu-gb.containers.appdomain.cloud"
-  hostname: "apps.9.20.212.178.nip.io"
+#  hostname: "apps.9.20.212.178.nip.io"
+  hostname: "apps.dev-odm-2.cp.fyre.ibm.com"
 resources:
   requests:
     cpu: 1
@@ -57,12 +58,12 @@ persistence:
       storage: 2Gi
 
 readinessProbe:
-  initialDelaySeconds: 30
+  initialDelaySeconds: 100
   periodSeconds: 5
   failureThreshold: 45
 
 livenessProbe:
-  initialDelaySeconds: 300
+  initialDelaySeconds: 100
   periodSeconds: 10
   failureThreshold: 10
 
