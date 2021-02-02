@@ -51,3 +51,4 @@ script:
 - sudo docker-compose -f docker/testing/docker-compose-metering.yml up -d
 - sleep 10
 - sudo docker-compose -f docker/testing/docker-compose-metering.yml logs
+
