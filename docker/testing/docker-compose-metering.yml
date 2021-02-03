@@ -3,7 +3,7 @@ services:
 
 
   dbserver:
-    image: $REPOSITORY/dbserver:$ODM_VERSION-amd64
+    image: $REPOSITORY/dbserver:$ODMIMAGEVERSION-amd64
 
     ports:
     - 5432:5432
@@ -19,7 +19,7 @@ services:
 #      - ./pgdata:/pgdata
 
   odm-decisionserverconsole:
-    image: $REPOSITORY/odm-decisionserverconsole:$ODM_VERSION-amd64
+    image: $REPOSITORY/odm-decisionserverconsole:$ODMIMAGEVERSION-amd64
     environment:
       - POSTGRESQL_USER=odmusr
       - POSTGRESQL_PASSWORD=odmpwd
