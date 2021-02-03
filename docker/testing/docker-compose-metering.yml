@@ -1,23 +1,8 @@
 version: '3'
 services:
-  metering-service:
-    image: hyc-odm-docker.artifactory.swg-devops.com/metering-service:8.10.5.0-amd64
-    ports:
-    - 9999:9999
-    healthcheck:
-      test: ["CMD", "curl", "-f", "https://metering-service:9999","-k"]
-      interval: 1m30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
-    environment:
-      - METERING_LOGGINGLEVEL=DEBUG
-      - METERING_PROCESSINGRATE=6000
-      - METERING_PROCESSING_INITIAL_DELAY=6000
-  
 
   dbserver:
-    image: $REPOSITORY/dbserver:$ODMVERSION
+    image: $REPOSITORY/dbserver:$ODMIMAGEVERSION-amd64
 
     ports:
     - 5432:5432
@@ -33,7 +18,7 @@ services:
 #      - ./pgdata:/pgdata
 
   odm-decisionserverconsole:
-    image: $REPOSITORY/odm-decisionserverconsole:$ODMVERSION
+    image: $REPOSITORY/odm-decisionserverconsole:$ODMIMAGEVERSION-amd64
     environment:
       - COM_IBM_RULES_METERING_ENABLE=TRUE
       - METERING_SERVER_URL=https://metering-service:9999
@@ -64,3 +49,11 @@ services:
     - 9643:9453
 #    volumes:
 #    - ./plugin-configuration.properties:/config/baiemitterconfig/plugin-configuration.properties  
+
+
+networks:
+  default:
+    external:
+      name: decisions-metering_default
+ 
+

@@ -1,13 +1,13 @@
 version: '3'
 services:
   metering:
-    image: $REPOSITORY/metering-service:$ODMVERSION
+    image: $REPOSITORY/metering-service:$ODMIMAGEVERSION
     build:
         context: ./
         dockerfile: ./${ODMDOCKERDIR}/Dockerfile
         args:
           - ODMDOCKERDIR=$ODMDOCKERDIR
-          - ODMVERSION=$ODMVERSION
+          - ODMVERSION=$ODMIMAGEVERSION
           - FROMLIBERTY=$FROMLIBERTY
           - FROMLIBERTYBUILD=$FROMLIBERTY
     volumes:
