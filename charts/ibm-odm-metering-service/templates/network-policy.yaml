@@ -16,5 +16,5 @@ spec:
   ingress:
   # Allow web access to the UI
   - ports:
-    - port: 8888
+    - port: 9999
 {{- end }}
