@@ -51,6 +51,8 @@ public class Messages {
 	public final static String USAGE_REPORT_REQUEST_PROCESSING_ERROR = "usage_request_processing_error";
 	
 	// processing-related messages
+	public final static String BACKUP_START = "backup_starting";
+	public final static String BACKUP_END = "backup_ending";
 	public final static String REPORTING_START = "starting_reporting";
 	public final static String REPORTING_END = "ending_reporting";
 	public final static String REPORTING_END_WITH_ID = "ending_reporting_with_id";
