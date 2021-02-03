@@ -13,6 +13,8 @@
         <include optional="true" location="./tlsSecurity.xml"/>
 
 	<!-- http endpoint -->
-	<httpEndpoint id="defaultHttpEndpoint" enableWelcomePage="true" host="*" httpPort="8888" httpsPort="9999" />
+	<httpEndpoint id="defaultHttpEndpoint" enableWelcomePage="true" host="*" httpPort="${HTTP_PORT}" httpsPort="${HTTPS_PORT}" />
+ 
+	<variable name="defaultHostName" value="localhost" />
 
 </server>

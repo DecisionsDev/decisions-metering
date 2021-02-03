@@ -11,7 +11,7 @@ metadata:
 {{ include "odm-additional-labels" . | indent 4 }}
 spec:
   {{- if not (empty .Values.service.hostname) }}
-  host: odm.{{ .Release.Name }}.{{ .Values.service.hostname }}
+  host: odm-{{ .Release.Name }}.{{ .Values.service.hostname }}
   {{- end  }}
   port:
     targetPort: odm-port
