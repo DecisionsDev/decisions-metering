@@ -1,0 +1,256 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "type": "object",
+    "properties": {
+        "customization": {
+            "type": "object",
+            "title": "Customization",
+            "description": "Configure the customization parameters.",
+            "properties": {
+                "loggingLevel": {
+                    "type": "string",
+                    "enum": ["INFO", "ERROR", "WARN", "DEBUG", "TRACE"],
+                    "default": "INFO"
+                },
+                "processingInitialDelay": {
+                    "title": "Processing Initial Delay",
+                    "type": "integer",
+                    "description": "The delay in milliseconds before the first processing occurs after the service is started.",
+                    "default":"60000"
+
+                },
+                "processingRate": {
+                    "title": "Processing Rate",
+                    "description": "The rate in milliseconds at which usage is processed and written to the license files.",
+                    "type": "integer",
+                    "default":"60000"
+                },
+                "runAsUser": {
+                    "title": "ODM container User Id",
+                    "description": "Specify the User Id to run the ODM containers.",
+                    "type": [
+                        "integer",
+                        "null"
+                      ],
+  
+                }
+            }
+        },
+        "image": {
+            "type": "object",
+            "title": "Image",
+            "description": "Configure the Docker image parameters.",
+            "required": [
+               "arch",
+               "pullPolicy",
+               "repository",
+               "tag"
+            ],
+            "properties": {
+                "arch": {
+                    "title": "Architecture",
+                    "description": "Specify the architecture for the Docker image.",
+                    "type": "string",
+                    "enum": ["amd64"],
+                    "default": "amd64"
+                },
+                "pullPolicy": {
+                    "title": "Pull policy",
+                    "description": "Specify the pull policy for the Docker image.",
+                    "type": "string",
+                    "enum": ["IfNotPresent", "Always", "Never"]
+                },
+                "pullSecrets": {
+                  "title": "Pull secrets",
+                  "description": "Specify the pull secrets for the Docker image.",
+                  "type": "string"
+                },
+                "repository": {
+                  "title": "Repository",
+                  "description": "Specify the repository used to retrieve the Docker image.",
+                  "type": "string"
+                },
+                "tag": {
+                  "title": "Tag",
+                  "description": "Specify the tag or digest for the Docker image.",
+                  "type": "string"
+                }
+            }
+        },
+        "license": {
+            "type": "string",
+            "title": "License",
+            "description": "Please read and accept the license agreement.",
+            "enum": ["accept", "not accepted", "view"]
+        },
+        "livenessProbe": {
+            "type": "object",
+            "title": "Liveness probe",
+            "description": "Configure the liveness probe parameters.",
+            "required": [
+               "failureThreshold",
+               "initialDelaySeconds",
+               "periodSeconds"
+            ],
+            "properties": {
+                "failureThreshold": {
+                    "title": "Failure threshold in seconds",
+                    "description": "Specify how many times Kubernetes will try before giving up when a pod starts and the probe fails. Giving up means restarting the pod.",
+                    "type": "integer"
+                },
+                "initialDelaySeconds": {
+                    "title": "Initial delay in seconds",
+                    "description": "Specify the number of seconds after the container has started before liveness probe is initiated.",
+                    "type": "integer"
+                },
+                "periodSeconds": {
+                    "title": "Period in seconds",
+                    "description": "Specify how often (in seconds) to perform the probe.",
+                    "type": "integer"
+                }
+            }
+        },
+        "networkPolicy": {
+            "type": "object",
+            "title": "Network Policy",
+            "description": "Configure the Network Policy parameters.",
+            "properties": {
+                "apiVersion": {
+                    "title": "API Version",
+                    "description": "The network policy api version.",
+                    "type": "string"
+                },
+                "enabled": {
+                    "title": "Enabled",
+                    "description": "Specify whether to enable the network policy.",
+                    "type": "boolean"
+                }
+            }
+        },
+        "persistence": {
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                },
+                "resources": {
+                    "type": "object",
+                    "properties": {
+                        "requests": {
+                            "type": "object",
+                            "properties": {
+                                "storage": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "storageClassName": {
+                    "type": "string"
+                },
+                "useDynamicProvisioning": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "readinessProbe": {
+            "type": "object",
+            "title": "Readiness probe",
+            "description": "Configure the readiness probe parameters.",
+            "required": [
+               "failureThreshold",
+               "initialDelaySeconds",
+               "periodSeconds"
+            ],
+            "properties": {
+                "failureThreshold": {
+                    "title": "Failure threshold in seconds",
+                    "description": "Specify how many times Kubernetes will try before giving up when a pod starts and the probe fails. Giving up means marking the pod as Unready.",
+                    "type": "integer"
+                },
+                "initialDelaySeconds": {
+                    "title": "Initial delay in seconds",
+                    "description": "Specify the number of seconds after the container has started before readiness probe is initiated.",
+                    "type": "integer"
+                },
+                "periodSeconds": {
+                    "title": "Period in seconds",
+                    "description": "Specify how often (in seconds) to perform the probe.",
+                    "type": "integer"
+                }
+            }
+        },
+        "resources": {
+            "type": "object",
+            "title": "Resources",
+            "description": "Configure the resources required.",
+            "properties": {
+                "limits": {
+                    "type": "object",
+                    "required": [
+                       "cpu",
+                       "memory"
+                    ],
+                    "properties": {
+                        "cpu": {
+                            "title": "CPU limit",
+                            "description": "Specify the CPU limit.",
+                            "type": "number",
+                            "default":"0.5"
+                        },
+                        "memory": {
+                            "title": "Memory limit",
+                            "description": "Specify the memory limit.",
+                            "type": "string"
+                        }
+                    }
+                },
+                "requests": {
+                    "type": "object",
+                    "required": [
+                       "cpu",
+                       "memory"
+                    ],
+                    "properties": {
+                        "cpu": {
+                            "title": "CPU request",
+                            "description": "Specify the requested CPU.",
+                            "type": "number"
+                        },
+                        "memory": {
+                            "title": "Memory request",
+                            "description": "Specify the requested memory.",
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "service": {
+            "type": "object",
+            "title": "Service",
+            "description": "Configure the service parameters.",
+            "required": [
+               "enableRoute"
+            ],
+            "properties": {
+                "enableRoute": {
+                    "title": "Enable Route",
+                    "description": "Specify whether we should create Openshift routes automaticaly. If true, the routes are created for all ODM components.",
+                    "type": "boolean"
+                },
+                "hostname": {
+                  "title": "Route Hostname",
+                  "description": "Specify the hostname used by the created routes.",
+                  "type": "string"
+                }
+            }
+        },
+        "serviceAccountName": {
+            "type": "string",
+            "title": "ServiceAccount name",
+            "description": "Specify ServiceAccount to use in Kubernetes. If this parameter is left empty, a serviceAccount named <release_name>-ibm-odm-dev-service-account will be created."
+        }
+    }
+}

@@ -1,0 +1,20 @@
+version: '3'
+services:
+  metering:
+    image: $REPOSITORY/metering-service:$ODMVERSION
+    build:
+        context: ./
+        dockerfile: ./${ODMDOCKERDIR}/Dockerfile
+        args:
+          - ODMDOCKERDIR=$ODMDOCKERDIR
+          - ODMVERSION=$ODMVERSION
+          - FROMLIBERTY=$FROMLIBERTY
+          - FROMLIBERTYBUILD=$FROMLIBERTY
+    volumes:
+      - ./metering-options:/config/bootstrap.properties
+#      - ./docker/certificate/keystore.jks:/config/resources/certificate/keystore.jks
+    ports:
+    - 8888:8888
+    - 9999:9999
+
+

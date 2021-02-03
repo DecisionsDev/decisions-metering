@@ -1,0 +1,263 @@
+## Image parameters
+image:
+  __metadata:
+    label: "Image"
+    description: "The Docker image parameters."
+  repository:
+    __metadata:
+      label: "Repository"
+      description: "Specify the repository used to retrieve the Docker image."
+      type: "string"
+      required: true
+  tag:
+    __metadata:
+      label: "Tag"
+      description: "Specify the tag or digest for the Docker image."
+      type: "string"
+      required: true
+  pullPolicy:
+    __metadata:
+      label: "Pull policy"
+      description: "Specify the pull policy for the Docker image."
+      type: "string"
+      required: true
+      options:
+        -
+          label: "If not present"
+          value: "IfNotPresent"
+        -
+          label: "Always"
+          value: "Always"
+        -
+          label: "Never"
+          value: "Never"
+## Optionally specify an array of imagePullSecrets.
+## Secrets must be manually created in the namespace.
+## ref: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+##  - name: admin.registrykey
+  pullSecrets:
+    __metadata:
+      label: "Pull secrets"
+      description: "Specify the pull secrets for the Docker image."
+      type: "string"
+      required: false
+## Architecture
+## You can use kubectl version command to determine the architecture on the
+## desired worker node.
+## Only amd64 is supported for ibm-odm-metering-service.
+  arch:
+    __metadata:
+      label: "Architecture"
+      description: "Specify the architecture for the Docker image."
+      type: "string"
+      required: true
+      options:
+        -
+          label: "AMD64"
+          value: "amd64"
+
+
+## Service parameters
+service:
+  __metadata:
+    label: "Service"
+    description: "The service parameters."
+  enableRoute:
+    __metadata:
+      label: "Enable Route"
+      description: "Specify whether we should create Openshift routes automaticaly. If true, the routes are created for all ODM components. "
+      type: "boolean"
+      required: true
+  hostname:
+    __metadata:
+      label: "Route Hostname"
+      description: "Specify the hostname used by the created routes."
+      type: "string"
+      required: false
+
+## ServiceAccount parameters
+serviceAccountName:
+  __metadata:
+    label: "ServiceAccount name"
+    description: "Specify ServiceAccount to use in Kubernetes."
+    type: "string"
+    required: false
+
+## Resource parameters
+resources:
+  __metadata:
+    label: "Resources"
+    description: "The resources required."
+  requests:
+    cpu:
+      __metadata:
+          label: "CPU request"
+          description: "Specify the requested CPU."
+          type: "string"
+          required: true
+    memory:
+      __metadata:
+          label: "Memory request"
+          description: "Specify the requested memory."
+          type: "string"
+          required: true
+  limits:
+    cpu:
+      __metadata:
+          label: "CPU limit"
+          description: "Specify the CPU limit."
+          type: "string"
+          required: true
+    memory:
+      __metadata:
+          label: "Memory limit"
+          description: "Specify the memory limit."
+          type: "string"
+          required: true
+
+
+## storage parameters
+persistence:
+  __metadata:
+    label: "Persistence"
+    description: "Properties related to the data storage"
+  required: true
+  enabled:
+    __metadata:
+      label: "Enable persistence in persistent volume"
+      description: "Specify whether to enable persistence for the internal database in a persistent volume."
+      type: "boolean"
+      required: true
+  useDynamicProvisioning:
+    __metadata:
+      label: "Use dynamic provisioning for persistent volume"
+      description: "When this parameter is false, the binding process selects an existing volume. Ensure that an unbound volume exists before you install the chart."
+      type: "boolean"
+      required: true
+  storageClassName:
+    __metadata:
+      label: "Storage class name for persistent volume"
+      description: "Specify the storage class name for persistent volume. If this parameter is left empty, the default storage class is used."
+      type: "string"
+      required: false
+  resources:
+    requests:
+      storage:
+        __metadata:
+          label: "Storage size for persistent volume"
+          description: "Specify the storage size for persistent volume."
+          type: "string"
+          required: true
+
+
+## Readiness probe parameters
+readinessProbe:
+  __metadata:
+    label: "Readiness probe"
+    description: "The readiness probe parameters."
+  initialDelaySeconds:
+    __metadata:
+      label: "Initial delay in seconds"
+      description: "Specify the number of seconds after the container has started before readiness probe is initiated."
+      type: "number"
+      required: true
+  periodSeconds:
+    __metadata:
+      label: "Period in seconds"
+      description: "Specify how often (in seconds) to perform the probe."
+      type: "number"
+      required: true
+  failureThreshold:
+    __metadata:
+      label: "Failure threshold in seconds"
+      description: "Specify how many times Kubernetes will try before giving up when a pod starts and the probe fails. Giving up means marking the pod as Unready."
+      type: "number"
+      required: true
+
+## Liveness probe parameters
+livenessProbe:
+  __metadata:
+    label: "Liveness probe"
+    description: "The liveness probe parameters."
+  initialDelaySeconds:
+    __metadata:
+      label: "Initial delay in seconds"
+      description: "Specify the number of seconds after the container has started before liveness probe is initiated."
+      type: "number"
+      required: true
+  periodSeconds:
+    __metadata:
+      label: "Period in seconds"
+      description: "Specify how often (in seconds) to perform the probe."
+      type: "number"
+      required: true
+  failureThreshold:
+    __metadata:
+      label: "Failure threshold in seconds"
+      description: "Specify how many times Kubernetes will try before giving up when a pod starts and the probe fails. Giving up means restarting the pod."
+      type: "number"
+      required: true
+
+## Customization
+customization:
+  __metadata:
+    label: "Customization"
+    description: "The customization parameters."
+  runAsUser:
+    __metadata:
+      label: "ODM container User Id"
+      description: "Specify the User Id to run the ODM containers."
+      type: "string"
+      required: false
+      hidden: true
+  loggingLevel:
+      __metadata:
+        label: "Logging Level"
+        description: "Specify the level of logging."
+        type: "string"
+        required: false
+        options:
+        - label: "Error"
+          value: "ERROR"
+        - label: "Warn"
+          value: "WARN"
+        - label: "Info"
+          value: "INFO"
+        - label: "Debug"
+          value: "DEBUG"
+        - label: "Trace"
+          value: "TRACE"   
+
+# Network Policy
+networkPolicy:
+  __metadata:
+    label: "Network Policy"
+    description: "The Network Policy parameters;"
+  enabled:
+    __metadata:
+      label: "Enabled"
+      description: "Specify whether to enable the network policy"
+      type: "boolean"
+      required: false
+      hidden: true
+  apiVersion:
+    __metadata:
+      label: "API Version"
+      description: "The network policy api version"
+      type: "string"
+      required: false
+      hidden: true
+
+license:
+  __metadata:
+    label: "License"
+    description: "Please read and accept the license agreement"
+    type: "string"
+    required: true
+    options:
+    - label: "Accepted"
+      value: "accept"
+    - label: "Not accepted"
+      value: "not accepted"
+    - label: "View"
+      value: "view"
