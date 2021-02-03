@@ -1,11 +1,11 @@
 version: '3'
 services:
   metering-service:
-    image: myrepo/metering-service:8.10.5.0-amd64
+    image: hyc-odm-docker.artifactory.swg-devops.com/metering-service:8.10.5.0-amd64
     ports:
-    - 8888:8888
+    - 9999:9999
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://metering-service:8888"]
+      test: ["CMD", "curl", "-f", "https://metering-service:9999","-k"]
       interval: 1m30s
       timeout: 10s
       retries: 3
@@ -35,12 +35,9 @@ services:
   odm-decisionserverconsole:
     image: $REPOSITORY/odm-decisionserverconsole:$ODMVERSION
     environment:
-      - POSTGRESQL_USER=odmusr
-      - POSTGRESQL_PASSWORD=odmpwd
-      - POSTGRESQ_DB=odmdb
-      - PGDATA=/var/lib/postgresql/data
-      - SAMPLE=true
       - COM_IBM_RULES_METERING_ENABLE=TRUE
+      - METERING_SERVER_URL=https://metering-service:9999
+      - METERING_SEND_PERIOD=10000
     links:
     - dbserver
     depends_on:
@@ -49,7 +46,21 @@ services:
     - 9080:9080
     - 1883:1883
     - 9843:9443
-    volumes:
-    - ./plugin-configuration.properties:/config/baiemitterconfig/plugin-configuration.properties
+#    volumes:
+#    - ./plugin-configuration.properties:/config/baiemitterconfig/plugin-configuration.properties
 
-  
+  odm-decisioncenter:
+    image: $REPOSITORY/odm-decisioncenter:$ODMVERSION
+    environment:
+      - COM_IBM_RULES_METERING_ENABLE=TRUE
+      - METERING_SERVER_URL=https://metering-service:9999
+      - METERING_SEND_PERIOD=10000
+    links:
+    - dbserver
+    depends_on:
+    - dbserver
+    ports:
+    - 9060:9060
+    - 9643:9453
+#    volumes:
+#    - ./plugin-configuration.properties:/config/baiemitterconfig/plugin-configuration.properties  
