@@ -21,7 +21,7 @@ services:
     image: $REPOSITORY/odm-decisionserverconsole:$ODMIMAGEVERSION-amd64
     environment:
       - COM_IBM_RULES_METERING_ENABLE=TRUE
-      - METERING_SERVER_URL=https://metering-service:9999
+      - METERING_SERVER_URL=http://metering:8888
       - METERING_SEND_PERIOD=10000
     links:
     - dbserver
@@ -35,10 +35,10 @@ services:
 #    - ./plugin-configuration.properties:/config/baiemitterconfig/plugin-configuration.properties
 
   odm-decisioncenter:
-    image: $REPOSITORY/odm-decisioncenter:$ODMVERSION
+    image: $REPOSITORY/odm-decisioncenter:$ODMIMAGEVERSION-amd64
     environment:
       - COM_IBM_RULES_METERING_ENABLE=TRUE
-      - METERING_SERVER_URL=https://metering-service:9999
+      - METERING_SERVER_URL=https://metering:8888
       - METERING_SEND_PERIOD=10000
     links:
     - dbserver
