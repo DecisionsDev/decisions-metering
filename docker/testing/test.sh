@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Perfom et first execution
-set -e
+
 RESULT=$(curl -X POST -u "odmAdmin:odmAdmin" http://localhost:9080/DecisionService/rest/test_deployment/1.0/loan_validation_with_score_and_grade/1.0 -b "loanvalidation.json" -T 'loanvalidation.json' -H "Content-Type: application/json; charset=UTF-8" -v)
 
 echo $RESULT | grep "The borrower's SSN" 
@@ -22,7 +22,7 @@ grep "MILLION_MONTHLY_DECISIONS" ilmt/*.slmtag
 if [ $? -ne 0 ]; then
     echo "Cannot find the expected value MILLION_MONTHLY_DECISIONS in the ILMT File. Metrics for runtime"
 fi
-grep "<Value>0.003</Value>" ilmt/4ee9e1b0d7aba2e118b0be1649928b14.slmtag
+grep "<Value>0.003</Value>" ilmt/*.slmtag
 if [ $? -ne 0 ]; then
     echo "Cannot find the expected value 0.003 in the ILMT File. (3000 executions"
 fi
