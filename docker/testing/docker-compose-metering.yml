@@ -17,11 +17,28 @@ services:
 #    volumes:
 #      - ./pgdata:/pgdata
 
+  odm-decisionserverruntime:
+    image: $REPOSITORY/odm-decisionserverruntime:$ODMIMAGEVERSION-amd64
+    environment:
+      - DECISIONSERVERCONSOLE_NAME=odm-decisionserverconsole
+      - COM_IBM_RULES_METERING_ENABLE=TRUE
+      - METERING_SERVER_URL=https://metering:9999
+      - METERING_SEND_PERIOD=10000
+    links:
+    - dbserver
+    - odm-decisionserverconsole
+    depends_on:
+    - dbserver
+    - odm-decisionserverconsole
+    ports:
+    - 9090:9080
+    - 9943:9443
+
   odm-decisionserverconsole:
     image: $REPOSITORY/odm-decisionserverconsole:$ODMIMAGEVERSION-amd64
     environment:
       - COM_IBM_RULES_METERING_ENABLE=TRUE
-      - METERING_SERVER_URL=http://metering:8888
+      - METERING_SERVER_URL=https://metering:9999
       - METERING_SEND_PERIOD=10000
     links:
     - dbserver
@@ -38,7 +55,7 @@ services:
     image: $REPOSITORY/odm-decisioncenter:$ODMIMAGEVERSION-amd64
     environment:
       - COM_IBM_RULES_METERING_ENABLE=TRUE
-      - METERING_SERVER_URL=https://metering:8888
+      - METERING_SERVER_URL=https://metering:9999
       - METERING_SEND_PERIOD=10000
     links:
     - dbserver
