@@ -53,4 +53,5 @@ script:
 - echo "Waiting some time for ODM to start .... " && sleep 100
 - sudo docker-compose -f docker/testing/docker-compose-metering.yml logs
 - cd docker/testing/
+- echo "Waiting some time for ODM to send metering .... " && sleep 30
 - ./test.sh
