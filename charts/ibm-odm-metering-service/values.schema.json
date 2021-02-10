@@ -31,8 +31,7 @@
                     "type": [
                         "integer",
                         "null"
-                      ],
-  
+                      ]
                 }
             }
         },
