@@ -46,6 +46,12 @@ script:
 - cd docker/testing/
 - echo "Waiting some time for ODM to send metering .... "
 - "./test.sh"
+- cd ../../ && helm package charts/ibm-odm-metering-service 
+deploy:
+      provider: releases
+      api_key: "$GIT_HUB_TOKEN"
+      file: "decisions-metering/ibm-odm-metering-service-20.0.0.tgz"
+      skip_cleanup: true
 notifications:
   slack:
     secure: VQY0f5Lzup2TNNbX5U3dX7Wb2f+l99VEzhk7amyRN0v1yrtFzLkSdxaIiNC4CvUgOfYWJUnNPAIGyEcFqzNgU652cMVC12Lug4KOJ85aFHCBMJ9HqBfFktC9qCblcpQ7FjGu4hzREE1p5TAh9UA8euTJwzMZ2ZLkwFicBrO/SJfC+XMaGrNKUTKCuRX5UUKZmkQzSr0l4oCzvrZUQGJ0baOgYMYyjKx9qlMPknseP35+PgU1/15qZnmnZPrRMOp+EdHj+cnEyqHd8w8tbJvsBl/+pOT6afuRowZpvumjbOtpDHgGPvXje3NH/EG/pMlfXIuTTgoYw+5U6I2O0O5eyp5uGFNBIKQ44qzLZnzAyfsm+09dYQs0XcSnjASD/pHcWsMPsa3Pn/c+GK1DpEPilNytjlez78RSSimsULf/MjmWm/3K2ZL00jgGzl/dq6xKgpYrga5LCoazQECI9pS+HxNWg55v0rek9ln4pmrt0mXhb6UrkeAhNcF4Kt/flh+yMBqm/Cxf3apnTcebtB3LmhapuJBe5H8rtdzDnKbftXPSQ+BoLNDGDNUd4rQyOmR1EL3H7XD1Ikw8WOlwCnEzAJY9Apuex5pn5utxx+XcYM1NKh6fzMKjnU/aObkuxOxbwE8Sqj7hOwSTgS3b90HEKPX3HOVyESueqlAP6CnJnTw=
