@@ -38,7 +38,7 @@ serviceAccountName: ""
 
 service:
   enableRoute: true
-  hostname:
+  hostname: ""
 resources:
   requests:
     cpu: 1
