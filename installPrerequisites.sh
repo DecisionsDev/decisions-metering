@@ -14,6 +14,7 @@ function downloadTool {
     # $1 : The tool executable name
     # $2 : The url of thetools
     if [ ! -f "$UTILDIR/$1" ]; then 
+      echo "Downloading : curl $2 --output $1 "
       curl $2 --output $1 && chmod +x $1 && sudo mv $1 /usr/local/bin 
     else 
       echo "$1 is already in the cache."
