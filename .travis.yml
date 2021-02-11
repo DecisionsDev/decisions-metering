@@ -15,7 +15,7 @@ env:
   - DOCKER_COMPOSE_VERSION=1.26.1
 before_install:
 - mkdir -p $HOME/.cache
-- chmod +x installPrerequisite.sh && ./installPrerequisite.sh
+- chmod +x installPrerequisites.sh && ./installPrerequisites.sh
 install:
 - ls -la
 - chmod +x preparebuild.sh && "./preparebuild.sh"
