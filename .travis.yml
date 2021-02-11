@@ -29,7 +29,7 @@ before_install:
 - docker-compose version
 - curl https://hey-release.s3.us-east-2.amazonaws.com/hey_linux_amd64 --output hey
   && ls -la && chmod +x hey && sudo mv hey /usr/local/bin
-- curl https://github.ibm.com/IBMPrivateCloud/content-verification/releases/download/v2.4.0/cv-linux-amd64.tar.gz -output cv && chmod +x cv && sudo mv cv /usr/local/bin
+- curl https://github.ibm.com/IBMPrivateCloud/content-verification/releases/download/v2.4.0/cv-linux-amd64.tar.gz --output cv && chmod +x cv && sudo mv cv /usr/local/bin
 - curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -
 - sudo apt-get install apt-transport-https --yes
 - echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
