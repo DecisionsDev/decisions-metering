@@ -19,7 +19,7 @@ function downloadTool {
       echo "Downloading : curl $2 --output $1 "
       curl $2 --output $1
       
-      chmod +x $1 && sudo mv $1 /usr/local/bin 
+      chmod +x $1 && sudo mv $1 $UTILDIR/$1
     else 
       echo "$1 is already in the cache."
     fi 
