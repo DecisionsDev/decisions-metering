@@ -10,6 +10,7 @@ sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
 
 
 UTILDIR="$HOME/.cache/util"
+mkdir -p $UTILDIR
 function downloadTool {
     # $1 : The tool executable name
     # $2 : The url of thetools
