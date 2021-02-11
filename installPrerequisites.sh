@@ -14,17 +14,19 @@ mkdir -p $UTILDIR
 function downloadTool {
     # $1 : The tool executable name
     # $2 : The url of thetools
+    # $3 : Action to be done
     if [ ! -f "$UTILDIR/$1" ]; then 
       echo "Downloading : curl $2 --output $1 "
-      curl $2 --output $1 && chmod +x $1 && sudo mv $1 /usr/local/bin 
+      curl $2 --output $1
+      
+      chmod +x $1 && sudo mv $1 /usr/local/bin 
     else 
       echo "$1 is already in the cache."
     fi 
     chmod +x $UTILDIR/$1 && sudo mv $UTILDIR/$1 /usr/local/bin 
 }
 # Linter
-downloadTool "cv" "https://github.ibm.com/IBMPrivateCloud/content-verification/releases/download/v2.4.0/cv-linux-amd64.tar.gz"
-cv version
+
 # hey
 downloadTool "hey" "https://hey-release.s3.us-east-2.amazonaws.com/hey_linux_amd64"
 hey version
@@ -32,7 +34,8 @@ hey version
 DCCOMPOSE=https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname
   -s`-`uname -m`
 downloadTool "docker-compose" $DCCOMPOSE
-
+downloadTool "cv" "https://github.ibm.com/IBMPrivateCloud/content-verification/releases/download/v2.4.0/cv-linux-amd64.tar.gz" "tar"
+cv version
 
 docker --version
 docker-compose version
