@@ -15,30 +15,10 @@ env:
   - DOCKER_COMPOSE_VERSION=1.26.1
 before_install:
 - mkdir -p $HOME/.cache
-- curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-- sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu
-  $(lsb_release -cs) stable"
-- sudo apt-get update
-- sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
-- sudo rm /usr/local/bin/docker-compose
-- curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname
-  -s`-`uname -m` > docker-compose
-- chmod +x docker-compose
-- sudo mv docker-compose /usr/local/bin
-- docker --version
-- docker-compose version
-- curl https://hey-release.s3.us-east-2.amazonaws.com/hey_linux_amd64 --output hey
-  && ls -la && chmod +x hey && sudo mv hey /usr/local/bin
-- curl https://github.ibm.com/IBMPrivateCloud/content-verification/releases/download/v2.4.0/cv-linux-amd64.tar.gz --output cv && chmod +x cv && sudo mv cv /usr/local/bin
-- curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -
-- sudo apt-get install apt-transport-https --yes
-- echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
-- sudo apt-get update
-- sudo apt-get install helm
+- chmod +x installPrerequisite.sh && ./installPrerequisite.sh
 install:
 - ls -la
-- chmod +x preparebuild.sh
-- "./preparebuild.sh"
+- chmod +x preparebuild.sh && "./preparebuild.sh"
 script:
 - chmod +x build.sh && "./build.sh"
 - sudo docker-compose up -d
