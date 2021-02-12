@@ -34,11 +34,12 @@ DCCOMPOSE=https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_V
   -s`-`uname -m`
 downloadTool "docker-compose" $DCCOMPOSE
 
-downloadTool "helm" "https://get.helm.sh/helm-v3.5.2-linux-amd64.tar.gz"
-tar $UTILDIR/$1 && sudo mv linux-amd64/helm /usr/local/bin 
+downloadTool "helm.tar.gz" "https://get.helm.sh/helm-v3.5.2-linux-amd64.tar.gz"
+tar $UTILDIR/helm.tar.gz && sudo mv linux-amd64/helm /usr/local/bin 
 
 #downloadTool "cv" "https://github.ibm.com/IBMPrivateCloud/content-verification/releases/download/v2.4.0/cv-linux-amd64.tar.gz" "tar"
 #cv version
 
 docker --version
 docker-compose version
+helm version
