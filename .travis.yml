@@ -28,6 +28,7 @@ script:
 - export REPOSITORY=$ARTIFACTORY_URL
 - source .env
 - export ODMIMAGEVERSION=$ODMIMAGEVERSION
+- sudo docker-compose -f docker/testing/docker-compose-metering.yml pull
 - sudo docker-compose -f docker/testing/docker-compose-metering.yml up -d
 - echo "Waiting some time for ODM to start .... " && sleep 100
 - sudo docker-compose -f docker/testing/docker-compose-metering.yml logs
