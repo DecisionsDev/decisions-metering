@@ -17,7 +17,7 @@ function downloadTool {
     # $3 : Action to be done
     if [ ! -f "$UTILDIR/$1" ]; then 
       echo "Downloading : curl $2 --output $1 "
-      curl $2 --output $1
+      curl -L $2 --output $1
       
       chmod +x $1 && sudo mv $1 $UTILDIR/$1
     else 
@@ -32,7 +32,6 @@ downloadTool "hey" "https://hey-release.s3.us-east-2.amazonaws.com/hey_linux_amd
 # docker-compose
 DCCOMPOSE=https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname
   -s`-`uname -m`
-
 downloadTool "docker-compose" $DCCOMPOSE
 
 downloadTool "helm" "https://get.helm.sh/helm-v3.5.2-linux-amd64.tar.gz"

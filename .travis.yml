@@ -12,7 +12,7 @@ os:
 - linux
 env:
   matrix:
-  - DOCKER_COMPOSE_VERSION=1.26.1
+  - DOCKER_COMPOSE_VERSION=1.26.4
 before_install:
 - mkdir -p $HOME/.cache
 - chmod +x installPrerequisites.sh && ./installPrerequisites.sh
