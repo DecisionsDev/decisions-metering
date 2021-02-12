@@ -41,7 +41,7 @@ service:
   hostname: ""
 resources:
   requests:
-   cpu: 0.25
+    cpu: 0.25
     memory: 1024Mi
   limits:
     cpu: 0.5
