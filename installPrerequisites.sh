@@ -29,13 +29,17 @@ function downloadTool {
 
 # hey
 downloadTool "hey" "https://hey-release.s3.us-east-2.amazonaws.com/hey_linux_amd64"
-hey version
 # docker-compose
 DCCOMPOSE=https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname
   -s`-`uname -m`
+
 downloadTool "docker-compose" $DCCOMPOSE
-downloadTool "cv" "https://github.ibm.com/IBMPrivateCloud/content-verification/releases/download/v2.4.0/cv-linux-amd64.tar.gz" "tar"
-cv version
+
+downloadTool "helm" "https://get.helm.sh/helm-v3.5.2-linux-amd64.tar.gz"
+tar $UTILDIR/$1 && sudo mv linux-amd64/helm /usr/local/bin 
+
+#downloadTool "cv" "https://github.ibm.com/IBMPrivateCloud/content-verification/releases/download/v2.4.0/cv-linux-amd64.tar.gz" "tar"
+#cv version
 
 docker --version
 docker-compose version
