@@ -26,6 +26,7 @@ script:
   --password-stdin
 - sudo docker-compose up -d
 - export REPOSITORY=$ARTIFACTORY_URL
+- source .env
 - sudo docker-compose -f docker/testing/docker-compose-metering.yml up -d
 - echo "Waiting some time for ODM to start .... " && sleep 100
 - sudo docker-compose -f docker/testing/docker-compose-metering.yml logs
