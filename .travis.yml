@@ -15,6 +15,7 @@ env:
   - DOCKER_COMPOSE_VERSION=1.26.1
 before_install:
 - mkdir -p $HOME/.cache
+- echo "Travis build dir : $TRAVIS_BUILD_DIR"
 - chmod +x installPrerequisites.sh && ./installPrerequisites.sh
 install:
 - ls -la
