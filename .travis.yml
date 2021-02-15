@@ -15,6 +15,7 @@ env:
   - DOCKER_COMPOSE_VERSION=1.26.1
 before_install:
 - mkdir -p $HOME/.cache
+- echo "Travis build dir : $TRAVIS_BUILD_DIR" && ls $TRAVIS_BUILD_DIR
 - chmod +x installPrerequisites.sh && ./installPrerequisites.sh
 install:
 - ls -la
@@ -39,6 +40,8 @@ script:
 deploy:
       provider: releases
       api_key: "$GIT_HUB_TOKEN"
+      file_glob: true
+      file: ./**/ibm-odm-metering-service-*.tgz
       file: "decisions-metering/ibm-odm-metering-service-20.0.0.tgz"
       skip_cleanup: true
       on:
