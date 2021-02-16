@@ -35,10 +35,11 @@ script:
 - #cd docker/testing/
 - #echo "Waiting some time for ODM to send metering .... "
 - #"./test.sh"
-- cd ../../ && mkdir index && cd index && helm package ../charts/ibm-odm-metering-service 
+- #cd ../../
+- mkdir index && cd index && helm package ../charts/ibm-odm-metering-service 
 #- helm repo index --url https://github.com/lgrateau/decisions-metering/releases/download/$TRAVIS_TAG/ibm-odm-metering-service-20.0.0.tgz
 - echo "TRAIS TAG :" $TRAVIS_TAG
-- helm repo index --url https://github.com/lgrateau/decisions-metering/releases/download/v1/ibm-odm-metering-service-20.0.0.tgz ./
+- helm repo index --url 'https://github.com/lgrateau/decisions-metering/releases/download/'$TRAVIS_TAG'/ibm-odm-metering-service-20.0.0.tgz' ./
 deploy:
       provider: releases
       api_key: "$GIT_HUB_TOKEN"
