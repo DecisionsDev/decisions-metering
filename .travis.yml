@@ -27,15 +27,15 @@ script:
 - source .env
 - export ODMIMAGEVERSION=$ODMIMAGEVERSION
 - export REPOSITORY=$ARTIFACTORY_URL
-- #sudo docker-compose up -d
-- #sudo docker-compose -f docker/testing/docker-compose-metering.yml pull
-- #sudo docker-compose -f docker/testing/docker-compose-metering.yml up -d
-- #echo "Waiting some time for ODM to start .... " && sleep 100
-- #sudo docker-compose -f docker/testing/docker-compose-metering.yml logs
-- #cd docker/testing/
-- #echo "Waiting some time for ODM to send metering .... "
-- #"./test.sh"
-- #cd ../../
+- sudo docker-compose up -d
+- sudo docker-compose -f docker/testing/docker-compose-metering.yml pull
+- sudo docker-compose -f docker/testing/docker-compose-metering.yml up -d
+- echo "Waiting some time for ODM to start .... " && sleep 100
+- sudo docker-compose -f docker/testing/docker-compose-metering.yml logs
+- cd docker/testing/
+- echo "Waiting some time for ODM to send metering .... "
+- "./test.sh"
+- cd ../../
 - chmod a+x packagehelm.sh && ./packagehelm.sh
 deploy:
       provider: releases
