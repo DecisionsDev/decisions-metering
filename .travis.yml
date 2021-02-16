@@ -36,7 +36,7 @@ script:
 - #echo "Waiting some time for ODM to send metering .... "
 - #"./test.sh"
 - #cd ../../
-- ./packagehelm.sh
+- chmod a+x packagehelm.sh && ./packagehelm.sh
 deploy:
       provider: releases
       api_key: "$GIT_HUB_TOKEN"
