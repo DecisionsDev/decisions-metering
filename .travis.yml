@@ -45,8 +45,9 @@ deploy:
         - "./index/ibm-odm-metering-service-*.tgz"
         - "./index/index.yaml"
       skip_cleanup: true
+      draft: true
       on:
-        branch: "travis-release"
+        branch: "master"
         tags: true
 #notifications:
 #  slack:
