@@ -47,7 +47,7 @@ function assertResult() {
 loadRuntime "http://localhost:9080" "2000"
 # Assert Runtime of the Decision Service.
 loadRuntime "http://localhost:9090" "3000"
-sleep 30
+sleep 60
 $(rm -R ilmt ilmt.zip ; true)
 curl -k https://localhost:9999/backup --output ilmt.zip
 unzip -n ilmt.zip -d ilmt
@@ -58,3 +58,4 @@ echo "RESULT : $?"
 assertResult "MILLION_MONTHLY_DECISIONS" "0.002"
 echo "RESULT : $?"
 assertResult "THOUSAND_MONTHLY_ARTIFACTS" "0.097"
+echo "RESULT : $?"

@@ -15,37 +15,40 @@ env:
   - DOCKER_COMPOSE_VERSION=1.26.1
 before_install:
 - mkdir -p $HOME/.cache
-- curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-- sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu
-  $(lsb_release -cs) stable"
-- sudo apt-get update
-- sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
-- sudo rm /usr/local/bin/docker-compose
-- curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname
-  -s`-`uname -m` > docker-compose
-- chmod +x docker-compose
-- sudo mv docker-compose /usr/local/bin
-- docker --version
-- docker-compose version
-- curl https://hey-release.s3.us-east-2.amazonaws.com/hey_linux_amd64 --output hey
-  && ls -la && chmod +x hey && sudo mv hey /usr/local/bin
+- echo "Travis build dir :" $TRAVIS_BUILD_DIR
+- chmod +x installPrerequisites.sh && ./installPrerequisites.sh
 install:
 - ls -la
-- chmod +x preparebuild.sh
-- "./preparebuild.sh"
+- chmod +x preparebuild.sh && "./preparebuild.sh"
 script:
 - chmod +x build.sh && "./build.sh"
-- sudo docker-compose up -d
 - echo ${ARTIFACTORY_PWD} | sudo docker login ${ARTIFACTORY_URL} --username ${ARTIFACTORY_USER}
   --password-stdin
-- sudo docker-compose up -d
+- source .env
+- export ODMIMAGEVERSION=$ODMIMAGEVERSION
 - export REPOSITORY=$ARTIFACTORY_URL
+- sudo docker-compose up -d
+- sudo docker-compose -f docker/testing/docker-compose-metering.yml pull
 - sudo docker-compose -f docker/testing/docker-compose-metering.yml up -d
 - echo "Waiting some time for ODM to start .... " && sleep 100
 - sudo docker-compose -f docker/testing/docker-compose-metering.yml logs
 - cd docker/testing/
 - echo "Waiting some time for ODM to send metering .... "
 - "./test.sh"
+- cd ../../
+- chmod a+x packagehelm.sh && ./packagehelm.sh
+deploy:
+      provider: releases
+      api_key: "$GIT_HUB_TOKEN"
+      file_glob: true
+      file: 
+        - "./index/ibm-odm-metering-service-*.tgz"
+        - "./index/index.yaml"
+      skip_cleanup: true
+      draft: true
+      on:
+        branch: "master"
+        tags: true
 notifications:
   slack:
     secure: VQY0f5Lzup2TNNbX5U3dX7Wb2f+l99VEzhk7amyRN0v1yrtFzLkSdxaIiNC4CvUgOfYWJUnNPAIGyEcFqzNgU652cMVC12Lug4KOJ85aFHCBMJ9HqBfFktC9qCblcpQ7FjGu4hzREE1p5TAh9UA8euTJwzMZ2ZLkwFicBrO/SJfC+XMaGrNKUTKCuRX5UUKZmkQzSr0l4oCzvrZUQGJ0baOgYMYyjKx9qlMPknseP35+PgU1/15qZnmnZPrRMOp+EdHj+cnEyqHd8w8tbJvsBl/+pOT6afuRowZpvumjbOtpDHgGPvXje3NH/EG/pMlfXIuTTgoYw+5U6I2O0O5eyp5uGFNBIKQ44qzLZnzAyfsm+09dYQs0XcSnjASD/pHcWsMPsa3Pn/c+GK1DpEPilNytjlez78RSSimsULf/MjmWm/3K2ZL00jgGzl/dq6xKgpYrga5LCoazQECI9pS+HxNWg55v0rek9ln4pmrt0mXhb6UrkeAhNcF4Kt/flh+yMBqm/Cxf3apnTcebtB3LmhapuJBe5H8rtdzDnKbftXPSQ+BoLNDGDNUd4rQyOmR1EL3H7XD1Ikw8WOlwCnEzAJY9Apuex5pn5utxx+XcYM1NKh6fzMKjnU/aObkuxOxbwE8Sqj7hOwSTgS3b90HEKPX3HOVyESueqlAP6CnJnTw=
