@@ -128,6 +128,12 @@ persistence:
       description: "Specify whether to enable persistence for the internal database in a persistent volume."
       type: "boolean"
       required: true
+  storagePvc:
+    __metadata:
+      label: "Persistent Volume Claim to store Metering ILMT and H2 database files"
+      description: "Specify the name of the persistent volume claim that stores Metering ILMT and H2 database files."
+      type: "string"
+      required: false
   useDynamicProvisioning:
     __metadata:
       label: "Use dynamic provisioning for persistent volume"

@@ -54,7 +54,11 @@ spec:
       {{- if .Values.persistence.enabled }}
       - name: {{ template "fullname" . }}-volume
         persistentVolumeClaim:
+          {{- if not (empty .Values.persistence.storagePvc) }}
+          claimName: {{ .Values.persistence.storagePvc }}
+          {{ else }}
           claimName: {{ template "odm.persistenceclaim.fullname" . }}
+          {{- end }}
       {{- end }}
       - name: {{ template "odm-metering-options-volume.fullname" . }}
         configMap:
@@ -70,7 +74,6 @@ spec:
           env:
           - name: LICENSE
             value: "{{ .Values.license }}"
-
           ports:
           - containerPort: 9999
           volumeMounts:

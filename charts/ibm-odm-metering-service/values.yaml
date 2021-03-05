@@ -27,7 +27,7 @@ image:
 ## Secrets must be manually created in the namespace.
 ## ref: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
 ##  - name: admin.registrykey
-  pullSecrets:
+  pullSecrets: ""
 ## Architecture
 ## You can use kubectl version command to determine the architecture on the
 ## desired worker node.
@@ -49,6 +49,7 @@ resources:
 
 persistence:
   enabled: true
+  storagePvc:
   useDynamicProvisioning: false
   storageClassName: ""
   resources:
