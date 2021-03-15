@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 echo "preping the environment for building the metering service..."
-chmod a+x downloadGhelRelease.sh && ./downloadGhelRelease.sh "$GHELTOKEN" "$CVLINTERREPO" && tar xvzf "cv-linux-amd64.tar.gz" && cv version
+chmod a+x downloadGhelRelease.sh && ./downloadGhelRelease.sh "$GHELTOKEN" "$CVLINTERREPO" && tar xvzf "cv-linux-amd64.tar.gz"
 chmod a+x cv && mv cv /usr/local/bin 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu
