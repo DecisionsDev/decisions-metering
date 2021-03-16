@@ -16,3 +16,5 @@ overrides:
   reason: "Not part of the IBM Certification process."
 - rule: PodSecurityContextDefined
   reason: "Using arbitrary UID on OpenShift."
+- rule: ContainerLivenessLongerThanReadiness
+  reason: "To be removed"
