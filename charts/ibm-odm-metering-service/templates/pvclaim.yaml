@@ -21,7 +21,7 @@ spec:
   storageClassName: ""
   {{- end }}
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
 {{ toYaml .Values.persistence.resources | indent 4 }}
 {{- end }}

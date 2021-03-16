@@ -74,6 +74,19 @@ service:
       description: "Specify the hostname used by the created routes."
       type: "string"
       required: false
+  type:
+    __metadata:
+      label: "Type"
+      description: "Specify the service type."
+      type: "string"
+      required: true
+      options:
+        -
+          label: "Node port"
+          value: "NodePort"
+        -
+          label: "Cluster IP"
+          value: "ClusterIP"
 
 ## ServiceAccount parameters
 serviceAccountName:
@@ -232,8 +245,20 @@ customization:
         - label: "Debug"
           value: "DEBUG"
         - label: "Trace"
-          value: "TRACE"   
+          value: "TRACE"
 
+  processingRate:
+      __metadata:
+        label: "Processing initial delay"
+        description: "The rate in milliseconds at which usage is processed and written to the license files. (Default is 60000)"
+        type: "number"
+        required: false
+  processingInitialDelay:
+      __metadata:
+        label: "Processing rate"
+        description: "The delay in milliseconds before the first processing occurs after the service is started. (Default is 60000)"
+        type: "number"
+        required: false
 # Network Policy
 networkPolicy:
   __metadata:
