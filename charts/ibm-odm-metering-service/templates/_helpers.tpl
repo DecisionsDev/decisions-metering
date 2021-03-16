@@ -148,3 +148,11 @@ image: {{ template "odm.repository.name" .root }}/{{ .containerName }}@{{ .root.
 image: {{ template "odm.repository.name" .root }}/{{ .containerName }}:{{ .root.Values.image.tag }}_{{ .root.Chart.Version }}{{ template "platform" .root }}
 {{- end -}}
 {{- end }}
+
+{{- define "metering-service-type" -}}
+{{- if .Values.service.enableRoute -}}
+type: ClusterIP
+{{- else -}}
+type: {{ .Values.service.type }}
+{{- end }}
+{{- end -}}

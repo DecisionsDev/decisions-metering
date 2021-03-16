@@ -1,8 +1,15 @@
 #!/bin/bash
 set -e
-echo "preping the environment for building the metering service..."
+
+echo "--- Verifying Helm charts compliance --"
+echo "- Installing cv linter "
 chmod a+x downloadGhelRelease.sh && ./downloadGhelRelease.sh "$GHELTOKEN" "$CVLINTERREPO" && tar xvzf "cv-linux-amd64.tar.gz"
 chmod a+x cv && sudo mv cv /usr/local/bin && cv version
+# Verifying Helm Charts
+echo "- Linting Helm Charts "
+cv lint helm charts/ibm-odm-metering-service -o $PWD/charts/ibm-odm-metering-service/tests/lintOverride.yaml
+echo "- Helm charts format is OK "
+echo "-- Preping the environment for building the metering service..."
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu
   $(lsb_release -cs) stable"

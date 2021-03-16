@@ -39,6 +39,7 @@ serviceAccountName: ""
 service:
   enableRoute: true
   hostname: ""
+  type: "NodePort"
 resources:
   requests:
     cpu: 0.25
@@ -57,7 +58,7 @@ persistence:
       storage: 2Gi
 
 readinessProbe:
-  initialDelaySeconds: 100
+  initialDelaySeconds: 200
   periodSeconds: 5
   failureThreshold: 45
 
