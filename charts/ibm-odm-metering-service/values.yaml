@@ -60,12 +60,12 @@ persistence:
 readinessProbe:
   initialDelaySeconds: 200
   periodSeconds: 5
-  failureThreshold: 45
+  failureThreshold: 40
 
 livenessProbe:
-  initialDelaySeconds: 100
+  initialDelaySeconds: 200
   periodSeconds: 10
-  failureThreshold: 10
+  failureThreshold: 25
 
 customization:
   runAsUser: 
