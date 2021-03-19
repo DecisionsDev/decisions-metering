@@ -32,11 +32,11 @@ spec:
             {{- if .Values.image.arch }}
             - {{ .Values.image.arch }}
             {{- else }}
-            - {{ template "ibm-odm-metering-service.arch" . }}
+            - {{ template "ibm-odm-metering.arch" . }}
             {{- end }}
   containers:
   - name: {{ template "odm.test.fullname" . }}
-{{ include "image.tagOrDigest" (dict "containerName" "metering-service" "root" .) | indent 4  }}
+{{ include "image.tagOrDigest" (dict "containerName" "metering" "root" .) | indent 4  }}
     resources:
       requests:
         cpu: 500m

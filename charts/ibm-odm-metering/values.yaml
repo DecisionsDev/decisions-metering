@@ -15,12 +15,11 @@
 # License must be set to "accept" to accept the terms of the IBM license
 license: ""
 
-# Default values for ibm-odm-metering-service.
+# Default values for ibm-odm-metering.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 image:
-  repository: ""
-  repository: ibmcom
+  repository: "ibmcom"
   tag: 8.10.5.0
   pullPolicy: IfNotPresent
 ## Optionally specify an array of imagePullSecrets.
@@ -31,7 +30,7 @@ image:
 ## Architecture
 ## You can use kubectl version command to determine the architecture on the
 ## desired worker node.
-## Only amd64 is supported for ibm-odm-metering-service.
+## Only amd64 is supported for ibm-odm-metering.
   arch: "amd64"
 
 serviceAccountName: ""
@@ -43,15 +42,15 @@ service:
 resources:
   requests:
     cpu: 0.25
-    memory: 1024Mi
+    memory: 128Mi
   limits:
     cpu: 0.5
-    memory: 2048Mi
+    memory: 512Mi
 
 persistence:
   enabled: true
   storagePvc:
-  useDynamicProvisioning: false
+  useDynamicProvisioning: true
   storageClassName: ""
   resources:
     requests:
@@ -69,7 +68,7 @@ livenessProbe:
 
 customization:
   runAsUser: 
-  loggingLevel: 'DEBUG'
+  loggingLevel: 'INFO'
   processingInitialDelay: 6000
   processingRate: 60000
 

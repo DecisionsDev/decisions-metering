@@ -1,32 +1,27 @@
-# ODM for developers Helm chart (ibm-odm-metering-service)
+# [DRAFT]
 
-The [IBM® Operational Decision Manager](https://www.ibm.com/us-en/marketplace/operational-decision-manager) (ODM) chart `ibm-odm-metering-service` is used to deploy an ODM evaluation cluster in IBM  Kubernetes environments.
+# ODM Metering Service Helm chart (ibm-odm-metering)
 
-
+The [IBM Operational Decision Manager metering service](https://github.com/ODMDev/decisions-metering) chart `ibm-odm-metering` is used to deploy the consumption metering service in a Kubernetes environments.
 
 ## Introduction
 
-ODM is a tool for capturing, automating, and governing repeatable business decisions. You identify situations about your business and then automate the actions to take as a result of the insight you gained about your policies and customers. For more information, see [ODM in knowledge center](https://www.ibm.com/support/knowledgecenter/SSQP76_8.10.x/welcome/kc_welcome_odmV.html).
+The License Service provides information about the use of decision artifacts and executed decisions. Users of subscription services can obtain information about billable artifacts. Your license covers consumption in the form of traffic between RuleApps and client applications.
+
+For more information, see [ODM in knowledge center](https://www.ibm.com/support/knowledgecenter/SSQP76_8.10.x/com.ibm.odm.kube/topics/con_k8s_licensing_metering.html).
 
 ## Chart Details
 
-The `ibm-odm-metering-service` Helm chart is a package of preconfigured Kubernetes resources that bootstrap an ODM deployment on a Kubernetes cluster. Configuration parameters are available to customize some aspects of the deployment. However, the chart is designed to get you up and running as quickly as possible, with appropriate default values. If you accept the default values, sample data is added to the database as part of the installation, and you can begin exploring rules in ODM immediately.
+The `ibm-odm-metering` Helm chart is a package of preconfigured Kubernetes resources that bootstrap an ODM Metering consumption service deployment on a Kubernetes cluster. Configuration parameters are available to customize some aspects of the deployment. However, the chart is designed to get you up and running as quickly as possible, with appropriate default values. If you accept the default values  you can begin sending metering to ODM immediately.
 
-The `iibm-odm-metering-service` chart deploys a single container of five ODM services:
-- M
+The `ibm-odm-metering` chart deploys a single container with the ODM consumption metering service.
 
-The `ibm-odm-metering-service` chart supports the following options for persistence:
 
 ## Prerequisites
 
 - Kubernetes 1.11+ with Beta APIs enabled
 - Helm 3.2 and later version
-- One PersistentVolume needs to be created prior to installing the chart if internalDatabase.persistence.enabled=true and internalDatabase.persistence.dynamicProvisioning=false. In that case, it is required that the securityContext.fsGroup 1001 has read and write permissions on the postgres data directory. You can update the permissions by mounting the volume temporarily or accessing the host machine and performing the following commands:
-```console
-chown -R :1001 /config/dbdata/
-chmod -R ug+rw /config/dbdata/
-chmod o-t /config/dbdata/
-```
+- One PersistentVolume needs to be created prior to installing the chart if persistence.enabled=true and persistence.dynamicProvisioning=false. By default the dynamic provision is enabled and no PV is required.
 - Review  and accept the product license:
   - Set license=view to print the license agreement
   - Set license=accept to accept the license
@@ -37,22 +32,22 @@ Ensure you have a good understanding of the underlying concepts and technologies
 - Helm commands
 - Kubernetes command line tool
 
-Before you install ODM for developers, you need to gather all the configuration information that you will use for your release. For more details, refer to the [ODM for developers configuration parameters](https://www.ibm.com/support/knowledgecenter/SSQP76_8.10.x/com.ibm.odm.kube/topics/ref_parameters_dev.html).
+Before you install the ODM Metering consumption service  , you need to gather all the configuration information that you will use for your release. For more details, refer to the [Metering consumption configuration parameters](https://www.ibm.com/support/knowledgecenter/SSQP76_8.10.x/com.ibm.odm.kube/topics/ref_parameters_dev.html). TODO
 
-If you want to create your own decision services from scratch, you need to install Rule Designer from the [Eclipse Marketplace](https://marketplace.eclipse.org/content/ibm-operational-decision-manager-developers-v-8104-rule-designer).
+TODO Explain the link with ODM 
 
 ### Service Account Requirements
 
-By default, the chart creates and uses the custom serviceAccount named `<releasename>-ibm-odm-metering-service-service-account`.
+By default, the chart creates and uses the custom serviceAccount named `<releasename>-ibm-odm-metering-service-account`.
 
 The serviceAccount should be granted the appropriate PodSecurityPolicy or SecurityContextConstraints depending on your cluster. Refer to the [PodSecurityPolicy Requirements](#podsecuritypolicy-requirements) or [Red Hat OpenShift SecurityContextConstraints Requirements](#red-hat-openshift-securitycontextconstraints-requirements) documentation.
 
 You can also configure the chart to use a custom serviceAccount. In this case, a cluster administrator can create a custom serviceAccount and the namespace administrator is then able to configure the chart to use the created serviceAccount by setting the parameter `serviceAccountName`:
 
 ```console
-$ helm install my-odm-dev-release \
+$ helm install my-odm-metering-release \
   --set license=accept \
-  --set serviceAccountName=ibm-odm-metering-service-service-account \
+  --set serviceAccountName=my-sa \
   ibm-charts/ibm-odm-metering-service
 ```
 
@@ -127,12 +122,11 @@ A cluster administrator can either bind the SecurityContextConstraints to the ta
 
 The predefined SecurityContextConstraints name: [`restricted`](https://ibm.biz/cpkspec-scc) has been verified for this chart. In Openshift, `restricted` is used by default for authenticated users.
 
-To use the `restricted` scc, you must define the `customization.runAsUser` parameter as empty since the restricted scc requires to used an arbitrary UID.
+To use the `restricted` scc, you must define the `customization.runAsUser` parameter as empty since the restricted scc requires to used an arbitrary UID. As it's the default value you can omit it.
 
 ```console
-$ helm install my-odm-dev-release \
-  --set customization.runAsUser='' \
-  /path/to/ibm-odm-metering-service-<version>.tgz
+$ helm install my-odm-metering-release \
+  metering-charts/ibm-odm-metering
 ```
 
 This chart also defines a custom SecurityContextConstraints which can be used to finely control the permissions/capabilities needed to deploy this chart.
@@ -195,7 +189,7 @@ priority: 0
 
 |   | CPU Minimum (m) | Memory Minimum (Mi) |
 | ---------- | ----------- | ------------------- |
-| ODM services | 1           | 1024                  |
+| ODM services | 0.25           | 128Mi                  |
 
 
 ## Installing the Chart
@@ -205,14 +199,14 @@ The following instructions should be executed as namespace administrator.
 Add the ibm chart repository:
 
 ```console
-$ helm repo add ibm-charts https://raw.githubusercontent.com/IBM/charts/master/repo/stable/
+$ helm repo add metering-charts https://github.com/ODMDev/decisions-metering/releases/download/<Release>/
 ```
 
 A release must be configured before it is installed.
-To install a release with the default configuration and a release name of `my-odm-dev-release`, use the following command:
+To install a release with the default configuration and a release name of `my-odm-metering-release`, use the following command:
 
 ```console
-$ helm install my-odm-dev-release --set license=accept ibm-charts/ibm-odm-metering-service
+$ helm install my-odm-metering-release --set license=accept metering-charts/ibm-odm-metering
 ```
 
 > **Tip**: List all existing releases with the `helm list` command.
@@ -221,24 +215,24 @@ Using Helm, you specify each parameter with a `--set key=value` argument in the 
 For example:
 
 ```console
-$ helm install my-odm-dev-release \
+$ helm install my-odm-metering-release \
   --set license=accept \
-  ibm-charts/ibm-odm-metering-service
+  metering-charts/ibm-odm-metering
 ```
 
 It is also possible to use a custom-made .yaml file to specify the values of the parameters when you install the chart.
 For example:
 
 ```console
-$ helm install --set license=accept my-odm-dev-release -f values.yaml ibm-charts/ibm-odm-metering-service
+$ helm install --set license=accept my-odm-metering-release -f values.yaml metering-charts/ibm-odm-metering
 ```
 
-> **Tip**: The default values are in the `values.yaml` file of the `ibm-odm-metering-service` chart.
+> **Tip**: The default values are in the `values.yaml` file of the `ibm-odm-metering` chart.
 
-The release is an instance of the `ibm-odm-metering-service` chart: all the ODM components are now running in a  Kubernetes cluster.
+The release is an instance of the `ibm-odm-metering` chart: The ODM Metering service consumption are now running in a  Kubernetes cluster.
 
 ### Verifying the Chart
-
+TODO
 1. Navigate to your release and view the service details.
 
 >The welcome page of IBM Operational Decision Manager Developer Edition displays with links to the ODM components and other resources.
@@ -257,11 +251,10 @@ Now you want to execute the sample decision service to request a loan. Follow th
 
 ### Uninstalling the chart
 
-To uninstall and delete a release named `my-odm-dev-release`, use the following command:
+To uninstall and delete a release named `my-odm-metering-release`, use the following command:
 
 ```console
-$ helm delete my-odm-dev-release
-```
+$ helm delete my-odm-metering-release
 
 The command removes all the Kubernetes components associated with the chart, except any Persistent Volume Claims (PVCs).  This is the default behavior of Kubernetes, and ensures that valuable data is not deleted.  In order to delete the ODM's data, you can delete the PVC using the following command:
 
@@ -271,19 +264,16 @@ $ kubectl delete pvc <release_name>-odm-pvclaim -n <namespace>
 
 ## Architecture
 
-- Three major architectures are now available for ODM for developers Edition worker nodes:
-  - AMD64 / x86_64
-  - s390x
-  - ppc64le
+- Only the AMD64 / x86_64 architecture is supported.
+
 
 
 ## Configuration
 
-To configure the `ibm-odm-metering-service` chart, check out the list of available [ODM for developers configuration parameters](https://www.ibm.com/support/knowledgecenter/SSQP76_8.10.x/com.ibm.odm.kube/topics/ref_parameters_dev.html).
+TODO Create a page
+To configure the `ibm-odm-metering` chart, check out the list of available [ODM metering configuration parameters](https://www.ibm.com/support/knowledgecenter/SSQP76_8.10.x/com.ibm.odm.kube/topics/ref_parameters_dev.html).
 
 ## Storage
-
-Uses cases for H2 as an internal database:
 
 - Persistent storage using Kubernetes dynamic provisioning. Uses the default storageclass defined by the Kubernetes admin or by using a custom storageclass which will override the default.
   - Set global values to:
@@ -301,8 +291,8 @@ Uses cases for H2 as an internal database:
 
 ## Limitations
 
-The following ODM on premises features are not supported: [Features not included in this platform.](https://www.ibm.com/support/knowledgecenter/SSQP76_8.10.x/com.ibm.odm.kube/topics/con_limitations.html)
+Only one pods can be instanciate for the service.
 
 ## Documentation
 
-See [ODM in knowledge center](https://www.ibm.com/support/knowledgecenter/SSQP76_8.10.x/welcome/kc_welcome_odmV.html).
+See [ODM in knowledge center](https://www.ibm.com/support/knowledgecenter/SSQP76_8.10.x/com.ibm.odm.kube/topics/con_k8s_licensing_metering.html).

@@ -44,7 +44,7 @@ image:
 ## Architecture
 ## You can use kubectl version command to determine the architecture on the
 ## desired worker node.
-## Only amd64 is supported for ibm-odm-metering-service.
+## Only amd64 is supported for ibm-odm-metering.
   arch:
     __metadata:
       label: "Architecture"
