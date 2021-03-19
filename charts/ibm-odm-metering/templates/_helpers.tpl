@@ -26,7 +26,7 @@ We truncate at 63 chars because some Kubernetes name fields are limited to this 
 {{- end -}}
 
 {{- define "odm.test.fullname" -}}
-{{- $name := default "odm-metering-test" .Values.nameOverride -}}
+{{- $name := default "odm-test" .Values.nameOverride -}}
 {{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
@@ -82,7 +82,7 @@ Check if tag contains specific platform suffix and if not set based on kube plat
 {{/*
 Return arch based on kube platform
 */}}
-{{- define "ibm-odm-metering-service.arch" -}}
+{{- define "ibm-odm-metering.arch" -}}
   {{- if (eq "linux/amd64" .Capabilities.KubeVersion.Platform) }}
     {{- printf "%s" "amd64" }}
   {{- end -}}
