@@ -3,9 +3,9 @@ entries:
   ibm-odm-metering:
   - apiVersion: v1
     appVersion: 8.10.5.0
-    created: "2021-03-22T16:08:19.3204+01:00"
+    created: "2021-03-22T17:45:48.667239+01:00"
     description: IBM Operational Decision Manager metering service
-    digest: a880408a906195100618624a2cf257e5efb7595f135acf648d1b9787ee579077
+    digest: ce36bc21e591daf036f06872fa72a104d1a9b08f715cce9fcc15b4a96461f435
     home: https://developer.ibm.com/odm/
     icon: https://raw.githubusercontent.com/ODMDev/ruledesigner/master/icons/automation-decision.png
     keywords:
@@ -28,9 +28,9 @@ entries:
     version: 21.1.0
   - apiVersion: v1
     appVersion: 8.10.5.0
-    created: "2021-03-22T16:08:19.322146+01:00"
+    created: "2021-03-22T17:45:48.669673+01:00"
     description: IBM Operational Decision Manager metering service
-    digest: 0e09e3467ad85d58462dcc823766f02ec01502204040678d727bb6153c0c72f0
+    digest: bb5996d5b8277f16f1db22b3e8ff1a0e8f5733d10ab3747a283a9e4ff542a3d2
     home: https://developer.ibm.com/odm/
     icon: https://raw.githubusercontent.com/ODMDev/ruledesigner/master/icons/automation-decision.png
     keywords:
@@ -51,4 +51,4 @@ entries:
     urls:
     - https://odmdev.github.io/decisions-metering/charts/stable/stable/ibm-odm-metering-21.1.0.tgz
     version: 21.1.0
-generated: "2021-03-22T16:08:19.318486+01:00"
+generated: "2021-03-22T17:45:48.665252+01:00"
