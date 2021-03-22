@@ -68,7 +68,7 @@ spec:
              path: bootstrap.properties
       containers:
         - name: {{ .Chart.Name }}
-{{ include "image.tagOrDigest" (dict "containerName" "metering-service" "root" .) | indent 10  }}
+{{ include "image.tagOrDigest" (dict "containerName" "odm-metering-service" "root" .) | indent 10  }}
 {{ include "odm-security-context" . | indent 10 }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
