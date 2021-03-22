@@ -199,7 +199,7 @@ The following instructions should be executed as namespace administrator.
 Add the ibm chart repository:
 
 ```console
-$ helm repo add metering-charts https://github.com/ODMDev/decisions-metering/releases/download/<Release>/
+$ helm repo add metering-charts  https://odmdev.github.io/decisions-metering/charts/stable/
 ```
 
 A release must be configured before it is installed.
