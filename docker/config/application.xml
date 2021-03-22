@@ -1,0 +1,17 @@
+<server>
+	<!-- metering service -->
+    <springBootApplication id="metering-spring-boot"
+                           location="metering-service.jar"
+                           name="metering-service" >
+        <applicationArgument>--com.ibm.rules.metering.databaseFilePath=/config/storage/DB/persistence</applicationArgument>
+        <applicationArgument>--com.ibm.rules.metering.ILMToutputDirectory=/config/storage/ILMT/</applicationArgument>
+        <applicationArgument>--com.ibm.rules.metering.processingInitialDelay=${METERING_PROCESSING_INITIAL_DELAY}</applicationArgument>
+        <applicationArgument>--com.ibm.rules.metering.processingRate=${METERING_PROCESSINGRATE}</applicationArgument>
+        <applicationArgument>--com.ibm.rules.metering.loggingLevel=${METERING_LOGGINGLEVEL}</applicationArgument>
+	<applicationArgument>--server.ssl.key-store=/config/resources/security/keystore.jks</applicationArgument>
+	<applicationArgument>--server.ssl.key-store-password=${METERING_KEYSTORE_PASSWORD}</applicationArgument>
+	<applicationArgument>--server.ssl.key-store-type=jks</applicationArgument>
+	<applicationArgument>--server.ssl.key-alias=${METERING_KEYSTORE_ALIAS}</applicationArgument>
+	<applicationArgument>--server.ssl.key-password=${METERING_KEYSTORE_PASSWORD}</applicationArgument>
+    </springBootApplication>
+</server>
