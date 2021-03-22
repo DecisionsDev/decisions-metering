@@ -138,7 +138,7 @@ persistence:
   enabled:
     __metadata:
       label: "Enable persistence in persistent volume"
-      description: "Specify whether to enable persistence for the internal database in a persistent volume."
+      description: "Specify whether to enable persistence for the files in a persistent volume."
       type: "boolean"
       required: true
   storagePvc:
