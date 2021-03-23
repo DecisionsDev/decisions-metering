@@ -60,6 +60,16 @@ spec:
           claimName: {{ template "odm.persistenceclaim.fullname" . }}
           {{- end }}
       {{- end }}
+      {{- if not (empty (.Values.customization.securitySecretRef)) }}
+      - name: {{ template "odm-metering-security-secret-volume.fullname" . }}
+        secret:
+          secretName: {{ .Values.customization.securitySecretRef }}
+          items:
+            - key: server.crt
+              path: server.crt
+            - key: server.key
+              path: server.key
+      {{- end}}
       - name: {{ template "odm-metering-options-volume.fullname" . }}
         configMap:
           name: {{ template "odm.metering-options-configmap.fullname" . }}
@@ -72,11 +82,28 @@ spec:
 {{ include "odm-security-context" . | indent 10 }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
+          {{- if not (empty (.Values.customization.securitySecretRef)) }}
+          - name: METERING_KEYSTORE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: "{{ .Values.customization.securitySecretRef }}"
+                key: {{ template "odm-keystore-password-key" . }}
+          - name: METERING_KEYSTORE_ALIAS
+            valueFrom:
+              secretKeyRef:
+                name: "{{ .Values.customization.securitySecretRef }}"
+                key: {{ template "odm-keystore-alias-key" . }}
+          {{- end }}
           - name: LICENSE
             value: "{{ .Values.license }}"
           ports:
           - containerPort: 9999
           volumeMounts:
+          {{- if not (empty (.Values.customization.securitySecretRef)) }}
+          - name: {{ template "odm-metering-security-secret-volume.fullname" . }}
+            readOnly: true
+            mountPath: {{ template "odm-security-dir" . }}
+          {{- end}}
           {{- if  .Values.persistence.enabled  }}
           - name: {{ template "fullname" . }}-volume
             mountPath: /config/storage

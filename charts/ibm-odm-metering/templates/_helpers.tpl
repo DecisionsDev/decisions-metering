@@ -1,4 +1,3 @@
-{{/* vim: set filetype=mustache: */}}
 {{/*
 Expand the name of the chart.
 */}}
@@ -23,6 +22,10 @@ We truncate at 63 chars because some Kubernetes name fields are limited to this 
 {{- define "odm.network-policy.fullname" -}}
 {{- $name := default "odm-network-policy" .Values.nameOverride -}}
 {{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" -}}
+{{- end -}}
+
+{{- define "odm-metering-security-secret-volume.fullname" -}}
+{{- printf "%s-%s" .Release.Name "odm-metering-security-secret-volume" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
 {{- define "odm.test.fullname" -}}
@@ -56,6 +59,19 @@ We truncate at 63 chars because some Kubernetes name fields are limited to this 
 {{- define "odm-metering-options-dir" -}}
 "/config/bootstrap.properties"
 {{- end -}}
+
+{{- define "odm-security-dir" -}}
+"/config/resources/certificate"
+{{- end -}}
+
+{{- define "odm-keystore-password-key" -}}
+"keystore_password"
+{{- end -}}
+
+{{- define "odm-keystore-alias-key" -}}
+"keystore-alias"
+{{- end -}}
+
 {{/*
 Check if tag contains specific platform suffix and if not set based on kube platform
 */}}
