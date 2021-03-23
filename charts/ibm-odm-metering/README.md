@@ -16,12 +16,13 @@ The `ibm-odm-metering` Helm chart is a package of preconfigured Kubernetes resou
 
 The `ibm-odm-metering` chart deploys a single container with the ODM consumption metering service.
 
+Once an  `ibm-odm-metering` Hinstance is running, the endpoint url can be reference in an ODM deployment throw the parameter `customization.meteringServerUrl`
 
 ## Prerequisites
 
 - Kubernetes 1.11+ with Beta APIs enabled
 - Helm 3.2 and later version
-- One PersistentVolume needs to be created prior to installing the chart if persistence.enabled=true and persistence.dynamicProvisioning=false. By default the dynamic provision is enabled and no PV is required.
+- One PersistentVolume needs to be created prior to installing the chart if this following parameters values are set persistence.enabled=true and persistence.dynamicProvisioning=false. By default the dynamic provision is enabled.
 - Review  and accept the product license:
   - Set license=view to print the license agreement
   - Set license=accept to accept the license
@@ -32,9 +33,94 @@ Ensure you have a good understanding of the underlying concepts and technologies
 - Helm commands
 - Kubernetes command line tool
 
-Before you install the ODM Metering consumption service  , you need to gather all the configuration information that you will use for your release. For more details, refer to the [Metering consumption configuration parameters](https://www.ibm.com/support/knowledgecenter/SSQP76_8.10.x/com.ibm.odm.kube/topics/ref_parameters_dev.html). TODO
+Before you install the ODM Metering consumption service  , you need to gather all the configuration information that you will use for your release. For more details, refer to the [Metering consumption configuration parameters](#values). 
 
-TODO Explain the link with ODM 
+## Resources Required
+
+### Minimum Configuration
+
+|   | CPU Minimum (m) | Memory Minimum (Mi) |
+| ---------- | ----------- | ------------------- |
+| ODM services | 0.25           | 128Mi                  |
+
+
+## Installing the Chart
+
+The following instructions should be executed as namespace administrator.
+
+Add the odm-metering chart repository:
+
+```console
+$ helm repo add odm-metering  https://odmdev.github.io/decisions-metering/charts/stable/
+$ helm repo update
+```
+
+To install a release with the default configuration and a release name of `my-odm-metering-release`, use the following command:
+
+```console
+$ helm install my-odm-metering-release --set license=accept odm-metering/ibm-odm-metering
+```
+
+> **Tip**: List all existing releases with the `helm list` command.
+
+
+## Configuration
+
+To see all configurable options with detailed comments, visit the [chart's values.yaml](#values), or run these configuration commands:
+```console
+$ helm show values odm-metering/ibm-odm-metering
+```
+
+Using Helm, you specify each parameter with a `--set key=value` argument in the `helm install` command.
+For example:
+
+```console
+$ helm install my-odm-metering-release \
+  --set license=accept \
+  odm-metering/ibm-odm-metering
+```
+
+It is also possible to use a custom-made .yaml file to specify the values of the parameters when you install the chart.
+For example:
+
+```console
+$ helm install --set license=accept my-odm-metering-release -f values.yaml odm-metering/ibm-odm-metering
+```
+
+> **Tip**: The default values are in the `values.yaml` file of the `ibm-odm-metering` chart.
+
+The release is an instance of the `ibm-odm-metering` chart: The ODM Metering service consumption are now running in a  Kubernetes cluster.
+
+### Verifying the Chart
+
+1. Navigate to your release and view the service details.
+
+>The welcome page of IBM Operational Decision Manager Developer Edition displays with links to the ODM components and other resources.
+
+>If you accepted the default persistence, a sample project is available in your ODM release and you can explore and modify the rules and decision tables.
+
+>The Loan Validation sample is a decision service that determines whether a borrower is eligible for a loan. The decision service validates transaction data, checks customer eligibility, assigns a score, and computes insurance rates that are based on the assigned score.
+
+2. Click the Decision Center Business Console to open the service in a browser.
+
+3. Navigate to the Library tab of the Decision Center Business Console, select the decision service, then the release and browse Decision Artifacts to view the rules and make changes.
+
+**Note:** The persistence locale for Decision Center is set to English (United States), which means that the project can be viewed only in English.
+
+Now you want to execute the sample decision service to request a loan. Follow the procedure described here [Try out the Business console](https://www.ibm.com/support/knowledgecenter/SSQP76_8.10.x/com.ibm.odm.icp/topics/tsk_test_loan_valid.html)
+
+### Uninstalling the chart
+
+To uninstall and delete a release named `my-odm-metering-release`, use the following command:
+
+```console
+$ helm delete my-odm-metering-release
+
+The command removes all the Kubernetes components associated with the chart, except any Persistent Volume Claims (PVCs).  This is the default behavior of Kubernetes, and ensures that valuable data is not deleted.  In order to delete the ODM's data, you can delete the PVC using the following command:
+
+```console
+$ kubectl delete pvc <release_name>-odm-pvclaim -n <namespace>
+```
 
 ### Service Account Requirements
 
@@ -126,7 +212,7 @@ To use the `restricted` scc, you must define the `customization.runAsUser` param
 
 ```console
 $ helm install my-odm-metering-release \
-  metering-charts/ibm-odm-metering
+  odm-metering/ibm-odm-metering
 ```
 
 This chart also defines a custom SecurityContextConstraints which can be used to finely control the permissions/capabilities needed to deploy this chart.
@@ -183,95 +269,11 @@ volumes:
 priority: 0
 ```
 
-## Resources Required
 
-### Minimum Configuration
-
-|   | CPU Minimum (m) | Memory Minimum (Mi) |
-| ---------- | ----------- | ------------------- |
-| ODM services | 0.25           | 128Mi                  |
-
-
-## Installing the Chart
-
-The following instructions should be executed as namespace administrator.
-
-Add the ibm chart repository:
-
-```console
-$ helm repo add metering-charts  https://odmdev.github.io/decisions-metering/charts/stable/
-```
-
-A release must be configured before it is installed.
-To install a release with the default configuration and a release name of `my-odm-metering-release`, use the following command:
-
-```console
-$ helm install my-odm-metering-release --set license=accept metering-charts/ibm-odm-metering
-```
-
-> **Tip**: List all existing releases with the `helm list` command.
-
-Using Helm, you specify each parameter with a `--set key=value` argument in the `helm install` command.
-For example:
-
-```console
-$ helm install my-odm-metering-release \
-  --set license=accept \
-  metering-charts/ibm-odm-metering
-```
-
-It is also possible to use a custom-made .yaml file to specify the values of the parameters when you install the chart.
-For example:
-
-```console
-$ helm install --set license=accept my-odm-metering-release -f values.yaml metering-charts/ibm-odm-metering
-```
-
-> **Tip**: The default values are in the `values.yaml` file of the `ibm-odm-metering` chart.
-
-The release is an instance of the `ibm-odm-metering` chart: The ODM Metering service consumption are now running in a  Kubernetes cluster.
-
-### Verifying the Chart
-TODO
-1. Navigate to your release and view the service details.
-
->The welcome page of IBM Operational Decision Manager Developer Edition displays with links to the ODM components and other resources.
-
->If you accepted the default persistence, a sample project is available in your ODM release and you can explore and modify the rules and decision tables.
-
->The Loan Validation sample is a decision service that determines whether a borrower is eligible for a loan. The decision service validates transaction data, checks customer eligibility, assigns a score, and computes insurance rates that are based on the assigned score.
-
-2. Click the Decision Center Business Console to open the service in a browser.
-
-3. Navigate to the Library tab of the Decision Center Business Console, select the decision service, then the release and browse Decision Artifacts to view the rules and make changes.
-
-**Note:** The persistence locale for Decision Center is set to English (United States), which means that the project can be viewed only in English.
-
-Now you want to execute the sample decision service to request a loan. Follow the procedure described here [Try out the Business console](https://www.ibm.com/support/knowledgecenter/SSQP76_8.10.x/com.ibm.odm.icp/topics/tsk_test_loan_valid.html)
-
-### Uninstalling the chart
-
-To uninstall and delete a release named `my-odm-metering-release`, use the following command:
-
-```console
-$ helm delete my-odm-metering-release
-
-The command removes all the Kubernetes components associated with the chart, except any Persistent Volume Claims (PVCs).  This is the default behavior of Kubernetes, and ensures that valuable data is not deleted.  In order to delete the ODM's data, you can delete the PVC using the following command:
-
-```console
-$ kubectl delete pvc <release_name>-odm-pvclaim -n <namespace>
-```
 
 ## Architecture
 
 - Only the AMD64 / x86_64 architecture is supported.
-
-
-
-## Configuration
-
-TODO Create a page
-To configure the `ibm-odm-metering` chart, check out the list of available [ODM metering configuration parameters](https://www.ibm.com/support/knowledgecenter/SSQP76_8.10.x/com.ibm.odm.kube/topics/ref_parameters_dev.html).
 
 
 ## Values
