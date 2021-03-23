@@ -305,7 +305,6 @@ priority: 0
 | resources.limits.cpu | string | 0.5 | Specify the CPU limit |
 | resources.limits.memory | string | 512Mi | Specify the memory limit |
 
-
 ## Storage
 
 - Persistent storage using Kubernetes dynamic provisioning. Uses the default storageclass defined by the Kubernetes admin or by using a custom storageclass which will override the default.

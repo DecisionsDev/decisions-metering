@@ -259,6 +259,13 @@ customization:
         description: "The delay in milliseconds before the first processing occurs after the service is started. (Default is 60000)"
         type: "number"
         required: false
+  securitySecretRef:
+    __metadata:
+      label: "Security secret reference"
+      description: "Specify the name of the secret that contains the TLS certificate you want to use. If the parameter is left empty, a default certificate is used."
+      type: "string"
+      required: false
+
 # Network Policy
 networkPolicy:
   __metadata:
