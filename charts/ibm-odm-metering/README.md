@@ -6,7 +6,7 @@ The [IBM Operational Decision Manager metering service](https://github.com/ODMDe
 
 ## Introduction
 
-The License Service provides information about the use of decision artifacts and executed decisions. Users of subscription services can obtain information about billable artifacts. Your license covers consumption in the form of traffic between RuleApps and client applications.
+The License Service provides informations about the use of decision artifacts and executed decisions. Users of subscription services can obtain information about billable artifacts. Your license covers consumption in the form of traffic between RuleApps and client applications.
 
 For more information, see [ODM in knowledge center](https://www.ibm.com/support/knowledgecenter/SSQP76_8.10.x/com.ibm.odm.kube/topics/con_k8s_licensing_metering.html).
 
@@ -16,7 +16,7 @@ The `ibm-odm-metering` Helm chart is a package of preconfigured Kubernetes resou
 
 The `ibm-odm-metering` chart deploys a single container with the ODM consumption metering service.
 
-Once an  `ibm-odm-metering` Hinstance is running, the endpoint url can be reference in an ODM deployment throw the parameter `customization.meteringServerUrl`
+Once an  `ibm-odm-metering` instance is running, the endpoint url can be reference in an ODM deployment throw the parameter `customization.meteringServerUrl`
 
 ## Prerequisites
 
@@ -93,21 +93,21 @@ The release is an instance of the `ibm-odm-metering` chart: The ODM Metering ser
 
 ### Verifying the Chart
 
-1. Navigate to your release and view the service details.
+Once your pods is up and running you can access to your service.
+Follow instructions displayed by the helm install. 
+This instructions allow you to retrieve the ODM MEterservice 
 
->The welcome page of IBM Operational Decision Manager Developer Edition displays with links to the ODM components and other resources.
 
->If you accepted the default persistence, a sample project is available in your ODM release and you can explore and modify the rules and decision tables.
+This instructions allow you to r by this command 
+```console
+helm get notes my-odm-metering-release
+```
 
->The Loan Validation sample is a decision service that determines whether a borrower is eligible for a loan. The decision service validates transaction data, checks customer eligibility, assigns a score, and computes insurance rates that are based on the assigned score.
-
-2. Click the Decision Center Business Console to open the service in a browser.
-
-3. Navigate to the Library tab of the Decision Center Business Console, select the decision service, then the release and browse Decision Artifacts to view the rules and make changes.
-
-**Note:** The persistence locale for Decision Center is set to English (United States), which means that the project can be viewed only in English.
-
-Now you want to execute the sample decision service to request a loan. Follow the procedure described here [Try out the Business console](https://www.ibm.com/support/knowledgecenter/SSQP76_8.10.x/com.ibm.odm.icp/topics/tsk_test_loan_valid.html)
+Yo can then :
+- 1. open a browser with the odm metering url 
+  This should display this message: 
+  ```Operational Decision Manager usage reporting service```
+- 2. Set this URL in the ODM Charts parameter `customization.meteringServerUrl`.
 
 ### Uninstalling the chart
 
@@ -285,6 +285,7 @@ priority: 0
 | customization.runAsUser | number | null | Specify whether to enable the network policy. If left empty, kubernetes will allocate a random UID (Openshift).   |
 | customization.processingInitialDelay | number | 6000 | The rate in milliseconds at which usage is processed and written to the license files. |
 | customization.processingRate | number | 60000 | The rate in milliseconds at which usage is processed and written to the license files. |
+| customization.securitySecretRef | string | | Specify the name of the secret that contains the TLS certificate you want to use. If the parameter is left empty, a default certificate is used. |  
 | livenessProbe.initialDelaySeconds | number | 200 | Specify the number of seconds after the container has started before liveness probe is initiated |
 | livenessProbe.periodSeconds | number | 10 | Specify how often (in seconds) to perform the probe |
 | livenessProbe.failureThreshold | number | 25 | Specify how many times Kubernetes will try before giving up when a pod starts and the probe fails. Giving up means restarting the pod. |
@@ -304,6 +305,7 @@ priority: 0
 | resources.requests.memory | string | 128Mi | Specify the requested memory |
 | resources.limits.cpu | string | 0.5 | Specify the CPU limit |
 | resources.limits.memory | string | 512Mi | Specify the memory limit |
+
 
 ## Storage
 

@@ -14,26 +14,30 @@ To accept the license:
 {{- else -}}
 {{ .Release.Name }} is ready to use. {{ .Release.Name }} is an instance of the {{ .Chart.Name }} chart.
 
-{{ .Release.Name }} uses version {{ .Values.image.tag }} of the IBM® Operational Decision Manager (ODM) components.
+{{ .Release.Name }} uses version {{ .Values.image.tag }} of the IBM® Operational Decision Manager (ODM) components with this service instance.
 
 Get the application URLs by running these commands:
 
-{{- if .Values.service.enableRoute -}}
+{{- if or (.Values.service.enableRoute) (.Capabilities.APIVersions.Has "route.openshift.io/v1/Route") }}
+In shell window copy/paste this two lines :
+export ROUTE=$(oc get routes {{ .Release.Name }}-route -o jsonpath='{.spec.host}')
+echo http://$ROUTE
 
-  export ROUTE=$(oc get routes {{ .Release.Name }}-route -o jsonpath='{.spec.host}')
-
-  -- Metering URL :  $ echo http://$ROUTE
+You can also retrieved the route url in the Openshift console. 
+- Open the Openshift console
+- Open the routes menu and search the {{ .Release.Name }}-route route.
 
 {{- else -}}
+In shell window copy/paste this two lines :
+export NODE_PORT=$(kubectl get --namespace {{ .Release.Namespace }} -o jsonpath="{.spec.ports[0].nodePort}" services {{ template "fullname" . }})
+export NODE_IP=$(kubectl get nodes --namespace {{ .Release.Namespace }} -o jsonpath="{.items[0].status.addresses[0].address}")
 
-  export NODE_PORT=$(kubectl get --namespace {{ .Release.Namespace }} -o jsonpath="{.spec.ports[0].nodePort}" services {{ template "fullname" . }})
-  export NODE_IP=$(kubectl get nodes --namespace {{ .Release.Namespace }} -o jsonpath="{.items[0].status.addresses[0].address}")
-
-  -- Metering URL : $ echo http://$NODE_IP:$NODE_PORT/decisioncenter
-
+echo http://$NODE_IP:$NODE_PORT/
 
 
 {{- end }}
+
+You can now use this URL in the ODM Helm charts parameter `customization.meteringServerUrl`
 
 To learn more about the {{ .Release.Name }} release, try:
 
@@ -51,3 +55,4 @@ You should  create a Persistence Volume in your cluster or use the persistence.u
 charts parameter.
 {{- end }}
 {{- end }}
+
