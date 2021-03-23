@@ -104,10 +104,13 @@ helm get notes my-odm-metering-release
 ```
 
 Yo can then :
-- 1. open a browser with the odm metering url 
-  This should display this message: 
+  * open a browser with the odm metering url 
+
+This should display this message: 
+  
   ```Operational Decision Manager usage reporting service```
-- 2. Set this URL in the ODM Charts parameter `customization.meteringServerUrl`.
+  
+  * Set this URL in the ODM Charts parameter `customization.meteringServerUrl`.
 
 ### Uninstalling the chart
 
