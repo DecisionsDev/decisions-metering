@@ -36,7 +36,7 @@ image:
 serviceAccountName: ""
 
 service:
-  enableRoute: true
+  enableRoute: false
   hostname: ""
   type: "NodePort"
 resources:

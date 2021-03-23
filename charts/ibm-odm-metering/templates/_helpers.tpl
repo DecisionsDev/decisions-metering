@@ -150,7 +150,7 @@ image: {{ template "odm.repository.name" .root }}/{{ .containerName }}:{{ .root.
 {{- end }}
 
 {{- define "metering-service-type" -}}
-{{- if .Values.service.enableRoute -}}
+{{- if or (.Values.service.enableRoute) (.Capabilities.APIVersions.Has "route.openshift.io/v1/Route") -}}
 type: ClusterIP
 {{- else -}}
 type: {{ .Values.service.type }}
