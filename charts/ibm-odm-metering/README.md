@@ -33,7 +33,7 @@ Ensure you have a good understanding of the underlying concepts and technologies
 - Helm commands
 - Kubernetes command line tool
 
-Before you install the ODM Metering consumption service  , you need to gather all the configuration information that you will use for your release. For more details, refer to the [Metering consumption configuration parameters](#values). 
+Before you install the ODM Metering consumption service  , you need to gather all the configuration information that you will use for your release. For more details, refer to the [values section](#values) at the bottom of this page.
 
 ## Resources Required
 
@@ -66,7 +66,7 @@ $ helm install my-odm-metering-release --set license=accept odm-metering/ibm-odm
 
 ## Configuration
 
-To see all configurable options with detailed comments, visit the [chart's values.yaml](#values), or run these configuration commands:
+To see all configurable options with detailed comments, visit the  [values section](#values) at the bottom of this page, or run these configuration commands:
 ```console
 $ helm show values odm-metering/ibm-odm-metering
 ```
