@@ -1,0 +1,51 @@
+
+
+# Quick reference
+
+-	**Where to get help**:
+  * [ODM Documentation](https://www.ibm.com/support/knowledgecenter/en/SSQP76_8.10.x/com.ibm.odm.kube/topics/con_k8s_licensing_metering.html)
+  * [ODM Developer Center community](https://developer.ibm.com/odm/)
+
+-	**Where to file issues**:  
+  https://github.com/ODMDev/decisions-metering/issues
+
+-	**Maintained by**:  IBM ODM Team.
+
+-	**Supported architectures**:  
+ `amd64`
+-	**Source of this description**:
+        https://github.com/ODMDev/decisions-metering/tree/master/docker
+
+-	**Supported Docker versions**:  
+	[latest release](https://github.com/docker/docker-ce/releases/latest) (up to version 19, on a best-effort basis)
+
+
+# Overview
+
+The Operational Decision Manager usage metering service image produces license files that are compliant with the [IBM License Metric Tool](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/welcome/LMT_welcome.html) inventories IBM software. It's based on the observed usage of Operational Decision Manager software.
+
+See the license section below for restrictions on the use of this image. This image is used 
+
+  # Usage
+
+The image contains a server that is preconfigured with a database accessible through HTTP port 9060 and HTTPS port 9443.
+You must accept the license before you launch the image. The license is available at the bottom of this page.
+
+```console
+docker run -e LICENSE=accept  -p 8888:8888 -p 9999:9999 ibmcom/odm-metering-service:8.10-amd64
+```
+
+To avoid losing the container data when you delete the Docker image container, store the databases outside of the ODM Metering Docker image container, in a local mounted host volume. To do so, run the following docker command from an empty local folder:
+
+ ```console
+docker run -e LICENSE=accept  -p 8888:8888 -p 9999:9999 -v $PWD:/config/dbdata/ ibmcom/odm-metering-service:8.10-amd64
+```
+When you first run this command, it creates the metering files in your local folder. The following times, it reads and updates these files.
+
+When the server is started, use the URL http://localhost:8888 to display a welcome page.
+
+
+  # License
+
+  The Docker files and associated scripts are licensed under [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0.html).
+
