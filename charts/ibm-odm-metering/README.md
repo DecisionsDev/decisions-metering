@@ -20,9 +20,9 @@ Once an  `ibm-odm-metering` instance is running, the endpoint url can be referen
 
 ## Prerequisites
 
-- Kubernetes 1.11+ with Beta APIs enabled
+- Kubernetes 1.11+ 
 - Helm 3.2 and later version
-- One PersistentVolume needs to be created prior to installing the chart if this following parameters values are set persistence.enabled=true and persistence.dynamicProvisioning=false. By default the dynamic provision is enabled.
+- One PersistentVolume needs to be created prior to installing the chart if this following parameters values are set persistence.enabled=true and persistence.dynamicProvisioning=false. By default the dynamic provisionning is enabled.
 - Review  and accept the product license:
   - Set license=view to print the license agreement
   - Set license=accept to accept the license
@@ -293,8 +293,9 @@ priority: 0
 | readinessProbe.periodSeconds | number | 5 | Specify how often (in seconds) to perform the probe. |
 | readinessProbe.failureThreshold | number | 40 | Specify how many times Kubernetes will try before giving up when a pod starts and the probe fails. Giving up means restarting the pod |
 | persistence.enabled | bool | true | Specify whether to enable persistence for the files in a persistent volume |
-| persistence.storagePvc.useDynamicProvisioning | bool | true | When this parameter is false, the binding process selects an existing volume. Ensure that an unbound volume exists before you install the chart. |
+| persistence.useDynamicProvisioning | bool | true | When this parameter is false, the binding process selects an existing volume. Ensure that an unbound volume exists before you install the chart. |
 | persistence.storageClassName | string | "" | Persistent Volume Claim to store Metering ILMT and database files |
+| persistence.storagePvc | string | "" | Specify the name of the persistent volume claim that stores the metering files |
 | persistence.resources.requests.storage | string | 2Gi | Specify the storage size for persistent volume |
 | image.pullPolicy | string | IfNotPresent | Specify the pull policy for the Docker image.  'Always'/'IfNotPresent'/'Never' |
 | serviceAccountName | string | "" | Specify ServiceAccount to use in Kubernetes |
@@ -312,14 +313,15 @@ priority: 0
 - Persistent storage using Kubernetes dynamic provisioning. Uses the default storageclass defined by the Kubernetes admin or by using a custom storageclass which will override the default.
   - Set global values to:
     - persistence.enabled: true (default)
-    - persistence.useDynamicProvisioning: true
+    - persistence.useDynamicProvisioning: true (default)
   - Specify a custom storageClassName per volume or leave the value empty to use the default storageClass.
 
 
 - Persistent storage using a predefined PersistentVolumeClaim or PersistentVolume setup prior to the deployment of this chart
   - Set global values to:
-    - persistence.enabled: true
-    - persistence.useDynamicProvisioning: false (default)
+    - persistence.enabled: true (default)
+    - persistence.useDynamicProvisioning: false 
+    - persistence.storagePvc: "YourExistingPVC"
   - Kubernetes binding process selects a pre-existing volume based on the accessMode and size.
 
 
