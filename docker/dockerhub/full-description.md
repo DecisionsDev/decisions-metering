@@ -35,17 +35,21 @@ You must accept the license before you launch the image. The license is availabl
 docker run -e LICENSE=accept  -p 8888:8888 -p 9999:9999 ibmcom/odm-metering-service:8.10-amd64
 ```
 
-To avoid losing the container data when you delete the Docker image container, store the databases outside of the ODM Metering Docker image container, in a local mounted host volume. You can also modify the default metering properties by providing your own bootstrap.properties file. The default bootstrap.properties is containing the following properties :
+To avoid losing the container data when you delete the Docker image container, store the databases outside of the ODM Metering Docker image container, in a local mounted host volume (-v $PWD/DB:/config/storage/DB). You can also modify the default metering properties by providing your own mybootstrap.properties file (-v $PWD/mybootstrap.properties:/config/bootstrap.properties). The default bootstrap.properties is containing the following properties :
 
 ```console
+# The log level that is used by the application. Possible values include ERROR, WARN, INFO, DEBUG, and TRACE.
 METERING_LOGGINGLEVEL=INFO
+# The rate in milliseconds at which usage is processed and written to the license files.
 METERING_PROCESSINGRATE=60000
+# The delay in milliseconds before the first processing occurs after the service is started.
 METERING_PROCESSING_INITIAL_DELAY=6000
 ```
 
 You can also store the ILMT files by providing a volume (-v $PWD/ILMT:/config/storage/ILMT).
-The metering service is providing with an HTTPS secure protocol.
-The default provided certificate is compliant with the ODM Docker images https://github.com/ODMDev/odm-ondocker
+
+The metering service is provided with an HTTPS secured protocol.
+The default certificate is compliant with the ODM Docker images https://github.com/ODMDev/odm-ondocker
 If you want to provide your own certificate, you can set 2 volumes for server.crt certificate (-v $PWD/mycompany.crt:/config/resources/certificate/server.crt) and server.key private key  (-v $PWD/mycompany.key:/config/resources/certificate/server.key) files.
 For example :
 
