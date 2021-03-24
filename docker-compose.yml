@@ -10,8 +10,8 @@ services:
           - ODMVERSION=$ODMIMAGEVERSION
           - FROMLIBERTY=$FROMLIBERTY
           - FROMLIBERTYBUILD=$FROMLIBERTY
-    volumes:
-      - ./metering-options:/config/bootstrap.properties
+#    volumes:
+#      - ./metering-options:/config/bootstrap.properties
 #      - ./docker/certificate/keystore.jks:/config/resources/certificate/keystore.jks
     ports:
     - 8888:8888
