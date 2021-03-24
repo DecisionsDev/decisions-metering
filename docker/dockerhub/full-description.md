@@ -43,13 +43,23 @@ METERING_PROCESSINGRATE=60000
 METERING_PROCESSING_INITIAL_DELAY=6000
 ```
 
-You can also store the ILMT files by providing a volume.
+You can also store the ILMT files by providing a volume (-v $PWD/ILMT:/config/storage/ILMT).
+The metering service is providing with an HTTPS secure protocol.
+The default provided certificate is compliant with the ODM Docker images https://github.com/ODMDev/odm-ondocker
+If you want to provide your own certificate, you can set 2 volumes for server.crt certificate (-v $PWD/mycompany.crt:/config/resources/certificate/server.crt) and server.key private key  (-v $PWD/mycompany.key:/config/resources/certificate/server.key) files.
+For example :
+
+ ```console
+openssl req -x509 -nodes -days 1000 -newkey rsa:2048 -keyout mycompany.key -out mycompany.crt -subj "/CN=*.mycompany.com/OU=it/O=mycompany/L=Paris/C=FR"
+```
+
 
 To do so, run the following docker command from an empty local folder:
 
  ```console
-docker run -e LICENSE=accept  -p 8888:8888 -p 9999:9999 -v $PWD/DB:/config/storage/DB -v $PWD/ILMT:/config/storage/ILMT -v $PWD/mybootstrap.properties:/config/bootstrap.properties -ibmcom/odm-metering-service:8.10-amd64
+docker run -e LICENSE=accept  -p 8888:8888 -p 9999:9999 -v $PWD/DB:/config/storage/DB -v $PWD/ILMT:/config/storage/ILMT -v $PWD/mybootstrap.properties:/config/bootstrap.properties -v $PWD/mycompany.crt:/config/resources/certificate/server.crt -v $PWD/mycompany.key:/config/resources/certificate/server.key ibmcom/odm-metering-service:8.10-amd64
 ```
+
 When you first run this command, it creates the metering files in your local folder. The following times, it reads and updates these files.
 
 When the server is started, use the URL http://localhost:8888 or https://localhost:9999 to display a welcome page.
