@@ -28,7 +28,7 @@ See the license section below for restrictions on the use of this image. This im
 
   # Usage
 
-The image contains a server that is preconfigured with a database accessible through HTTP port 9060 and HTTPS port 9443.
+The image contains a server that is preconfigured with a database accessible through HTTP port 9080 and HTTPS port 9443.
 You must accept the license before you launch the image. The license is available at the bottom of this page.
 
 ```console
