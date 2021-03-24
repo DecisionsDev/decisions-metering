@@ -118,6 +118,7 @@ To uninstall and delete a release named `my-odm-metering-release`, use the follo
 
 ```console
 $ helm delete my-odm-metering-release
+```
 
 The command removes all the Kubernetes components associated with the chart, except any Persistent Volume Claims (PVCs).  This is the default behavior of Kubernetes, and ensures that valuable data is not deleted.  In order to delete the ODM's data, you can delete the PVC using the following command:
 
