@@ -82,18 +82,6 @@ spec:
 {{ include "odm-security-context" . | indent 10 }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-          {{- if not (empty (.Values.customization.securitySecretRef)) }}
-          - name: METERING_KEYSTORE_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: "{{ .Values.customization.securitySecretRef }}"
-                key: {{ template "odm-keystore-password-key" . }}
-          - name: METERING_KEYSTORE_ALIAS
-            valueFrom:
-              secretKeyRef:
-                name: "{{ .Values.customization.securitySecretRef }}"
-                key: {{ template "odm-keystore-alias-key" . }}
-          {{- end }}
           - name: LICENSE
             value: "{{ .Values.license }}"
           ports:
