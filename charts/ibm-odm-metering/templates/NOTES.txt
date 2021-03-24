@@ -19,7 +19,9 @@ To accept the license:
 Get the application URLs by running these commands:
 
 {{- if or (.Values.service.enableRoute) (.Capabilities.APIVersions.Has "route.openshift.io/v1/Route") }}
+
 In shell window copy/paste this two lines :
+
 export ROUTE=$(oc get routes {{ .Release.Name }}-route -o jsonpath='{.spec.host}')
 echo http://$ROUTE
 
