@@ -6,7 +6,7 @@ appVersion: 8.10.5.0
 home: https://developer.ibm.com/odm/
 icon: https://raw.githubusercontent.com/ODMDev/ruledesigner/master/icons/automation-decision.png
 sources:
-  - https://github.com/IBM/charts/tree/master/stable
+  - https://github.com/ODMDev/decisions-metering
 keywords:
 - OperationalDecisionManager
 - businessrules
