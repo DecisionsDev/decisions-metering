@@ -35,14 +35,24 @@ You must accept the license before you launch the image. The license is availabl
 docker run -e LICENSE=accept  -p 8888:8888 -p 9999:9999 ibmcom/odm-metering-service:8.10-amd64
 ```
 
-To avoid losing the container data when you delete the Docker image container, store the databases outside of the ODM Metering Docker image container, in a local mounted host volume. To do so, run the following docker command from an empty local folder:
+To avoid losing the container data when you delete the Docker image container, store the databases outside of the ODM Metering Docker image container, in a local mounted host volume. You can also modify the default metering properties by providing your own bootstrap.properties file. The default bootstrap.properties is containing the following properties :
+
+```console
+METERING_LOGGINGLEVEL=INFO
+METERING_PROCESSINGRATE=60000
+METERING_PROCESSING_INITIAL_DELAY=6000
+```
+
+You can also store the ILMT files by providing a volume.
+
+To do so, run the following docker command from an empty local folder:
 
  ```console
-docker run -e LICENSE=accept  -p 8888:8888 -p 9999:9999 -v $PWD:/config/dbdata/ ibmcom/odm-metering-service:8.10-amd64
+docker run -e LICENSE=accept  -p 8888:8888 -p 9999:9999 -v $PWD/DB:/config/storage/DB -v $PWD/ILMT:/config/storage/ILMT -v $PWD/mybootstrap.properties:/config/bootstrap.properties -ibmcom/odm-metering-service:8.10-amd64
 ```
 When you first run this command, it creates the metering files in your local folder. The following times, it reads and updates these files.
 
-When the server is started, use the URL http://localhost:8888 to display a welcome page.
+When the server is started, use the URL http://localhost:8888 or https://localhost:9999 to display a welcome page.
 
 
   # License
