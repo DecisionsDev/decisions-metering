@@ -22,8 +22,10 @@ Get the application URLs by running these commands:
 
 In shell window copy/paste this two lines :
 
+
 `
 export ROUTE=$(oc get routes {{ .Release.Name }}-route -o jsonpath='{.spec.host}')
+
 echo http://$ROUTE
 `
 
