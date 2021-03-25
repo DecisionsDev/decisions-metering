@@ -68,6 +68,14 @@ When you first run this command, it creates the metering files in your local fol
 
 When the server is started, use the URL http://localhost:8888 or https://localhost:9999 to display a welcome page.
 
+When the service is available, it's possible to get a zip of the ILMT files using the /backup rest-api endpoint. 
+In a browser, access it using http://localhost:8888/backup or https://localhost:9999/backup
+or using curl command line :
+
+```console
+curl http://localhost:8888/backup -o backup.zip
+curl -k https://localhost:9999/backup -o backup.zip
+```
 
   # License
 

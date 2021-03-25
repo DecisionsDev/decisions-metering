@@ -350,6 +350,9 @@ $ helm install my-odm-metering-release --set license=accept --set customization.
     - persistence.storagePvc: "YourExistingPVC"
   - Kubernetes binding process selects a pre-existing volume based on the accessMode and size.
 
+## Rest-api endpoint to get a zip file containing the ILMT files
+
+When the service is deployed, it's possible to get a zip of the ILMT file using the rest-api endpoint /backup. 
 
 ## Limitations
 
