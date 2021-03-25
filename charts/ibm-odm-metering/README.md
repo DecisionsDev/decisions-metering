@@ -311,6 +311,28 @@ priority: 0
 | resources.limits.cpu | string | 0.5 | Specify the CPU limit |
 | resources.limits.memory | string | 512Mi | Specify the memory limit |
 
+## Custom Certificate
+
+The metering service is provided with an HTTPS secured protocol. The default certificate is compliant with the ODM Docker images https://github.com/ODMDev/odm-ondocker If you want to provide your own certificate, you can provide a secret using the customization.securitySecretRef parameter with the server.crt certificate and the server.key private key files. 
+
+For example :
+
+```console
+openssl req -x509 -nodes -days 1000 -newkey rsa:2048 -keyout mycompany.key -out mycompany.crt -subj "/CN=*.mycompany.com/OU=it/O=mycompany/L=Paris/C=FR"
+```
+
+Then create a generic k8s secret :
+
+```console
+kubectl create secret generic mysecuritysecret --from-file=server.crt=mycompany.crt --from-file=server.key=mycompany.key
+```
+
+And install the ibm-odm-metering release by providing this security secret :
+
+```console
+$ helm install my-odm-metering-release --set license=accept --set customization.securitySecretRef=mysecuritysecret odm-metering/ibm-odm-metering
+```
+
 
 ## Storage
 
