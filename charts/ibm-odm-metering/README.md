@@ -63,6 +63,44 @@ $ helm install my-odm-metering-release --set license=accept odm-metering/ibm-odm
 
 > **Tip**: List all existing releases with the `helm list` command.
 
+### Openshift console
+
+You can add the ODM Metering Helm charts repository in the Openshift catalog.
+
+This allows you to use the Openshift console to instanciate this helm charts.
+
+Here is the procedure to declare it in the Openshift catalog:
+1. By command line : 
+
+```console
+$ oc apply -f https://odmdev.github.io/decisions-metering/charts/openshift/HelmRepository.yaml
+```
+
+2. By Openshift Web console
+
+- Click + button (import resource) at the top of the page
+- Copy / Paste this Yaml
+```yaml
+apiVersion: helm.openshift.io/v1beta1
+kind: HelmChartRepository
+metadata:
+  name: odm-metering-repo
+spec:
+  connectionConfig:
+    url: 'https://odmdev.github.io/decisions-metering/charts/stable/'
+```
+
+This should be done only one time in your cluster.
+
+Then you can use the helm chart in the Openshift console.
+Here is the procedure:
+1. Go to the Developer view 
+2. Create a Project : odm-metering
+3. Click the Topology menu button 
+4. Click the `From Catalog` item in the right side.
+5. Select `Helm Charts` toggle button
+6. Search `odm`
+7. Click the `Ibm Odm Metering` item and install the IBM ODM Metering.
 
 ## Configuration
 
