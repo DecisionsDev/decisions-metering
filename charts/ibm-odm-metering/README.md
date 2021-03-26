@@ -150,6 +150,14 @@ This should display this message:
   
   * Set this URL in the ODM Charts parameter `customization.meteringServerUrl`.
 
+When the service is available, it's possible to get a zip of the ILMT files using the /backup rest-api endpoint. 
+In a browser, access it using meteringServerUrl/backup
+or using the curl command line :
+
+```console
+curl -k meteringServerUrl/backup -o backup.zip
+```
+
 ### Uninstalling the chart
 
 To uninstall and delete a release named `my-odm-metering-release`, use the following command:
