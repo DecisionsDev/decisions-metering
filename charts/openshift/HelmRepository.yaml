@@ -1,0 +1,8 @@
+apiVersion: helm.openshift.io/v1beta1
+kind: HelmChartRepository
+metadata:
+  name: odm-metering-repo
+spec:
+  connectionConfig:
+    url: 'https://odmdev.github.io/decisions-metering/charts/stable/'
+
