@@ -327,32 +327,32 @@ priority: 0
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| license | string | `` | Read and accept the license agreement. Possible values are : 'accept' / 'view' / 'not accepted' |
-| networkPolicy.enabled | bool | true | Specify whether to enable the network policy |
-| customization.runAsUser | number | null | Specify whether to enable the network policy. If left empty, kubernetes will allocate a random UID (Openshift).   |
+| license | string | `` | Read and accept the license agreement. Possible values are : 'accept' / 'view' / 'not accepted'. |
+| networkPolicy.enabled | bool | true | Specify whether to enable the network policy. |
+| customization.runAsUser | number | null | Specify whether to enable the network policy. If left empty, Kubernetes allocates a random UID (OpenShift).   |
 | customization.processingInitialDelay | number | 6000 | The rate in milliseconds at which usage is processed and written to the license files. |
 | customization.processingRate | number | 60000 | The rate in milliseconds at which usage is processed and written to the license files. |
 | customization.securitySecretRef | string | | Specify the name of the secret that contains the TLS certificate you want to use. If the parameter is left empty, a default certificate is used. |  
-| livenessProbe.initialDelaySeconds | number | 200 | Specify the number of seconds after the container has started before liveness probe is initiated |
-| livenessProbe.periodSeconds | number | 10 | Specify how often (in seconds) to perform the probe |
-| livenessProbe.failureThreshold | number | 25 | Specify how many times Kubernetes will try before giving up when a pod starts and the probe fails. Giving up means restarting the pod. |
+| livenessProbe.initialDelaySeconds | number | 200 | Specify the number of seconds after the container has started before liveness probe is initiated. |
+| livenessProbe.periodSeconds | number | 10 | Specify how often (in seconds) to perform the probe. |
+| livenessProbe.failureThreshold | number | 25 | Specify how many times Kubernetes tries before giving up when a pod starts and the probe fails. Giving up means restarting the pod. |
 | readinessProbe.initialDelaySeconds | number | 200 | Specify the number of seconds after the container has started before liveness probe is initiated. |
 | readinessProbe.periodSeconds | number | 5 | Specify how often (in seconds) to perform the probe. |
-| readinessProbe.failureThreshold | number | 40 | Specify how many times Kubernetes will try before giving up when a pod starts and the probe fails. Giving up means restarting the pod |
-| persistence.enabled | bool | true | Specify whether to enable persistence for the files in a persistent volume |
+| readinessProbe.failureThreshold | number | 40 | Specify how many times Kubernetes tries before giving up when a pod starts and the probe fails. Giving up means restarting the pod. |
+| persistence.enabled | bool | true | Specify whether to enable persistence for the files in a persistent volume. |
 | persistence.useDynamicProvisioning | bool | true | When this parameter is false, the binding process selects an existing volume. Ensure that an unbound volume exists before you install the chart. |
-| persistence.storageClassName | string | "" | Persistent Volume Claim to store Metering ILMT and database files |
-| persistence.storagePvc | string | "" | Specify the name of the persistent volume claim that stores the metering files |
-| persistence.resources.requests.storage | string | 2Gi | Specify the storage size for persistent volume |
-| image.pullPolicy | string | IfNotPresent | Specify the pull policy for the Docker image.  'Always'/'IfNotPresent'/'Never' |
-| serviceAccountName | string | "" | Specify ServiceAccount to use in Kubernetes |
-| service.enableRoute | bool | true | Specify whether we should create Openshift routes automaticaly. If true, the routes are created for all ODM components |
-| service.hostname | string | "" | Specify the hostname used by the created routes |
-| service.type | string | "NodePort" | Specify the service type |
+| persistence.storageClassName | string | "" | Persistent Volume Claim to store License Service metering and database files. |
+| persistence.storagePvc | string | "" | Specify the name of the persistent volume claim that stores the metering files. |
+| persistence.resources.requests.storage | string | 2Gi | Specify the storage size for persistent volume. |
+| image.pullPolicy | string | IfNotPresent | Specify the pull policy for the Docker image.  'Always'/'IfNotPresent'/'Never'. |
+| serviceAccountName | string | "" | Specify the ServiceAccount to use in Kubernetes. |
+| service.enableRoute | bool | true | Specify whether to create OpenShift routes automatically. If true, the routes are created for all ODM components. |
+| service.hostname | string | "" | Specify the hostname used by the created routes. |
+| service.type | string | "NodePort" | Specify the service type. |
 | resources.requests.cpu | string | 0.25 | Specify the requested CPU |
-| resources.requests.memory | string | 128Mi | Specify the requested memory |
-| resources.limits.cpu | string | 0.5 | Specify the CPU limit |
-| resources.limits.memory | string | 512Mi | Specify the memory limit |
+| resources.requests.memory | string | 128Mi | Specify the requested memory. |
+| resources.limits.cpu | string | 0.5 | Specify the CPU limit. |
+| resources.limits.memory | string | 512Mi | Specify the memory limit. |
 
 ## Custom Certificate
 
