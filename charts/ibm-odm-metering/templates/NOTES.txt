@@ -20,7 +20,7 @@ Get the application URLs by running these commands:
 
 {{- if or (.Values.service.enableRoute) (.Capabilities.APIVersions.Has "route.openshift.io/v1/Route") }}
 
-In shell window copy/paste this two lines :
+In shell window copy/paste these two lines:
 
 
 export ROUTE=$(oc get routes {{ .Release.Name }}-route -o jsonpath='{.spec.host}')
@@ -28,12 +28,12 @@ export ROUTE=$(oc get routes {{ .Release.Name }}-route -o jsonpath='{.spec.host}
 echo http://$ROUTE
 
 
-You can also retrieved the route url in the Openshift console. 
-- Open the Openshift console
-- Open the routes menu and search the {{ .Release.Name }}-route route.
+You can also retrieved the route URL in the OpenShift console. 
+- Open the OpenShift console
+- Open the routes menu and search {{ .Release.Name }}-route.
 
 {{- else -}}
-In shell window copy/paste this two lines :
+In the shell window, copy/paste these two lines:
 export NODE_PORT=$(kubectl get --namespace {{ .Release.Namespace }} -o jsonpath="{.spec.ports[0].nodePort}" services {{ template "fullname" . }})
 export NODE_IP=$(kubectl get nodes --namespace {{ .Release.Namespace }} -o jsonpath="{.items[0].status.addresses[0].address}")
 
@@ -42,7 +42,7 @@ echo http://$NODE_IP:$NODE_PORT/
 
 {{- end }}
 
-You can now use this URL in the ODM Helm charts parameter `customization.meteringServerUrl`
+You can now specify this URL for the ODM Helm chart parameter `customization.meteringServerUrl`
 
 To learn more about the {{ .Release.Name }} release, try:
 
@@ -56,8 +56,7 @@ Your PersistenceVolumeClaim is configured with Dynamic Provisioning.
 {{- else }}
 
 Your PersistenceVolumeClaim is not created dynamically.
-You should  create a Persistence Volume in your cluster or use the persistence.useDynamicProvisioning=true
-charts parameter.
+Create a Persistence Volume in your cluster, or use the `persistence.useDynamicProvisioning=true` charts parameter.
 {{- end }}
 {{- end }}
 
