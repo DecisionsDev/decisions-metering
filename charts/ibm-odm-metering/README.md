@@ -2,38 +2,38 @@
 
 # ODM Metering Service Helm chart (ibm-odm-metering)
 
-The [IBM Operational Decision Manager metering service](https://github.com/ODMDev/decisions-metering) chart `ibm-odm-metering` is used to deploy the consumption metering service in a Kubernetes environments.
+The [IBM Operational Decision Manager metering service](https://github.com/ODMDev/decisions-metering) Helm chart `ibm-odm-metering` is used to deploy the consumption metering service in a Kubernetes environment.
 
 ## Introduction
 
-The License Service provides informations about the use of decision artifacts and executed decisions. Users of subscription services can obtain information about billable artifacts. Your license covers consumption in the form of traffic between RuleApps and client applications.
+The IBM License Service provides information about the usage of decision artifacts and executed decisions. Users of subscription services can obtain details about these billable artifacts. The license covers consumption in the form of traffic between RuleApps and client applications.
 
-For more information, see [ODM in knowledge center](https://www.ibm.com/support/knowledgecenter/SSQP76_8.10.x/com.ibm.odm.kube/topics/con_k8s_licensing_metering.html).
+For more information, see the [Operational Decision Manager documentation](https://www.ibm.com/support/knowledgecenter/SSQP76_8.10.x/com.ibm.odm.kube/topics/con_k8s_licensing_metering.html).
 
 ## Chart Details
 
-The `ibm-odm-metering` Helm chart is a package of preconfigured Kubernetes resources that bootstrap an ODM Metering consumption service deployment on a Kubernetes cluster. Configuration parameters are available to customize some aspects of the deployment. However, the chart is designed to get you up and running as quickly as possible, with appropriate default values. If you accept the default values  you can begin sending metering to ODM immediately.
+The `ibm-odm-metering` Helm chart is a package of preconfigured Kubernetes resources that bootstrap the deployment of an ODM consumption metering service on a Kubernetes cluster. Configuration parameters are available to customize some aspects of the deployment. However, the chart is designed to get you up and running as quickly as possible with appropriate default values. If you accept the default values, you can begin sending metering data to ODM immediately.
 
 The `ibm-odm-metering` chart deploys a single container with the ODM consumption metering service.
 
-Once an  `ibm-odm-metering` instance is running, the endpoint url can be reference in an ODM deployment throw the parameter `customization.meteringServerUrl`
+When an  `ibm-odm-metering` instance is running, the endpoint URL can be referenced in an ODM deployment through the parameter `customization.meteringServerUrl`
 
 ## Prerequisites
 
 - Kubernetes 1.11+ 
-- Helm 3.2 and later version
-- One PersistentVolume needs to be created prior to installing the chart if this following parameters values are set persistence.enabled=true and persistence.dynamicProvisioning=false. By default the dynamic provisionning is enabled.
+- Helm 3.2 and later versions
+- One PersistentVolume needs to be created prior to installing the chart if the parameters `persistence.enabled=true` and `persistence.dynamicProvisioning=false`. By default, dynamic provisionning is enabled.
 - Review  and accept the product license:
   - Set license=view to print the license agreement
   - Set license=accept to accept the license
 
 Ensure you have a good understanding of the underlying concepts and technologies:
-- Helm chart, Docker, container
+- Helm chart, Docker, containers
 - Kubernetes
 - Helm commands
 - Kubernetes command line tool
 
-Before you install the ODM Metering consumption service  , you need to gather all the configuration information that you will use for your release. For more details, refer to the [values section](#values) at the bottom of this page.
+Before you install the ODM consumption metering service, you must gather all the configuration settings that you want to use for your release. For more details, refer to the [values section](#values) at the end of this page.
 
 ## Resources Required
 
