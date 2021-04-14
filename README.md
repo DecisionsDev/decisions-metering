@@ -20,8 +20,8 @@ The service uses a single-file, disk-based database engine to ensure that the se
 
 ## Deployment options
 You can deploy the IBM Operational Decision Manager usage metering service:
-* In a Kubernetes cluster. Follow the [helm charts documentation](charts/ibm-odm-metering/README.md) to install the metering service in kubernetes cluster.
-* In your an on premise server. Follow this following [instructions](#prerequisites) to do that.
+* To a Kubernetes cluster. For details, follow the [Helm chart documentation](charts/ibm-odm-metering/README.md).
+* To an on-premises server. For details, follow these [instructions](#prerequisites).
   
 
 ## Prerequisites
