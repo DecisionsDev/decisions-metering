@@ -171,7 +171,7 @@ $ kubectl delete pvc <release_name>-odm-pvclaim -n <namespace>
 
 ### Service Account Requirements
 
-By default, the chart creates and uses the custom serviceAccount named `<releasename>-ibm-odm-metering-service-account`.
+By default, the chart creates and uses the serviceAccount named `<releasename>-ibm-odm-metering-service-account`.
 
 The serviceAccount should be granted the appropriate PodSecurityPolicy or SecurityContextConstraints depending on your cluster. Refer to the [PodSecurityPolicy Requirements](#podsecuritypolicy-requirements) or [Red Hat OpenShift SecurityContextConstraints Requirements](#red-hat-openshift-securitycontextconstraints-requirements) documentation.
 
@@ -193,7 +193,7 @@ The predefined PodSecurityPolicy name [`ibm-restricted-psp`](https://ibm.biz/cpk
 
 This chart also defines a custom PodSecurityPolicy which can be used to finely control the permissions/capabilities needed to deploy this chart.
 
-A cluster administrator can create the custom PodSecurityPolicy and the ClusterRole by applying the following descriptors files in the appropriate namespace:
+A cluster administrator can create the custom PodSecurityPolicy and the ClusterRole by applying the following descriptor files in the appropriate namespace:
 * Custom PodSecurityPolicy definition:
 
 ```yaml
@@ -250,21 +250,21 @@ rules:
 
 ### Red Hat OpenShift SecurityContextConstraints Requirements
 
-This chart requires a SecurityContextConstraints to be granted to the serviceAccount prior to installation.
+This chart requires SecurityContextConstraints (scc) to be granted to the serviceAccount prior to installation.
 A cluster administrator can either bind the SecurityContextConstraints to the target namespace or add the scc specifically to the serviceAccount.
 
-The predefined SecurityContextConstraints name: [`restricted`](https://ibm.biz/cpkspec-scc) has been verified for this chart. In Openshift, `restricted` is used by default for authenticated users.
+The predefined SecurityContextConstraints name [`restricted`](https://ibm.biz/cpkspec-scc) has been verified for this chart. In OpenShift, `restricted` is used by default for authenticated users.
 
-To use the `restricted` scc, you must define the `customization.runAsUser` parameter as empty since the restricted scc requires to used an arbitrary UID. As it's the default value you can omit it.
+To use the `restricted` scc, you must define the `customization.runAsUser` parameter as empty because the restricted scc requires to use an arbitrary UID. As it is the default value, you can omit it.
 
 ```console
 $ helm install my-odm-metering-release \
   odm-metering/ibm-odm-metering
 ```
 
-This chart also defines a custom SecurityContextConstraints which can be used to finely control the permissions/capabilities needed to deploy this chart.
+This chart also defines custom SecurityContextConstraints which can be used to finely control the permissions/capabilities needed to deploy this chart.
 
-You can apply the following yaml file to create the custom SecurityContextConstraints.
+You can apply the following YAML file to create the custom SecurityContextConstraints.
 * Custom SecurityContextConstraints definition:
 
 ```yaml
@@ -356,7 +356,7 @@ priority: 0
 
 ## Custom Certificate
 
-The metering service is provided with an HTTPS secured protocol. The default certificate is compliant with the ODM Docker images https://github.com/ODMDev/odm-ondocker If you want to provide your own certificate, you can provide a secret using the customization.securitySecretRef parameter with the server.crt certificate and the server.key private key files. 
+The metering service is provided with an HTTPS secured protocol. The default certificate is compliant with the ODM Docker images https://github.com/ODMDev/odm-ondocker If you want to provide your own certificate, create a secret that encapsulates the server.crt certificate and the server.key private key files, and then set the `customization.securitySecretRef` parameter with this secret. 
 
 For example :
 
@@ -364,13 +364,13 @@ For example :
 openssl req -x509 -nodes -days 1000 -newkey rsa:2048 -keyout mycompany.key -out mycompany.crt -subj "/CN=*.mycompany.com/OU=it/O=mycompany/L=Paris/C=FR"
 ```
 
-Then create a generic k8s secret :
+Create a generic Kubernetes secret:
 
 ```console
 kubectl create secret generic mysecuritysecret --from-file=server.crt=mycompany.crt --from-file=server.key=mycompany.key
 ```
 
-And install the ibm-odm-metering release by providing this security secret :
+Install the ibm-odm-metering release by providing this security secret:
 
 ```console
 $ helm install my-odm-metering-release --set license=accept --set customization.securitySecretRef=mysecuritysecret odm-metering/ibm-odm-metering
@@ -386,21 +386,21 @@ $ helm install my-odm-metering-release --set license=accept --set customization.
   - Specify a custom storageClassName per volume or leave the value empty to use the default storageClass.
 
 
-- Persistent storage using a predefined PersistentVolumeClaim or PersistentVolume setup prior to the deployment of this chart
+- Persistent storage using a predefined PersistentVolumeClaim or PersistentVolume that is set up prior to the deployment of this chart.
   - Set global values to:
     - persistence.enabled: true (default)
     - persistence.useDynamicProvisioning: false 
     - persistence.storagePvc: "YourExistingPVC"
-  - Kubernetes binding process selects a pre-existing volume based on the accessMode and size.
+  - The Kubernetes binding process selects a pre-existing volume based on the accessMode and size.
 
-## Rest-api endpoint to get a zip file containing the ILMT files
+## Rest-api endpoint to get a zip archive of the License Service files
 
-When the service is deployed, it's possible to get a zip of the ILMT file using the rest-api endpoint /backup. 
+When the metering service is deployed, you can get a zip archive of the License Service files by using the rest-api endpoint /backup. 
 
 ## Limitations
 
-Only one pods can be instanciate for the service.
+Only one pod can be instanciated for the metering service.
 
 ## Documentation
 
-See [ODM in knowledge center](https://www.ibm.com/support/knowledgecenter/SSQP76_8.10.x/com.ibm.odm.kube/topics/con_k8s_licensing_metering.html).
+For more information, see [ODM documentation](https://www.ibm.com/support/knowledgecenter/SSQP76_8.10.x/com.ibm.odm.kube/topics/con_k8s_licensing_metering.html).
