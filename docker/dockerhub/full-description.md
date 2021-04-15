@@ -22,9 +22,9 @@
 
 # Overview
 
-The Operational Decision Manager usage metering service image produces license files that are compliant with the [IBM License Metric Tool](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/welcome/LMT_welcome.html) inventories IBM software. It is based on the observed usage of Operational Decision Manager software.
+The Operational Decision Manager usage metering service image produces license files that are compliant with the [IBM License Service](https://www.ibm.com/docs/en/cloud-paks/1.0?topic=services-license-service). It is based on the observed usage of Operational Decision Manager software.
 
-See the License section at the end of this page for restrictions on the use of this image. This image is used?? 
+See the License section at the end of this page for restrictions on the use of this image. 
 
   # Usage
 
@@ -46,7 +46,7 @@ METERING_PROCESSINGRATE=60000
 METERING_PROCESSING_INITIAL_DELAY=6000
 ```
 
-You can also store the ILMT?? files by providing a volume (-v $PWD/ILMT:/config/storage/ILMT).
+You can also store the license files by providing a volume (-v $PWD/ILMT:/config/storage/ILMT).
 
 The metering service is provided with an HTTPS secured protocol.
 The default certificate is compliant with the ODM Docker images https://github.com/ODMDev/odm-ondocker
