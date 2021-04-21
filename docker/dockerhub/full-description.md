@@ -22,7 +22,7 @@
 
 # Overview
 
-The Operational Decision Manager usage metering service image produces license files that are compliant with the [IBM License Service](https://www.ibm.com/docs/en/cloud-paks/1.0?topic=services-license-service). It is based on the observed usage of Operational Decision Manager software.
+The Operational Decision Manager (ODM) usage metering service image allows you to generate license files that are compliant with the [IBM License Service](https://www.ibm.com/docs/en/cloud-paks/1.0?topic=services-license-service). These license files are based on the observed usage of ODM software.
 
 See the License section at the end of this page for restrictions on the use of this image. 
 
