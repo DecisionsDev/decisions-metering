@@ -8,19 +8,19 @@ To accept the license:
   - Delete the release {{ .Release.Name }}
     helm del {{ .Release.Name }}
 
-  - Launch the installation with the parameter license set to 'accept'
+  - Launch the installation with the license parameter set to 'accept'
     helm install {{ .Release.Name }} --set license=accept metering-service
 
 {{- else -}}
-{{ .Release.Name }} is ready to use. {{ .Release.Name }} is an instance of the {{ .Chart.Name }} chart.
+{{ .Release.Name }} is ready to be used. {{ .Release.Name }} is an instance of the {{ .Chart.Name }} chart.
 
-{{ .Release.Name }} uses version {{ .Values.image.tag }} of the IBM® Operational Decision Manager (ODM) components with this service instance.
+{{ .Release.Name }} uses version {{ .Values.image.tag }} of the IBM® Operational Decision Manager (ODM) components with this metering service instance.
 
-Get the application URLs by running these commands:
+Get the application URLs by running the following command:
 
 {{- if or (.Values.service.enableRoute) (.Capabilities.APIVersions.Has "route.openshift.io/v1/Route") }}
 
-In shell window copy/paste these two lines:
+In a shell window, copy and paste the following two lines:
 
 
 export ROUTE=$(oc get routes {{ .Release.Name }}-route -o jsonpath='{.spec.host}')
@@ -28,12 +28,12 @@ export ROUTE=$(oc get routes {{ .Release.Name }}-route -o jsonpath='{.spec.host}
 echo http://$ROUTE
 
 
-You can also retrieved the route URL in the OpenShift console. 
+You can also retrieve the route URL in the OpenShift console. 
 - Open the OpenShift console
-- Open the routes menu and search {{ .Release.Name }}-route.
+- Open the routes menu and search for {{ .Release.Name }}-route.
 
 {{- else -}}
-In the shell window, copy/paste these two lines:
+In the shell window, copy and paste the following two lines:
 export NODE_PORT=$(kubectl get --namespace {{ .Release.Namespace }} -o jsonpath="{.spec.ports[0].nodePort}" services {{ template "fullname" . }})
 export NODE_IP=$(kubectl get nodes --namespace {{ .Release.Namespace }} -o jsonpath="{.items[0].status.addresses[0].address}")
 
@@ -42,7 +42,7 @@ echo http://$NODE_IP:$NODE_PORT/
 
 {{- end }}
 
-You can now specify this URL for the ODM Helm chart parameter `customization.meteringServerUrl`
+You can now specify this URL as the value for the ODM Helm chart parameter `customization.meteringServerUrl`
 
 To learn more about the {{ .Release.Name }} release, try:
 
