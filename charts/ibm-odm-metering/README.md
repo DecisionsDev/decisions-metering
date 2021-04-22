@@ -326,7 +326,7 @@ priority: 0
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| license | string | `` | Read and accept the license agreement. Possible values are : 'accept' / 'view' / 'not accepted'. |
+| license | string | `` | Read and accept the license agreement. Possible values are: 'accept' / 'view' / 'not accepted'. |
 | networkPolicy.enabled | bool | true | Specify whether to enable the network policy. |
 | customization.runAsUser | number | null | Specify whether to enable the network policy. If left empty, Kubernetes allocates a random UID (OpenShift).   |
 | customization.processingInitialDelay | number | 6000 | The rate in milliseconds at which usage is processed and written to the license files. |
@@ -343,7 +343,7 @@ priority: 0
 | persistence.storageClassName | string | "" | Persistent Volume Claim to store License Service metering and database files. |
 | persistence.storagePvc | string | "" | Specify the name of the persistent volume claim that stores the metering files. |
 | persistence.resources.requests.storage | string | 2Gi | Specify the storage size for persistent volume. |
-| image.pullPolicy | string | IfNotPresent | Specify the pull policy for the Docker image.  'Always'/'IfNotPresent'/'Never'. |
+| image.pullPolicy | string | IfNotPresent | Specify the pull policy for the Docker image. Possible values are: 'Always'/'IfNotPresent'/'Never'. |
 | serviceAccountName | string | "" | Specify the ServiceAccount to use in Kubernetes. |
 | service.enableRoute | bool | true | Specify whether to create OpenShift routes automatically. If true, the routes are created for all ODM components. |
 | service.hostname | string | "" | Specify the hostname used by the created routes. |
