@@ -342,7 +342,7 @@ priority: 0
 | persistence.useDynamicProvisioning | bool | true | When this parameter is false, the binding process selects an existing volume. Ensure that an unbound volume exists before you install the chart. |
 | persistence.storageClassName | string | "" | Persistent Volume Claim to store License Service metering and database files. |
 | persistence.storagePvc | string | "" | Specify the name of the persistent volume claim that stores the metering files. |
-| persistence.resources.requests.storage | string | 2Gi | Specify the storage size for persistent volume. |
+| persistence.resources.requests.storage | string | 2Gi | Specify the storage size for the persistent volume. |
 | image.pullPolicy | string | IfNotPresent | Specify the pull policy for the Docker image. Possible values are: 'Always'/'IfNotPresent'/'Never'. |
 | serviceAccountName | string | "" | Specify the ServiceAccount to use in Kubernetes. |
 | service.enableRoute | bool | true | Specify whether to create OpenShift routes automatically. If true, the routes are created for all ODM components. |
@@ -355,7 +355,7 @@ priority: 0
 
 ## Custom Certificate
 
-The metering service is provided with an HTTPS secured protocol. The default certificate is compliant with the ODM Docker images https://github.com/ODMDev/odm-ondocker If you want to provide your own certificate, create a secret that encapsulates the server.crt certificate and the server.key private key files, and then set the `customization.securitySecretRef` parameter with this secret. 
+The metering service is provided with an HTTPS secured protocol. The default certificate is compliant with the ODM Docker images https://github.com/ODMDev/odm-ondocker If you want to provide your own certificate, create a secret that encapsulates the server.crt certificate and the server.key private key files. Then, set the `customization.securitySecretRef` parameter to this secret. 
 
 For example :
 
