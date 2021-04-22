@@ -1,6 +1,6 @@
 # [DRAFT]
 
-# ODM metering mervice Helm chart (ibm-odm-metering)
+# ODM metering service Helm chart (ibm-odm-metering)
 
 The [IBM Operational Decision Manager metering service](https://github.com/ODMDev/decisions-metering) Helm chart `ibm-odm-metering` is used to deploy the consumption metering service in a Kubernetes environment.
 
@@ -376,7 +376,7 @@ $ helm install my-odm-metering-release --set license=accept --set customization.
 ```
 
 
-## Storage
+## Storage Options
 
 - Persistent storage using Kubernetes dynamic provisioning. Uses the default storageclass defined by the Kubernetes admin or by using a custom storageclass which will override the default.
   - Set global values to:
@@ -392,9 +392,9 @@ $ helm install my-odm-metering-release --set license=accept --set customization.
     - persistence.storagePvc: "YourExistingPVC"
   - The Kubernetes binding process selects a pre-existing volume based on the accessMode and size.
 
-## Rest-api endpoint to get a zip archive of the License Service files
+## REST API endpoint to get a zip archive of the License Service files
 
-When the metering service is deployed, you can get a zip archive of the License Service files by using the rest-api endpoint /backup. 
+When the metering service is deployed, you can get a zip archive of the License Service files by using the /backup REST API endpoint. 
 
 ## Limitations
 
