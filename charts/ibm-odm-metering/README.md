@@ -190,7 +190,7 @@ This chart requires a PodSecurityPolicy to be bound to the target namespace prio
 The predefined PodSecurityPolicy name [`ibm-restricted-psp`](https://ibm.biz/cpkspec-psp) has been verifed for this chart. If your target namespace is bound to this PodSecurityPolicy, you can proceed to install the chart.
 
 
-This chart also defines a custom PodSecurityPolicy which can be used to finely control the permissions/capabilities needed to deploy this chart.
+This chart also defines a custom PodSecurityPolicy which can be used to finely control the permissions and capabilities needed to deploy this chart.
 
 A cluster administrator can create the custom PodSecurityPolicy and the ClusterRole by applying the following descriptor files in the appropriate namespace:
 * Custom PodSecurityPolicy definition:
@@ -261,7 +261,7 @@ $ helm install my-odm-metering-release \
   odm-metering/ibm-odm-metering
 ```
 
-This chart also defines custom SecurityContextConstraints which can be used to finely control the permissions/capabilities needed to deploy this chart.
+This chart also defines custom SecurityContextConstraints which can be used to finely control the permissions and capabilities needed to deploy this chart.
 
 You can apply the following YAML file to create the custom SecurityContextConstraints.
 * Custom SecurityContextConstraints definition:
