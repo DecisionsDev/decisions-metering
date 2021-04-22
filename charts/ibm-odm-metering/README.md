@@ -1,6 +1,6 @@
 # [DRAFT]
 
-# ODM metering Service Helm chart (ibm-odm-metering)
+# ODM metering mervice Helm chart (ibm-odm-metering)
 
 The [IBM Operational Decision Manager metering service](https://github.com/ODMDev/decisions-metering) Helm chart `ibm-odm-metering` is used to deploy the consumption metering service in a Kubernetes environment.
 
@@ -14,9 +14,9 @@ For more information, see the [Operational Decision Manager documentation](https
 
 The `ibm-odm-metering` Helm chart is a package of preconfigured Kubernetes resources that bootstrap the deployment of an ODM consumption metering service on a Kubernetes cluster. Configuration parameters are available to customize some aspects of the deployment. However, the chart is designed to get you up and running as quickly as possible with appropriate default values. If you accept the default values, you can begin sending metering data to ODM immediately.
 
-The `ibm-odm-metering` chart deploys a single container with the ODM consumption metering service.
+The `ibm-odm-metering` chart deploys a single container of the ODM consumption metering service.
 
-When an  `ibm-odm-metering` instance is running, the endpoint URL can be referenced in an ODM deployment through the parameter `customization.meteringServerUrl`
+When an  `ibm-odm-metering` instance is running, the endpoint URL of the service can be referenced in an ODM deployment through the parameter `customization.meteringServerUrl`
 
 ## Prerequisites
 
@@ -33,7 +33,7 @@ Ensure you have a good understanding of the underlying concepts and technologies
 - Helm commands
 - Kubernetes command line tool
 
-Before you install the ODM consumption metering service, you must gather all the configuration settings that you want to use for your release. For more details, refer to the [values section](#values) at the end of this page.
+Before you install the ODM consumption metering service, you must gather all the configuration settings that you want to apply to your release. For more details, refer to the [values section](#values) at the end of this page.
 
 ## Resources Required
 
@@ -55,7 +55,7 @@ $ helm repo add odm-metering  https://odmdev.github.io/decisions-metering/charts
 $ helm repo update
 ```
 
-To install a release named `my-odm-metering-release` and with the default configuration, run the following command:
+To install a release named `my-odm-metering-release` with the default configuration, run the following command:
 
 ```console
 $ helm install my-odm-metering-release --set license=accept odm-metering/ibm-odm-metering
@@ -79,7 +79,7 @@ $ oc apply -f https://odmdev.github.io/decisions-metering/charts/openshift/HelmR
 2. Using the OpenShift Web console
 
 - Click the + button (import resource) at the top of the page.
-- Copy / Paste the following YAML excerpt.
+- Copy and paste the following YAML excerpt.
 ```yaml
 apiVersion: helm.openshift.io/v1beta1
 kind: HelmChartRepository
@@ -90,17 +90,16 @@ spec:
     url: 'https://odmdev.github.io/decisions-metering/charts/stable/'
 ```
 
-This is to be done only once in your cluster.
+You do this only once in your cluster.
 
-Then, you can use the Helm chart in the OpenShift console.
-Here is the procedure:
+Then, you can use the Helm chart in the OpenShift console:
 1. Go to the Developer view.
 2. Create a project: odm-metering
 3. Click the Topology menu button. 
 4. Click the `From Catalog` item in the right side.
 5. Select the `Helm Charts` toggle button.
 6. Search `odm`
-7. Click the `Ibm Odm Metering` item and install the IBM ODM Metering.
+7. Click the `Ibm Odm Metering` item and install the IBM ODM metering service.
 
 ## Configuration
 
@@ -127,7 +126,7 @@ $ helm install --set license=accept my-odm-metering-release -f values.yaml odm-m
 
 > **Tip**: The default values are in the `values.yaml` file of the `ibm-odm-metering` chart.
 
-The release is an instance of the `ibm-odm-metering` chart: The ODM consumption Metering service is now running in a  Kubernetes cluster.
+The release is an instance of the `ibm-odm-metering` chart: The ODM consumption metering service is now running in a  Kubernetes cluster.
 
 ### Verifying the Chart
 
@@ -139,17 +138,17 @@ helm get notes my-odm-metering-release
 ```
 
 Yo can then:
-  * Open a browser with the odm metering URL. 
+  * Open a browser with the ODM metering URL. 
 
 You should get the message: 
   
   ```Operational Decision Manager usage reporting service```
   
-  * Set this URL as value for the Helm chart parameter `customization.meteringServerUrl`.
+  * Set this URL as the value for the Helm chart parameter `customization.meteringServerUrl`.
 
-When the service is available, you can obtain a zip of the License Service files by using the /backup rest-api endpoint. 
-In a browser, access it using meteringServerUrl/backup
-or using the curl command line :
+When the service is available, you can obtain a zip archive of the License Service files by using the /backup REST API endpoint. 
+In a browser, you can access this archive by using `meteringServerUrl/backup`
+or the following curl command:
 
 ```console
 curl -k meteringServerUrl/backup -o backup.zip
@@ -163,7 +162,7 @@ To uninstall and delete a release named `my-odm-metering-release`, use the follo
 $ helm delete my-odm-metering-release
 ```
 
-The command removes all the Kubernetes components associated with the chart, except any Persistent Volume Claims (PVCs).  This is the default behavior of Kubernetes, and ensures that valuable data is not deleted.  In order to delete the ODM data, you can delete the PVC using the following command:
+The command removes all the Kubernetes components associated with the chart, except any Persistent Volume Claims (PVCs).  This is the default behavior of Kubernetes, which ensures that valuable data is not deleted.  In order to delete the ODM data, you can delete the PVC by running the following command:
 
 ```console
 $ kubectl delete pvc <release_name>-odm-pvclaim -n <namespace>
