@@ -149,7 +149,7 @@ In a browser, you can access this archive by using `meteringServerUrl/backup`
 or the following curl command:
 
 ```console
-curl -k meteringServerUrl/backup -o backup.zip
+curl -k <MeteringServerURL>/backup -o backup.zip
 ```
 
 ### Uninstalling the chart
