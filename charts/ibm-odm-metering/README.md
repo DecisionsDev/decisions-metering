@@ -326,7 +326,7 @@ priority: 0
 |-----|------|---------|-------------|
 | license | string | `` | Read and accept the license agreement. Possible values are: 'accept' / 'view' / 'not accepted'. |
 | networkPolicy.enabled | bool | true | Specify whether to enable the network policy. |
-| customization.runAsUser | number | null | Specify whether to enable the network policy. If left empty, Kubernetes allocates a random UID (OpenShift).   |
+| customization.runAsUser | number | null | Specify the user ID to run the ODM Metering container. If left empty, Kubernetes allocates a random UID (OpenShift).   |
 | customization.processingInitialDelay | number | 6000 | The rate in milliseconds at which usage is processed and written to the license files. |
 | customization.processingRate | number | 60000 | The rate in milliseconds at which usage is processed and written to the license files. |
 | customization.securitySecretRef | string | | Specify the name of the secret that contains the TLS certificate you want to use. If the parameter is left empty, a default certificate is used. |  
