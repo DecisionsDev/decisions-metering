@@ -25,6 +25,11 @@
                     "type": "integer",
                     "default":"60000"
                 },
+                "securitySecretRef": {
+                    "title": "Security secret reference",
+                    "description": "Specify the name of the secret that contains the TLS certificate you want to use. If the parameter is left empty, a default certificate is used.",
+                    "type": "string"
+                },
                 "runAsUser": {
                     "title": "ODM container User Id",
                     "description": "Specify the User Id to run the ODM containers.",

@@ -18,6 +18,12 @@ THOUSAND_MONTHLY_ARTIFACTS | Decision Center | Number of Decision Center artifac
 
 The service uses a single-file, disk-based database engine to ensure that the service can be stopped and restarted without losing data.
 
+## Deployment options
+You can deploy the IBM Operational Decision Manager usage metering service:
+* To a Kubernetes cluster. For details, follow the [Helm chart documentation](charts/ibm-odm-metering/README.md).
+* To an on-premises server. For details, follow these [instructions](#prerequisites).
+  
+
 ## Prerequisites
 
 <pre><code>

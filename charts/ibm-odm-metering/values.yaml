@@ -36,7 +36,7 @@ image:
 serviceAccountName: ""
 
 service:
-  enableRoute: true
+  enableRoute: false
   hostname: ""
   type: "NodePort"
 resources:
@@ -71,6 +71,8 @@ customization:
   loggingLevel: 'INFO'
   processingInitialDelay: 6000
   processingRate: 60000
+  securitySecretRef: ""
+
 
 networkPolicy:
   # Enable creation of NetworkPolicy resources.
