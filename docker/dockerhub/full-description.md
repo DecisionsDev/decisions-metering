@@ -78,6 +78,11 @@ METERING_PROCESSINGRATE=60000
 METERING_PROCESSING_INITIAL_DELAY=6000
 ```
 
+To configure the metering service with the configuration property file you can use:
+ ```console
+docker run -e LICENSE=accept -p 8888:8888 -p 9999:9999 -v $PWD/mybootstrap.properties:/config/bootstrap.properties ibmcom/odm-metering-service:8.10-amd64
+```
+
 ## Security
 
 The metering service is provided with an HTTPS secured protocol.
