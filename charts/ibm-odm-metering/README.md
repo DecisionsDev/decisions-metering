@@ -16,6 +16,10 @@ The `ibm-odm-metering` chart deploys a single container of the ODM consumption m
 
 When an  `ibm-odm-metering` instance is running, the endpoint URL of the service can be referenced in an ODM deployment through the parameter `customization.meteringServerUrl`
 
+## Architecture
+
+- Only the AMD64 / x86_64 architecture is supported.
+  
 ## Prerequisites
 
 - Kubernetes 1.11+
@@ -31,7 +35,10 @@ Ensure you have a good understanding of the underlying concepts and technologies
 - Helm commands
 - Kubernetes command line tool
 
-Before you install the ODM consumption metering service, you must gather all the configuration settings that you want to apply to your release. For more details, refer to the [values section](#values) at the end of this page.
+Before you install the ODM consumption metering service, you must gather all the configuration settings that you want to apply to your release. For more details, refer to the [parameter values section](#Parameters_values) at the end of this page.
+
+
+**TODO** Add a link to the security section
 
 ## Resources Required
 
@@ -61,43 +68,33 @@ $ helm install my-odm-metering-release --set license=accept odm-metering/ibm-odm
 
 > **Tip**: List all existing releases with the `helm list` command.
 
-### OpenShift console
+### Verifying the Chart
 
-You can add the ODM metering Helm chart repository in the OpenShift catalog.
-
-Then, you are able to use the OpenShift console to instanciate the Helm chart.
-
-There are two ways to declare the Helm chart repository in the OpenShift catalog:
-1. Using the command line
+When your pods are up and running, you can access the metering service.
+Follow the instructions displayed by the helm install. They instruct you how to retrieve the ODM metering service.
 
 ```console
-$ oc apply -f https://odmdev.github.io/decisions-metering/charts/openshift/HelmRepository.yaml
+helm get notes my-odm-metering-release
 ```
 
-2. Using the OpenShift Web console
+Yo can then:
+  * Open a browser with the ODM metering URL.
 
-- Click the + button (import resource) at the top of the page.
-- Copy and paste the following YAML excerpt.
-```yaml
-apiVersion: helm.openshift.io/v1beta1
-kind: HelmChartRepository
-metadata:
-  name: odm-metering-repo
-spec:
-  connectionConfig:
-    url: 'https://odmdev.github.io/decisions-metering/charts/stable/'
+You should get the message:
+
+  ```Operational Decision Manager usage reporting service```
+  
+### Using the metering service
+
+Set this URL as the value for the Helm chart parameter `customization.meteringServerUrl`.
+
+When the service is available, you can obtain a zip archive of the License Service files by using the /backup REST API endpoint.
+In a browser, you can access this archive by using `meteringServerUrl/backup`
+or the following curl command:
+
+```console
+curl -k <MeteringServerURL>/backup -o backup.zip
 ```
-
-You do this only once in your cluster.
-
-Then, you can use the Helm chart in the OpenShift console:
-1. Go to the Developer view.
-2. Create a project: odm-metering
-3. Click the Topology menu button.
-4. Click the `From Catalog` item in the right side.
-5. Select the `Helm Charts` toggle button.
-6. Search `odm`
-7. Click the `Ibm Odm Metering` item and install the IBM ODM metering service.
 
 ## Configuration
 
@@ -126,33 +123,6 @@ $ helm install --set license=accept my-odm-metering-release -f values.yaml odm-m
 
 The release is an instance of the `ibm-odm-metering` chart: The ODM consumption metering service is now running in a  Kubernetes cluster.
 
-### Verifying the Chart
-
-When your pods are up and running, you can access the metering service.
-Follow the instructions displayed by the helm install. They instruct you how to retrieve the ODM metering service.
-
-```console
-helm get notes my-odm-metering-release
-```
-
-Yo can then:
-  * Open a browser with the ODM metering URL.
-
-You should get the message:
-
-  ```Operational Decision Manager usage reporting service```
-  
-### Using the metering service
-
-Set this URL as the value for the Helm chart parameter `customization.meteringServerUrl`.
-
-When the service is available, you can obtain a zip archive of the License Service files by using the /backup REST API endpoint.
-In a browser, you can access this archive by using `meteringServerUrl/backup`
-or the following curl command:
-
-```console
-curl -k <MeteringServerURL>/backup -o backup.zip
-```
 
 ### Uninstalling the chart
 
@@ -316,13 +286,7 @@ priority: 0
 ```
 
 
-
-## Architecture
-
-- Only the AMD64 / x86_64 architecture is supported.
-
-
-## Values
+## Parameters values
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
