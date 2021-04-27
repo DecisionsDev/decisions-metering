@@ -35,7 +35,7 @@ Ensure you have a good understanding of the underlying concepts and technologies
 - Helm commands
 - Kubernetes command line tool
 
-Before you install the ODM consumption metering service, you must gather all the configuration settings that you want to apply to your release. For more details, refer to the [parameter values section](#Parameters_values) at the end of this page.
+Before you install the ODM consumption metering service, you must gather all the configuration settings that you want to apply to your release. For more details, refer to the [parameter values section](#parameters-values) at the end of this page.
 
 ### Storage
 
