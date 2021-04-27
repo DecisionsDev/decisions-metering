@@ -141,8 +141,10 @@ Yo can then:
 You should get the message:
 
   ```Operational Decision Manager usage reporting service```
+  
+### Using the metering service
 
-  * Set this URL as the value for the Helm chart parameter `customization.meteringServerUrl`.
+Set this URL as the value for the Helm chart parameter `customization.meteringServerUrl`.
 
 When the service is available, you can obtain a zip archive of the License Service files by using the /backup REST API endpoint.
 In a browser, you can access this archive by using `meteringServerUrl/backup`
