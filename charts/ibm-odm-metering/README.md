@@ -18,7 +18,7 @@ When an  `ibm-odm-metering` instance is running, the endpoint URL of the service
 
 ## Prerequisites
 
-- Kubernetes 1.11+ 
+- Kubernetes 1.11+
 - Helm 3.2 and later versions
 - One PersistentVolume needs to be created prior to installing the chart if the parameters `persistence.enabled=true` and `persistence.dynamicProvisioning=false`. By default, dynamic provisionning is enabled.
 - Review  and accept the product license:
@@ -68,7 +68,7 @@ You can add the ODM metering Helm chart repository in the OpenShift catalog.
 Then, you are able to use the OpenShift console to instanciate the Helm chart.
 
 There are two ways to declare the Helm chart repository in the OpenShift catalog:
-1. Using the command line 
+1. Using the command line
 
 ```console
 $ oc apply -f https://odmdev.github.io/decisions-metering/charts/openshift/HelmRepository.yaml
@@ -93,7 +93,7 @@ You do this only once in your cluster.
 Then, you can use the Helm chart in the OpenShift console:
 1. Go to the Developer view.
 2. Create a project: odm-metering
-3. Click the Topology menu button. 
+3. Click the Topology menu button.
 4. Click the `From Catalog` item in the right side.
 5. Select the `Helm Charts` toggle button.
 6. Search `odm`
@@ -129,22 +129,22 @@ The release is an instance of the `ibm-odm-metering` chart: The ODM consumption 
 ### Verifying the Chart
 
 When your pods are up and running, you can access the metering service.
-Follow the instructions displayed by the helm install. They instruct you how to retrieve the ODM metering service. 
- 
+Follow the instructions displayed by the helm install. They instruct you how to retrieve the ODM metering service.
+
 ```console
 helm get notes my-odm-metering-release
 ```
 
 Yo can then:
-  * Open a browser with the ODM metering URL. 
+  * Open a browser with the ODM metering URL.
 
-You should get the message: 
-  
+You should get the message:
+
   ```Operational Decision Manager usage reporting service```
-  
+
   * Set this URL as the value for the Helm chart parameter `customization.meteringServerUrl`.
 
-When the service is available, you can obtain a zip archive of the License Service files by using the /backup REST API endpoint. 
+When the service is available, you can obtain a zip archive of the License Service files by using the /backup REST API endpoint.
 In a browser, you can access this archive by using `meteringServerUrl/backup`
 or the following curl command:
 
@@ -187,6 +187,13 @@ This chart requires a PodSecurityPolicy to be bound to the target namespace prio
 
 The predefined PodSecurityPolicy name [`ibm-restricted-psp`](https://ibm.biz/cpkspec-psp) has been verifed for this chart. If your target namespace is bound to this PodSecurityPolicy, you can proceed to install the chart.
 
+To use the `ibm-restricted-psp` psp, you must define the `customization.runAsUser` parameter.
+
+```console
+$ helm install my-odm-metering-release \
+  --set customization.runAsUser=1001 \
+  odm-metering/ibm-odm-metering
+```
 
 This chart also defines a custom PodSecurityPolicy which can be used to finely control the permissions and capabilities needed to deploy this chart.
 
@@ -251,13 +258,6 @@ This chart requires SecurityContextConstraints (scc) to be granted to the servic
 A cluster administrator can either bind the SecurityContextConstraints to the target namespace or add the scc specifically to the serviceAccount.
 
 The predefined SecurityContextConstraints name [`restricted`](https://ibm.biz/cpkspec-scc) has been verified for this chart. In OpenShift, `restricted` is used by default for authenticated users.
-
-To use the `restricted` scc, you must define the `customization.runAsUser` parameter as empty because the restricted scc requires to use an arbitrary UID. As it is the default value, you can omit it.
-
-```console
-$ helm install my-odm-metering-release \
-  odm-metering/ibm-odm-metering
-```
 
 This chart also defines custom SecurityContextConstraints which can be used to finely control the permissions and capabilities needed to deploy this chart.
 
@@ -353,7 +353,7 @@ priority: 0
 
 ## Custom Certificate
 
-The metering service is provided with an HTTPS secured protocol. The default certificate is compliant with the ODM Docker images https://github.com/ODMDev/odm-ondocker If you want to provide your own certificate, create a secret that encapsulates the server.crt certificate and the server.key private key files. Then, set the `customization.securitySecretRef` parameter to this secret. 
+The metering service is provided with an HTTPS secured protocol. The default certificate is compliant with the ODM Docker images https://github.com/ODMDev/odm-ondocker If you want to provide your own certificate, create a secret that encapsulates the server.crt certificate and the server.key private key files. Then, set the `customization.securitySecretRef` parameter to this secret.
 
 For example :
 
@@ -386,13 +386,13 @@ $ helm install my-odm-metering-release --set license=accept --set customization.
 - Persistent storage using a predefined PersistentVolumeClaim or PersistentVolume that is set up prior to the deployment of this chart.
   - Set global values to:
     - persistence.enabled: true (default)
-    - persistence.useDynamicProvisioning: false 
+    - persistence.useDynamicProvisioning: false
     - persistence.storagePvc: "YourExistingPVC"
   - The Kubernetes binding process selects a pre-existing volume based on the accessMode and size.
 
 ## REST API endpoint to get a zip archive of the License Service files
 
-When the metering service is deployed, you can get a zip archive of the License Service files by using the /backup REST API endpoint. 
+When the metering service is deployed, you can get a zip archive of the License Service files by using the /backup REST API endpoint.
 
 ## Limitations
 
