@@ -1,6 +1,6 @@
 # ODM metering service Helm chart (ibm-odm-metering) on Openshift
 
-### OpenShift console
+## Installing the Metering service with the OpenShift console
 
 You can add the ODM metering Helm chart repository in the OpenShift catalog.
 
@@ -37,3 +37,6 @@ Then, you can use the Helm chart in the OpenShift console:
 5. Select the `Helm Charts` toggle button.
 6. Search `odm`
 7. Click the `Ibm Odm Metering` item and install the IBM ODM metering service.
+
+Once the metering service is installed, you can use it in ODM. See  Using the metering service with ODM on Kubernetes offering](../
+/ibm-odm-metering/README.md#using-the-metering-service-with-odm-on-kubernetes-offering)
