@@ -100,7 +100,7 @@ openssl req -x509 -nodes -days 1000 -newkey rsa:2048 -keyout mycompany.key -out 
 To do so, run the following docker command from an empty local folder:
 
  ```console
-docker run -e LICENSE=accept  -p 8888:8888 -p 9999:9999 -v $PWD/DB:/config/storage/DB -v $PWD/ILMT:/config/storage/ILMT -v $PWD/mybootstrap.properties:/config/bootstrap.properties -v $PWD/mycompany.crt:/config/resources/certificate/server.crt -v $PWD/mycompany.key:/config/resources/certificate/server.key ibmcom/odm-metering-service:8.10-amd64
+docker run -e LICENSE=accept -p 8888:8888 -p 9999:9999 -v $PWD/mycompany.crt:/config/resources/certificate/server.crt -v $PWD/mycompany.key:/config/resources/certificate/server.key ibmcom/odm-metering-service:8.10-amd64
 ```
 
 
