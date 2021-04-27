@@ -2,9 +2,7 @@
 
 ## Installing the metering service with the OpenShift console
 
-You can add the ODM metering Helm chart repository in the OpenShift catalog.
-
-Then, you are able to use the OpenShift console to instanciate the Helm chart.
+You can add the ODM metering Helm chart repository in the OpenShift catalog to be able to instanciate the Helm chart through the OpenShift console.
 
 There are two ways to declare the Helm chart repository in the OpenShift catalog:
 1. Using the command line
