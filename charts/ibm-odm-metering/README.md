@@ -326,9 +326,9 @@ priority: 0
 |-----|------|---------|-------------|
 | license | string | `` | Read and accept the license agreement. Possible values are: 'accept' / 'view' / 'not accepted'. |
 | networkPolicy.enabled | bool | true | Specify whether to enable the network policy. |
-| customization.runAsUser | number | null | Specify the user ID to run the ODM Metering container. If left empty, Kubernetes allocates a random UID (OpenShift).   |
+| customization.runAsUser | number | null | Specify the user ID to run the ODM Metering container. If left empty, Kubernetes allocates a random UID (OpenShift). If you use PSP the UID should be 1001.   |
 | customization.processingInitialDelay | number | 6000 | The rate in milliseconds at which usage is processed and written to the license files. |
-| customization.processingRate | number | 60000 | The rate in milliseconds at which usage is processed and written to the license files. |
+| customization.processingRate | number | 60000 | The delay in milliseconds before the first processing occurs after the service is started. |
 | customization.securitySecretRef | string | | Specify the name of the secret that contains the TLS certificate you want to use. If the parameter is left empty, a default certificate is used. |  
 | livenessProbe.initialDelaySeconds | number | 200 | Specify the number of seconds after the container has started before liveness probe is initiated. |
 | livenessProbe.periodSeconds | number | 10 | Specify how often (in seconds) to perform the probe. |
@@ -344,7 +344,7 @@ priority: 0
 | image.pullPolicy | string | IfNotPresent | Specify the pull policy for the Docker image. Possible values are: 'Always'/'IfNotPresent'/'Never'. |
 | serviceAccountName | string | "" | Specify the ServiceAccount to use in Kubernetes. |
 | service.enableRoute | bool | true | Specify whether to create OpenShift routes automatically. If true, the routes are created for all ODM components. |
-| service.hostname | string | "" | Specify the hostname used by the created routes. |
+| service.hostname | string | "" | Specify the hostname used by the created routes. If left empty a routes will be automaticaly created with a default name. |
 | service.type | string | "NodePort" | Specify the service type. |
 | resources.requests.cpu | string | 0.25 | Specify the requested CPU |
 | resources.requests.memory | string | 128Mi | Specify the requested memory. |
