@@ -53,7 +53,7 @@ Before you install the ODM consumption metering service, you must gather all the
     - persistence.storagePvc: "YourExistingPVC"
   - The Kubernetes binding process selects a pre-existing volume based on the accessMode and size.
 
-If you are subject to security constraint you can refer to the [security requirements section](#security_requirements).
+If you are subject to security constraint you can refer to the [security requirements section](#security-requirements).
 
 ## Resources Required
 
@@ -136,7 +136,7 @@ curl -k <MeteringServerURL>/backup -o backup.zip
 
 ## Customization
 
-To see all configurable options with detailed comments, visit the [values section](#parameters_values) at the end of this page, or run the following configuration command:
+To see all configurable options with detailed comments, visit the [values section](#parameters-values) at the end of this page, or run the following configuration command:
 ```console
 $ helm show values odm-metering/ibm-odm-metering
 ```
