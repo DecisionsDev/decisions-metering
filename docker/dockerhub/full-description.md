@@ -3,7 +3,7 @@
 # Quick reference
 
 -	**Where to get help**:
-  * [ODM documentation](https://www.ibm.com/support/knowledgecenter/en/SSQP76_8.10.x/com.ibm.odm.kube/topics/con_k8s_licensing_metering.html)
+  * [ODM Licensing and metering documentation](https://www.ibm.com/support/knowledgecenter/en/SSQP76_8.10.x/com.ibm.odm.kube/topics/con_k8s_licensing_metering.html)
   * [ODM developer community](https://developer.ibm.com/odm/)
 
 -	**Where to file issues**:  
@@ -19,7 +19,9 @@
 -	**Supported Docker versions**:  
 	[latest release](https://github.com/docker/docker-ce/releases/latest) (up to version 19, on a best-effort basis)
 
-
+-       **Kubernetes Helm charts**: 
+	[ODM Metering Helm Charts](https://github.com/ODMDev/decisions-metering/blob/master/charts/ibm-odm-metering/README.md)
+	
 # Overview
 
 The Operational Decision Manager (ODM) usage metering service image allows you to generate license files that are compliant with the [IBM License Service](https://www.ibm.com/docs/en/cloud-paks/1.0?topic=services-license-service). These license files are based on the observed usage of ODM software.
