@@ -93,7 +93,7 @@ helm get notes my-odm-metering-release
 ```
 
 You can then:
-  * Open a browser with the ODM metering URL (<MeteringServerURL>).
+  * Open a browser with the ODM metering URL (`<MeteringServerURL>`).
 
 You should get the message:
 
