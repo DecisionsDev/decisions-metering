@@ -28,7 +28,7 @@ See the License section at the end of this page for restrictions on the use of t
 
   # Usage
 
-The image contains a server that is preconfigured with a database accessible through HTTP port 9080 and HTTPS port 9443.
+The image contains a server that is preconfigured accessible through HTTP port 8888 and HTTPS port 9999.
 You must accept the license before you launch the image. The license is available at the end of this page.
 
 ```console
