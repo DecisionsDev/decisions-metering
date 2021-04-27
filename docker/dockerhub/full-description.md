@@ -91,18 +91,17 @@ The default certificate is compliant with the ODM Docker images https://github.c
 
 If you want to provide your own certificate, set two volumes, one for the `server.crt` certificate (-v $PWD/mycompany.crt:/config/resources/certificate/server.crt) file, and one for the  `server.key` private key  (-v $PWD/mycompany.key:/config/resources/certificate/server.key) file.
 
-For example :
+For example, generate a certificate with this command:
 
  ```console
 openssl req -x509 -nodes -days 1000 -newkey rsa:2048 -keyout mycompany.key -out mycompany.crt -subj "/CN=*.mycompany.com/OU=it/O=mycompany/L=Paris/C=FR"
 ```
 
-To do so, run the following docker command from an empty local folder:
+To use it, run the following docker command:
 
  ```console
 docker run -e LICENSE=accept -p 8888:8888 -p 9999:9999 -v $PWD/mycompany.crt:/config/resources/certificate/server.crt -v $PWD/mycompany.key:/config/resources/certificate/server.key ibmcom/odm-metering-service:8.10-amd64
 ```
-
 
   # License
 
