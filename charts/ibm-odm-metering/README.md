@@ -66,8 +66,6 @@ If you are subject to security constraint you can refer to the [security require
 
 ## Installing the Chart
 
-The following instructions must be executed by a namespace administrator.
-
 Add the odm-metering chart repository:
 
 ```console
@@ -81,7 +79,9 @@ To install a release named `my-odm-metering-release` with the default configurat
 $ helm install my-odm-metering-release --set license=accept odm-metering/ibm-odm-metering
 ```
 
-> **Tip**: List all existing releases with the `helm list` command.
+> **Tip**: List all existing releases with the `helm list` command.> 
+
+> **Note**: If you want to use Openshift Console to install the ODM Metering License service you can follow these [instructions](../openshift/README.md). 
 
 ### Verifying the Chart
 
