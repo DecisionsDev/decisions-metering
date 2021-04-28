@@ -40,11 +40,11 @@ docker run -e LICENSE=accept  -p 8888:8888 -p 9999:9999 ibmcom/odm-metering-serv
 
 When the server is started, use the URL http://localhost:8888 or https://localhost:9999 to display a welcome page.
 
-The metering service receives usage information from Operational Decision Manager, and aggregates it.
+The metering service receives usage information from Operational Decision Manager and aggregates it.
 
-When the service is available, you can get a zip archive of the usage license files by using the /backup REST API endpoint. 
+When the service is available, you can get a zip archive of the ILMT files by using the /backup REST API endpoint. 
 In a browser, access the zip archive by using http://localhost:8888/backup or https://localhost:9999/backup
-Or use the following curl command:
+or use the following curl command:
 
 ```console
 curl http://localhost:8888/backup -o backup.zip
@@ -53,7 +53,7 @@ curl -k https://localhost:9999/backup -o backup.zip
 
 ## Storage
 
-To avoid losing data when you delete the Docker image container, store the database outside of the ODM Metering Docker image container, in a locally mounted host volume (-v $PWD/DB:/config/storage/DB).
+To avoid loosing data when you delete the Docker image container, store the database outside of the ODM Metering Docker image container, in a locally mounted host volume (-v $PWD/DB:/config/storage/DB).
 
 You can also store the license files by creating a volume (-v $PWD/ILMT:/config/storage/ILMT).
 
