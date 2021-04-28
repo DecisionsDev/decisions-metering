@@ -180,7 +180,7 @@ The release is an instance of the `ibm-odm-metering` chart. The ODM consumption 
 | readinessProbe.failureThreshold | number | 40 | Specify how many times Kubernetes tries before giving up when a pod starts and the probe fails. Giving up means restarting the pod. |
 | persistence.enabled | bool | true | Specify whether to enable persistence for the files in a persistent volume. |
 | persistence.useDynamicProvisioning | bool | true | When this parameter is false, the binding process selects an existing volume. Ensure that an unbound volume exists before you install the chart. |
-| persistence.storageClassName | string | empty | Persistent Volume Claim to store License Service metering and database files. |
+| persistence.storageClassName | string | empty | Persistent Volume Claim to store ILMT metering and database files. |
 | persistence.storagePvc | string | empty | Specify the name of the persistent volume claim that stores the metering files. |
 | persistence.resources.requests.storage | string | 2Gi | Specify the storage size for the persistent volume. |
 | image.pullPolicy | string | IfNotPresent | Specify the pull policy for the Docker image. Possible values are: 'Always'/'IfNotPresent'/'Never'. |
@@ -188,7 +188,7 @@ The release is an instance of the `ibm-odm-metering` chart. The ODM consumption 
 | service.enableRoute | bool | true | Specify whether to create OpenShift routes automatically. If true, the routes are created for all ODM components. |
 | service.hostname | string | empty | Specify the hostname used by the created routes. If left empty a routes will be automaticaly created with a default name. |
 | service.type | string | NodePort | Specify the service type. |
-| resources.requests.cpu | string | 0.25 | Specify the requested CPU |
+| resources.requests.cpu | string | 0.25 | Specify the requested CPU. |
 | resources.requests.memory | string | 128Mi | Specify the requested memory. |
 | resources.limits.cpu | string | 0.5 | Specify the CPU limit. |
 | resources.limits.memory | string | 512Mi | Specify the memory limit. |
