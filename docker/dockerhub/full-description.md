@@ -19,8 +19,9 @@
 -	**Supported Docker versions**:  
 	[latest release](https://github.com/docker/docker-ce/releases/latest) (up to version 19, on a best-effort basis)
 
--       **Kubernetes Helm charts**: 
-	[ODM Metering Helm Charts](https://github.com/ODMDev/decisions-metering/blob/master/charts/ibm-odm-metering/README.md)
+
+-	**Kubernetes Helm chart**:  
+	[ODM Metering Helm Charts](https://github.com/ODMDev/decisions-metering/blob/master/charts/ibm-odm-metering/README.md) 
 	
 # Overview
 
