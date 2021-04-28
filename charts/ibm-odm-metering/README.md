@@ -82,7 +82,7 @@ $ helm install my-odm-metering-release --set license=accept odm-metering/ibm-odm
 
 > **Tip**: List all existing releases with the `helm list` command. 
 
-> **Note**: If you want to use the OpenShift Console to install the ODM metering service, follow these [instructions](../openshift/README.md). 
+> **Note**: If you prefer to use the OpenShift Console to install the ODM metering service, follow these [instructions](../openshift/README.md). 
 
 ### Verifying the Chart
 
