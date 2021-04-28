@@ -3,7 +3,7 @@
 # Quick reference
 
 -	**Where to get help**:
-  * [ODM documentation](https://www.ibm.com/support/knowledgecenter/en/SSQP76_8.10.x/com.ibm.odm.kube/topics/con_k8s_licensing_metering.html)
+  * [ODM Licensing and metering documentation](https://www.ibm.com/support/knowledgecenter/en/SSQP76_8.10.x/com.ibm.odm.kube/topics/con_k8s_licensing_metering.html)
   * [ODM developer community](https://developer.ibm.com/odm/)
 
 -	**Where to file issues**:  
@@ -20,22 +20,55 @@
 	[latest release](https://github.com/docker/docker-ce/releases/latest) (up to version 19, on a best-effort basis)
 
 
+-	**Kubernetes Helm chart**:  
+	[ODM Metering Helm Charts](https://github.com/ODMDev/decisions-metering/blob/master/charts/ibm-odm-metering/README.md) 
+	
 # Overview
 
-The Operational Decision Manager (ODM) usage metering service image allows you to generate license files that are compliant with the [IBM License Service](https://www.ibm.com/docs/en/cloud-paks/1.0?topic=services-license-service). These license files are based on the observed usage of ODM software.
+The Operational Decision Manager (ODM) usage metering service image allows you to generate license files that are compliant with the [IBM License Metric Tool](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/welcome/LMT_welcome.html) inventories IBM software. These license files are based on the observed usage of ODM software.
 
 See the License section at the end of this page for restrictions on the use of this image. 
 
-  # Usage
+# Usage
 
-The image contains a server that is preconfigured accessible through HTTP port 8888 and HTTPS port 9999.
+The image contains the metering service which exposes HTTP on port 8888 and HTTPS on port 9999.
+
 You must accept the license before you launch the image. The license is available at the end of this page.
 
 ```console
 docker run -e LICENSE=accept  -p 8888:8888 -p 9999:9999 ibmcom/odm-metering-service:8.10-amd64
 ```
 
-To avoid losing data when you delete the Docker image container, store the database outside of the ODM Metering Docker image container, in a locally mounted host volume (-v $PWD/DB:/config/storage/DB). You can modify the default metering properties by providing your own `mybootstrap.properties` file (-v $PWD/mybootstrap.properties:/config/bootstrap.properties). The default `bootstrap.properties`file contains the following properties:
+When the server is started, use the URL http://localhost:8888 or https://localhost:9999 to display a welcome page.
+
+The metering service receives usage information from Operational Decision Manager and aggregates it.
+
+When the service is available, you can get a zip archive of the ILMT files by using the /backup REST API endpoint. 
+In a browser, access the zip archive by using http://localhost:8888/backup or https://localhost:9999/backup
+or use the following curl command:
+
+```console
+curl http://localhost:8888/backup -o backup.zip
+curl -k https://localhost:9999/backup -o backup.zip
+```
+
+## Storage
+
+To avoid loosing data when you delete the Docker image container, store the database outside of the ODM Metering Docker image container, in a locally mounted host volume (-v $PWD/DB:/config/storage/DB).
+
+You can also store the license files by creating a volume (-v $PWD/ILMT:/config/storage/ILMT).
+
+```console
+docker run -e LICENSE=accept  -p 8888:8888 -p 9999:9999 -v $PWD/DB:/config/storage/DB -v $PWD/ILMT:/config/storage/ILMT ibmcom/odm-metering-service:8.10-amd64
+```
+
+When you first run this command, it creates the metering files in your local folder. When restarting the metering service, it reads and updates these files.
+
+## Configuration
+
+ You can modify the default metering properties by providing your own `mybootstrap.properties` file (-v $PWD/mybootstrap.properties:/config/bootstrap.properties). 
+ 
+ The default `bootstrap.properties` file contains the following properties:
 
 ```console
 # The log level that is used by the application. Possible values include ERROR, WARN, INFO, DEBUG, and TRACE.
@@ -46,35 +79,29 @@ METERING_PROCESSINGRATE=60000
 METERING_PROCESSING_INITIAL_DELAY=6000
 ```
 
-You can also store the license files by creating a volume (-v $PWD/ILMT:/config/storage/ILMT).
+To configure the metering service with the configuration property file you can use:
+ ```console
+docker run -e LICENSE=accept -p 8888:8888 -p 9999:9999 -v $PWD/mybootstrap.properties:/config/bootstrap.properties ibmcom/odm-metering-service:8.10-amd64
+```
+
+## Security
 
 The metering service is provided with an HTTPS secured protocol.
+
 The default certificate is compliant with the ODM Docker images https://github.com/ODMDev/odm-ondocker
+
 If you want to provide your own certificate, set two volumes, one for the `server.crt` certificate (-v $PWD/mycompany.crt:/config/resources/certificate/server.crt) file, and one for the  `server.key` private key  (-v $PWD/mycompany.key:/config/resources/certificate/server.key) file.
-For example :
+
+For example, generate a certificate with this command:
 
  ```console
 openssl req -x509 -nodes -days 1000 -newkey rsa:2048 -keyout mycompany.key -out mycompany.crt -subj "/CN=*.mycompany.com/OU=it/O=mycompany/L=Paris/C=FR"
 ```
 
-
-To do so, run the following docker command from an empty local folder:
+To use it, run the following docker command:
 
  ```console
-docker run -e LICENSE=accept  -p 8888:8888 -p 9999:9999 -v $PWD/DB:/config/storage/DB -v $PWD/ILMT:/config/storage/ILMT -v $PWD/mybootstrap.properties:/config/bootstrap.properties -v $PWD/mycompany.crt:/config/resources/certificate/server.crt -v $PWD/mycompany.key:/config/resources/certificate/server.key ibmcom/odm-metering-service:8.10-amd64
-```
-
-When you first run this command, it creates the metering files in your local folder. The following times, it reads and updates these files.
-
-When the server is started, use the URL http://localhost:8888 or https://localhost:9999 to display a welcome page.
-
-When the service is available, you can get a zip archive of the license files by using the /backup REST API endpoint. 
-In a browser, access the zip archive by using http://localhost:8888/backup or https://localhost:9999/backup
-Or use the following curl command:
-
-```console
-curl http://localhost:8888/backup -o backup.zip
-curl -k https://localhost:9999/backup -o backup.zip
+docker run -e LICENSE=accept -p 8888:8888 -p 9999:9999 -v $PWD/mycompany.crt:/config/resources/certificate/server.crt -v $PWD/mycompany.key:/config/resources/certificate/server.key ibmcom/odm-metering-service:8.10-amd64
 ```
 
   # License
