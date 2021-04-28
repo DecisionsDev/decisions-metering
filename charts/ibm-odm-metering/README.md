@@ -1,6 +1,6 @@
-# ODM metering service Helm chart (ibm-odm-metering)
+# ODM Metering Service Helm Chart (ibm-odm-metering)
 
-The [IBM Operational Decision Manager metering service](https://github.com/ODMDev/decisions-metering) Helm chart `ibm-odm-metering` is used to deploy the consumption metering service in a Kubernetes environment.
+The [IBM Operational Decision Manager metering service](https://github.com/ODMDev/decisions-metering) Helm chart, `ibm-odm-metering`, is used to deploy the consumption metering service in a Kubernetes environment.
 
 ## Introduction
 
@@ -14,7 +14,7 @@ The `ibm-odm-metering` Helm chart is a package of preconfigured Kubernetes resou
 
 The `ibm-odm-metering` chart deploys a single container of the ODM consumption metering service.
 
-When an  `ibm-odm-metering` instance is running, the endpoint URL of the service can be referenced in an ODM deployment through the parameter `customization.meteringServerUrl`
+When an  `ibm-odm-metering` instance is running, the endpoint URL of the service can be referenced in an ODM deployment through the parameter `customization.meteringServerUrl`.
 
 ## Architecture
 
