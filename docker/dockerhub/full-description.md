@@ -3,7 +3,6 @@
 # Quick Reference
 
 -	**Where to get help**:
-  * [ODM Licensing and metering documentation](https://www.ibm.com/support/knowledgecenter/en/SSQP76_8.10.x/com.ibm.odm.kube/topics/con_k8s_licensing_metering.html)
   * [ODM developer community](https://developer.ibm.com/odm/)
 
 -	**Where to file issues**:  
