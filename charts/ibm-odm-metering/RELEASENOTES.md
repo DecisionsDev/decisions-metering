@@ -6,7 +6,7 @@ The version 21.0.1 of the Helm chart installs version 8.10.5.0 of the IBM Operat
 2. For the internal database, create a persistent volume or use dynamic provisioning.
 
 # Documentation
-For more information go to [Operational Decision Manager Documentation](https://www.ibm.com/support/knowledgecenter/en/SSQP76_8.10.x/com.ibm.odm.kube/topics/con_k8s_licensing_metering.html) and in [Github](https://github.com/ODMDev/decisions-metering)
+For more information go to [Github](https://github.com/ODMDev/decisions-metering)
 
 # Breaking Changes
 * None
