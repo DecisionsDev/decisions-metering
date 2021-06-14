@@ -1,8 +1,9 @@
 #!/bin/bash
-set -e
+set -x
 echo "start package helm material..."
 echo "current build directory:"
 pwd
-mkdir index && cd index && helm package ../charts/ibm-odm-metering 
+cd charts/stable && helm package ../ibm-odm-metering
 
-helm repo index --url 'https://github.com/lgrateau/decisions-metering/releases/download/'$TRAVIS_TAG ./
+helm repo index --url 'https://odmdev.github.io/decisions-metering/charts/stable' ./
+cd ../..
