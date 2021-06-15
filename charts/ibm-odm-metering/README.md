@@ -241,6 +241,7 @@ To use the `ibm-restricted-psp` psp, you must define the `customization.runAsUse
 ```console
 $ helm install my-odm-metering-release \
   --set customization.runAsUser=1001 \
+  --set license=accept \
   odm-metering/ibm-odm-metering
 ```
 
