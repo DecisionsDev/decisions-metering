@@ -6,7 +6,7 @@ The [IBM Operational Decision Manager metering service](https://github.com/ODMDe
 
 The IBM License Metering Tool (ILMT) provides information about the usage of decision artifacts and executed decisions. Users of subscription services can obtain details about these billable artifacts. The license covers consumption in the form of traffic between RuleApps and client applications.
 
-For more information, see the [Operational Decision Manager documentation](https://www.ibm.com/support/knowledgecenter/SSQP76_8.10.x/com.ibm.odm.kube/topics/con_k8s_licensing_metering.html).
+For more information, see the [Operational Decision Manager documentation](https://www.ibm.com/docs/en/odm/8.10?topic=kubernetes-licensing-metering).
 
 ## Chart Details
 
@@ -370,4 +370,4 @@ Only one pod can be instanciated for the metering service.
 
 ## Documentation
 
-For more information, see [ODM documentation](https://www.ibm.com/support/knowledgecenter/SSQP76_8.10.x/com.ibm.odm.kube/topics/con_k8s_licensing_metering.html).
+For more information, see [ODM documentation](https://www.ibm.com/docs/en/odm/8.10?topic=kubernetes-licensing-metering).
