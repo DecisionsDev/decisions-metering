@@ -1,0 +1,34 @@
+name: Build and test
+on: [push]
+env:
+  DOCKER_COMPOSE_VERSION: 1.29.2
+  HELM_VERSION: 3.6.2
+jobs:
+  Build-And-Test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: id
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - run: echo "The ${{ github.repository }} repository has been cloned to the runner."
+      - run: apt update
+      - run: apt full-upgrade
+      - name: Get docker-compose
+        run: curl --insecure --location --output /usr/local/bin/docker-compose --retry 5 --retry-delay 10 https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m) && chmod 755 /usr/local/bin/docker-compose
+      - name: Get helm
+        run: curl --insecure --location --output helm.tar.gz --retry 5 --retry-delay 10 https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz
+      - name: Untar and move helm binary
+        run: tar zxfv helm.tar.gz && mv linux-amd64/helm /usr/local/bin/ && chmod 755 /usr/local/bin/helm
+      - name: Get hey
+        run: curl --insecure --location --output /usr/local/bin/hey --retry 5 --retry-delay 10 https://hey-release.s3.us-east-2.amazonaws.com/hey_linux_amd64 && chmod 755 /usr/local/bin/hey
+      - run: docker-compose --version
+      - run: docker info
+      - run: helm version
+      - name: Report Status
+        if: always()
+        uses: ravsamhq/notify-slack-action@master
+        with:
+          status: ${{ job.status }}
+          # notify_when: 'failure'
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
