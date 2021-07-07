@@ -6,6 +6,8 @@ env:
 jobs:
   Build-And-Test:
     runs-on: ubuntu-latest
+    container:
+      options: --user 0:0
     steps:
       - run: id
       - name: Check out repository code
