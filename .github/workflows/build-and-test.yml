@@ -40,7 +40,7 @@ jobs:
           ODM_URL: ${{ secrets.ODM_URL }}
       - run: bash build.sh
       - run: sudo docker-compose up -d
-      - run: sudo docker-compose -f docker/testing/docker-compose-metering.yml pull
+      - run: sudo --preserve-env docker-compose -f docker/testing/docker-compose-metering.yml pull
         env:
           ODMIMAGEVERSION: ${{ env.ODMIMAGEVERSION }}
           REPOSITORY: ${{ secrets.ARTIFACTORY_URL }}
