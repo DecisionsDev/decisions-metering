@@ -20,6 +20,8 @@ jobs:
         run: curl --insecure --location --output hey --retry 5 --retry-delay 10 --silent https://hey-release.s3.us-east-2.amazonaws.com/hey_linux_amd64
       - name: Download cv
         run: bash download-cv.sh
+        env:
+          GHE_TOKEN: ${{ secrets.GHE_TOKEN }}
       - name: Move tools to /usr/local/bin
         run: tar zxfv helm.tar.gz && chmod 755 cv docker-compose linux-amd64/helm hey && sudo mv cv docker-compose linux-amd64/helm hey /usr/local/bin/
       - run: docker-compose --version
