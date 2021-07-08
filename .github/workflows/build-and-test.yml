@@ -6,8 +6,6 @@ env:
 jobs:
   Build-And-Test:
     runs-on: ubuntu-latest
-    env:
-      working-directory: /tmp
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
@@ -15,18 +13,14 @@ jobs:
       - run: sudo apt update
       - run: sudo apt full-upgrade
       - name: Get docker-compose
-        run: curl --insecure --location --output /usr/local/bin/docker-compose --retry 5 --retry-delay 10 https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m) && chmod 755 /usr/local/bin/docker-compose
-        working-directory: ${{ env.working-directory }}
+        run: curl --insecure --location --output docker-compose --retry 5 --retry-delay 10 https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)
       - name: Get helm
         run: curl --insecure --location --output helm.tar.gz --retry 5 --retry-delay 10 https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz
-        working-directory: ${{ env.working-directory }}
-      - name: Untar and move helm binary
-        run: tar zxfv helm.tar.gz && chmod 755 linux-amd64/helm && sudo mv linux-amd64/helm /usr/local/bin/
-        working-directory: ${{ env.working-directory }}
       - name: Get hey
-        run: curl --insecure --location --output /usr/local/bin/hey --retry 5 --retry-delay 10 https://hey-release.s3.us-east-2.amazonaws.com/hey_linux_amd64 && chmod 755 /usr/local/bin/hey
+        run: curl --insecure --location --output hey --retry 5 --retry-delay 10 https://hey-release.s3.us-east-2.amazonaws.com/hey_linux_amd64
+      - name: Move tools to /usr/local/bin
+        run: tar zxfv helm.tar.gz && chmod 755 docker-compose linux-amd64/helm hey && sudo mv docker-compose linux-amd64/helm hey /usr/local/bin/
       - run: docker-compose --version
-      - run: docker info
       - run: helm version
       - name: Report Status
         if: always()
