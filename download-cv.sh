@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -ex
 
 GH_API=https://github.ibm.com/api/v3
 GH_REPO=${GH_API}/repos/IBMPrivateCloud/content-verification
