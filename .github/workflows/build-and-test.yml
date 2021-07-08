@@ -3,15 +3,15 @@ on: [push]
 env:
   DOCKER_COMPOSE_VERSION: 1.29.2
   HELM_VERSION: 3.6.2
+  ODM_VERSION: 8.10.5.0
 jobs:
   Build-And-Test:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
-      - run: echo "The ${{ github.repository }} repository has been cloned to the runner."
-      - run: sudo apt update
-      - run: sudo apt full-upgrade
+      # - run: sudo apt update
+      # - run: sudo apt full-upgrade
       - name: Get docker-compose
         run: curl --insecure --location --output docker-compose --retry 5 --retry-delay 10 --silent https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)
       - name: Get helm
@@ -27,6 +27,11 @@ jobs:
       - run: docker-compose --version
       - run: helm version
       - run: cv lint helm charts/ibm-odm-metering -o charts/ibm-odm-metering/tests/lintOverride.yaml
+      - run: bash download-odm.sh
+        env:
+          ARTIFACTORY_PASSWORD: ${{ secrets.ARTIFACTORY_PASSWORD }}
+          ARTIFACTORY_USER: ${{ secrets.ARTIFACTORY_USER }}
+          ODM_URL: ${{ secrets.ODM_URL }}
       - name: Build Helm chart
         run: helm package ../ibm-odm-metering && helm repo index --url 'https://odmdev.github.io/decisions-metering/charts/stable' ./ && cat index.yaml
         working-directory: charts/stable
