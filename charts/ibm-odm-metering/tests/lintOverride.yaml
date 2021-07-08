@@ -7,15 +7,9 @@ overrides:
   reason: "Not part of the IBM Certification process."
 - rule: ChartNameVersionClassificationMatch
   reason: "Not part of the IBM Certification process."
-- rule: ChartNameVersionClassificationMatch
-  reason: "Not part of the IBM Certification process."
 - rule: AppTestExists
   reason: "Not part of the IBM Certification process."
 - rule: InstallTestExists
   reason: "Not part of the IBM Certification process."
-- rule: PodSecurityContextDefined
-  reason: "Using arbitrary UID on OpenShift."
 - rule: ReadmeHasRequiredSections
   reason: "Prefer to have cutomization section than configuration."
-- rule: EphemeralStorageLimitsAndRequestsDeclared
-  reason: Will be declared later
