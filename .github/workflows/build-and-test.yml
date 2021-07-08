@@ -14,8 +14,6 @@ env:
 jobs:
   Build-And-Test:
     runs-on: ubuntu-latest
-    env:
-      ODMIMAGEVERSION: ${{ env.ODMIMAGEVERSION }}
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
@@ -44,6 +42,8 @@ jobs:
       - run: bash build.sh
       - run: sudo docker-compose up -d
       - run: sudo docker-compose -f docker/testing/docker-compose-metering.yml pull
+        env:
+          ODMIMAGEVERSION: ${{ env.ODMIMAGEVERSION }}
       - run: sudo docker-compose -f docker/testing/docker-compose-metering.yml up -d
       - run: echo "Waiting 100 seconds for ODM to start..." && sleep 100
       - run: sudo docker-compose -f docker/testing/docker-compose-metering.yml logs
