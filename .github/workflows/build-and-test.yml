@@ -9,7 +9,6 @@ env:
   ODMIMAGEVERSION: 8.10.5.0_CP4BA2101
   ODMVERSION: 8.10.5.0-amd64
   PREFIXIMAGE: odm
-  REPOSITORY: ${{ secrets.ARTIFACTORY_URL }}
 
 jobs:
   Build-And-Test:
@@ -44,6 +43,7 @@ jobs:
       - run: sudo docker-compose -f docker/testing/docker-compose-metering.yml pull
         env:
           ODMIMAGEVERSION: ${{ env.ODMIMAGEVERSION }}
+          REPOSITORY: ${{ secrets.ARTIFACTORY_URL }}
       - run: sudo docker-compose -f docker/testing/docker-compose-metering.yml up -d
       - run: echo "Waiting 100 seconds for ODM to start..." && sleep 100
       - run: sudo docker-compose -f docker/testing/docker-compose-metering.yml logs
