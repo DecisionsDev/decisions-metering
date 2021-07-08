@@ -14,6 +14,8 @@ env:
 jobs:
   Build-And-Test:
     runs-on: ubuntu-latest
+    env:
+      ODMIMAGEVERSION: ${{ env.ODMIMAGEVERSION }}
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
