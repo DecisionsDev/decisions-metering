@@ -28,7 +28,7 @@ jobs:
       - run: helm version
       - run: cv lint helm charts/ibm-odm-metering -o charts/ibm-odm-metering/tests/lintOverride.yaml
       - name: Build Helm chart
-        run: helm package ../ibm-odm-metering && helm repo index --url 'https://odmdev.github.io/decisions-metering/charts/stable' ./ && cat index.yml
+        run: helm package ../ibm-odm-metering && helm repo index --url 'https://odmdev.github.io/decisions-metering/charts/stable' ./ && cat index.yaml
         working-directory: charts/stable
       - name: Report Status
         if: always()
