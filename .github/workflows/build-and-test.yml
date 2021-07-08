@@ -13,15 +13,18 @@ jobs:
       - run: sudo apt update
       - run: sudo apt full-upgrade
       - name: Get docker-compose
-        run: curl --insecure --location --output docker-compose --retry 5 --retry-delay 10 https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)
+        run: curl --insecure --location --output docker-compose --retry 5 --retry-delay 10 --silent https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)
       - name: Get helm
-        run: curl --insecure --location --output helm.tar.gz --retry 5 --retry-delay 10 https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz
+        run: curl --insecure --location --output helm.tar.gz --retry 5 --retry-delay 10 --silent https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz
       - name: Get hey
-        run: curl --insecure --location --output hey --retry 5 --retry-delay 10 https://hey-release.s3.us-east-2.amazonaws.com/hey_linux_amd64
+        run: curl --insecure --location --output hey --retry 5 --retry-delay 10 --silent https://hey-release.s3.us-east-2.amazonaws.com/hey_linux_amd64
+      - name: Download cv
+        run: bash download-cv.sh
       - name: Move tools to /usr/local/bin
-        run: tar zxfv helm.tar.gz && chmod 755 docker-compose linux-amd64/helm hey && sudo mv docker-compose linux-amd64/helm hey /usr/local/bin/
+        run: tar zxfv helm.tar.gz && chmod 755 cv docker-compose linux-amd64/helm hey && sudo mv cv docker-compose linux-amd64/helm hey /usr/local/bin/
       - run: docker-compose --version
       - run: helm version
+      - run: cv lint helm charts/ibm-odm-metering -o $PWD/charts/ibm-odm-metering/tests/lintOverride.yaml
       - name: Report Status
         if: always()
         uses: ravsamhq/notify-slack-action@master
