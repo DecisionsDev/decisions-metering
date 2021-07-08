@@ -1,6 +1,5 @@
 overrides:
 - rule: QualificationFileExists
-  message:  ibm_cloud_pak/qualification.yaml not found
   reason: "Not part of the IBM Certification process."
 - rule: ChartUsesSCH
   reason: "Chart is not using SCH."
@@ -18,3 +17,5 @@ overrides:
   reason: "Using arbitrary UID on OpenShift."
 - rule: ReadmeHasRequiredSections
   reason: "Prefer to have cutomization section than configuration."
+- rule: EphemeralStorageLimitsAndRequestsDeclared
+  reason: Will be declared later
