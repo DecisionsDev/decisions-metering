@@ -34,10 +34,10 @@ jobs:
       - run: helm version
       - run: cv lint helm charts/ibm-odm-metering -o charts/ibm-odm-metering/tests/lintOverride.yaml
       - run: bash download-odm.sh
-        # env:
-        #   ARTIFACTORY_PASSWORD: ${{ secrets.ARTIFACTORY_PASSWORD }}
-        #   ARTIFACTORY_USER: ${{ secrets.ARTIFACTORY_USER }}
-        #   ODM_URL: ${{ secrets.ODM_URL }}
+        env:
+          ARTIFACTORY_PASSWORD: ${{ secrets.ARTIFACTORY_PASSWORD }}
+          ARTIFACTORY_USER: ${{ secrets.ARTIFACTORY_USER }}
+          ODM_URL: ${{ secrets.ODM_URL }}
       - run: bash build.sh
       - run: echo ${{ secrets.ARTIFACTORY_PASSWORD }} | sudo docker login ${{ secrets.ARTIFACTORY_URL }} --username ${{ secrets.ARTIFACTORY_USER }} --password-stdin
       - run: sudo docker-compose up -d

@@ -2,7 +2,7 @@
 
 mkdir ${HOME}/.cache
 
-set -ex
+set -e
 
 echo "Current build directory: $(pwd)"
 cd ..
