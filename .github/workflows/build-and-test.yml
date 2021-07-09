@@ -43,7 +43,6 @@ jobs:
       - run: sudo docker-compose up -d
       - run: sudo --preserve-env docker-compose -f docker/testing/docker-compose-metering.yml pull
         env:
-          ODMIMAGEVERSION: ${{ env.ODMIMAGEVERSION }}
           REPOSITORY: ${{ secrets.ARTIFACTORY_URL }}
       - run: sudo docker-compose -f docker/testing/docker-compose-metering.yml up -d
       - run: echo "Waiting 100 seconds for ODM to start..." && sleep 100
