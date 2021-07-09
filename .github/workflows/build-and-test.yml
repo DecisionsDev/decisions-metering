@@ -44,9 +44,13 @@ jobs:
       - run: sudo --preserve-env docker-compose -f docker/testing/docker-compose-metering.yml pull
         env:
           REPOSITORY: ${{ secrets.ARTIFACTORY_URL }}
-      - run: sudo docker-compose -f docker/testing/docker-compose-metering.yml up -d
+      - run: sudo --preserve-env docker-compose -f docker/testing/docker-compose-metering.yml up -d
+        env:
+          REPOSITORY: ${{ secrets.ARTIFACTORY_URL }}
       - run: echo "Waiting 100 seconds for ODM to start..." && sleep 100
-      - run: sudo docker-compose -f docker/testing/docker-compose-metering.yml logs
+      - run: sudo --preserve-env docker-compose -f docker/testing/docker-compose-metering.yml logs
+        env:
+          REPOSITORY: ${{ secrets.ARTIFACTORY_URL }}
       - run: bash test.sh
         working-directory: docker/testing
       - name: Build Helm chart
