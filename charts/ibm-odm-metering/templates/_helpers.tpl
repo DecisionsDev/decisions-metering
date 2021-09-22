@@ -44,7 +44,7 @@ We truncate at 63 chars because some Kubernetes name fields are limited to this 
 {{- end -}}
 
 {{- define "odm.repository.name" -}}
-{{- $reponame := default "ibmcom" .Values.image.repository -}}
+{{- $reponame := default "icr.io/odm-k8s" .Values.image.repository -}}
 {{- printf "%s"  $reponame |  trimSuffix "/" -}}
 {{- end -}}
 
