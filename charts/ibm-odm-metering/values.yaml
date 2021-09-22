@@ -19,7 +19,7 @@ license: ""
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 image:
-  repository: "ibmcom"
+  repository: "icr.io/odm-k8s"
   tag: 8.11.0
   pullPolicy: IfNotPresent
 ## Optionally specify an array of imagePullSecrets.
@@ -67,7 +67,7 @@ livenessProbe:
   failureThreshold: 25
 
 customization:
-  runAsUser: 
+  runAsUser:
   loggingLevel: 'INFO'
   processingInitialDelay: 6000
   processingRate: 60000
