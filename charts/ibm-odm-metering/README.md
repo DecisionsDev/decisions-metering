@@ -6,7 +6,7 @@ The [IBM Operational Decision Manager metering service](https://github.com/ODMDe
 
 The IBM License Metering Tool (ILMT) provides information about the usage of decision artifacts and executed decisions. Users of subscription services can obtain details about these billable artifacts. The license covers consumption in the form of traffic between RuleApps and client applications.
 
-For more information, see the [Operational Decision Manager documentation](https://www.ibm.com/docs/en/odm/8.10?topic=kubernetes-licensing-metering).
+For more information, see the [Operational Decision Manager documentation](https://www.ibm.com/docs/en/odm/8.11.0?topic=kubernetes-licensing-metering).
 
 ## Chart Details
 
@@ -19,7 +19,7 @@ When an  `ibm-odm-metering` instance is running, the endpoint URL of the service
 ## Architecture
 
 - Only the AMD64 / x86_64 architecture is supported.
-  
+
 ## Prerequisites
 
 - Kubernetes 1.11+
@@ -80,9 +80,9 @@ To install a release named `my-odm-metering-release` with the default configurat
 $ helm install my-odm-metering-release --set license=accept odm-metering/ibm-odm-metering
 ```
 
-> **Tip**: List all existing releases with the `helm list` command. 
+> **Tip**: List all existing releases with the `helm list` command.
 
-> **Note**: If you prefer to use the OpenShift Console to install the ODM metering service, follow these [instructions](../openshift/README.md). 
+> **Note**: If you prefer to use the OpenShift Console to install the ODM metering service, follow these [instructions](../openshift/README.md).
 
 ### Verifying the Chart
 
@@ -99,7 +99,7 @@ You can then:
 You should get the message:
 
   ```Operational Decision Manager usage reporting service```
-  
+
 ### Uninstalling the Chart
 
 To uninstall and delete a release named `my-odm-metering-release`, use the following command:
@@ -370,4 +370,5 @@ Only one pod can be instanciated for the metering service.
 
 ## Documentation
 
-For more information, see [ODM documentation](https://www.ibm.com/docs/en/odm/8.10?topic=kubernetes-licensing-metering).
+For more information, see [ODM documentation](https://www.ibm.com/docs/en/odm/8.11.0?topic=kubernetes-licensing-metering).
+
