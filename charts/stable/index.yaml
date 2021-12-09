@@ -30,7 +30,7 @@ entries:
     appVersion: 8.10.5.1
     created: "2021-12-09T16:20:37.115939+01:00"
     description: IBM Operational Decision Manager metering service
-    digest: dc8a6a5273ab241210000d8f8635e5f2b2de1d733e8f600dfe98c45c198ffdc5
+    digest: 9c46e4f530627859510695a5174bc5bbd4cee617d0b77e2ff672ac95e7d67b00
     home: https://developer.ibm.com/odm/
     icon: https://raw.githubusercontent.com/ODMDev/ruledesigner/master/icons/automation-decision.png
     keywords:
@@ -77,3 +77,4 @@ entries:
     - https://odmdev.github.io/decisions-metering/charts/stable/ibm-odm-metering-21.1.0.tgz
     version: 21.1.0
 generated: "2021-12-09T16:20:37.109813+01:00"
+

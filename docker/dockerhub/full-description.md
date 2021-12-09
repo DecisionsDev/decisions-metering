@@ -12,8 +12,8 @@ docker pull icr.io/odm-k8s/odm-metering-service
 -	**Where to get help**:
 
     [ODM developer community](https://developer.ibm.com/odm/)
-
     [ODM Licensing and metering documentation](https://www.ibm.com/docs/en/odm/8.11.0?topic=kubernetes-licensing-metering)
+
 
 -	**Where to file issues**:  
   https://github.com/ODMDev/decisions-metering/issues
