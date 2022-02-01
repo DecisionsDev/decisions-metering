@@ -18,7 +18,7 @@
     "zipCode": "string",
     "creditScore": 3,
     "spouse": {
-      "birth": "2022-11-18T09:45:09.353+0100",
+      "birth": "2020-11-18T09:45:09.353+0100",
       "SSN": {
         "areaNumber": "",
         "groupCode": "",
