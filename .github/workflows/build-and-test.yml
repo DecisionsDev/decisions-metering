@@ -1,0 +1,66 @@
+name: Build and test
+on: [push]
+env:
+  DOCKER_COMPOSE_VERSION: 1.29.2
+  FROMLIBERTY: ibmcom/websphere-liberty:20.0.0.12-kernel-java8-ibmjava-ubi
+  HELM_VERSION: 3.6.2
+  ODM_VERSION: 8.10.5.0
+  ODMDOCKERDIR: docker
+  ODMIMAGEVERSION: 8.10.5.0_CP4BA2101
+  ODMVERSION: 8.10.5.0-amd64
+  PREFIXIMAGE: odm
+
+jobs:
+  Build-And-Test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      # - run: sudo apt update
+      # - run: sudo apt full-upgrade
+      - name: Get docker-compose
+        run: curl --insecure --location --output docker-compose --retry 5 --retry-delay 10 --silent https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)
+      - name: Get helm
+        run: curl --insecure --location --output helm.tar.gz --retry 5 --retry-delay 10 --silent https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz
+      - name: Get hey
+        run: curl --insecure --location --output hey --retry 5 --retry-delay 10 --silent https://hey-release.s3.us-east-2.amazonaws.com/hey_linux_amd64
+      - name: Download cv
+        run: bash download-cv.sh
+        env:
+          GHE_TOKEN: ${{ secrets.GHE_TOKEN }}
+      - name: Move tools to /usr/local/bin
+        run: tar zxfv helm.tar.gz && chmod 755 cv docker-compose linux-amd64/helm hey && sudo mv cv docker-compose linux-amd64/helm hey /usr/local/bin/
+      - run: docker-compose --version
+      - run: helm version
+      - run: cv lint helm charts/ibm-odm-metering -o charts/ibm-odm-metering/tests/lintOverride.yaml
+      - run: bash download-odm.sh
+        env:
+          ARTIFACTORY_PASSWORD: ${{ secrets.ARTIFACTORY_PASSWORD }}
+          ARTIFACTORY_USER: ${{ secrets.ARTIFACTORY_USER }}
+          ODM_URL: ${{ secrets.ODM_URL }}
+      - run: bash build.sh
+      - run: echo ${{ secrets.ARTIFACTORY_PASSWORD }} | docker login ${{ secrets.ARTIFACTORY_URL }} --username ${{ secrets.ARTIFACTORY_USER }} --password-stdin
+      - run: sudo docker-compose up -d
+      - run: sudo --preserve-env docker-compose -f docker/testing/docker-compose-metering.yml pull
+        env:
+          REPOSITORY: ${{ secrets.ARTIFACTORY_URL }}
+      - run: sudo --preserve-env docker-compose -f docker/testing/docker-compose-metering.yml up -d
+        env:
+          REPOSITORY: ${{ secrets.ARTIFACTORY_URL }}
+      - run: echo "Waiting 100 seconds for ODM to start..." && sleep 100
+      - run: sudo --preserve-env docker-compose -f docker/testing/docker-compose-metering.yml logs
+        env:
+          REPOSITORY: ${{ secrets.ARTIFACTORY_URL }}
+      - run: bash test.sh
+        working-directory: docker/testing
+      - name: Build Helm chart
+        run: helm package ../ibm-odm-metering && helm repo index --url 'https://odmdev.github.io/decisions-metering/charts/stable' ./ && cat index.yaml
+        working-directory: charts/stable
+      - name: Report Status
+        if: always()
+        uses: ravsamhq/notify-slack-action@master
+        with:
+          status: ${{ job.status }}
+          # notify_when: 'failure'
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
