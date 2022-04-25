@@ -70,7 +70,7 @@ If you are subject to security constraints, refer to the [security requirements 
 Add the odm-metering chart repository:
 
 ```console
-$ helm repo add odm-metering  https://odmdev.github.io/decisions-metering/charts/stable/
+$ helm repo add odm-metering  https://decisionsdev.github.io/decisions-metering/charts/stable/
 $ helm repo update
 ```
 
@@ -371,4 +371,3 @@ Only one pod can be instanciated for the metering service.
 ## Documentation
 
 For more information, see [ODM documentation](https://www.ibm.com/docs/en/odm/8.11.0?topic=kubernetes-licensing-metering).
-
