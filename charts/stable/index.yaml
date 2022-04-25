@@ -3,7 +3,7 @@ entries:
   ibm-odm-metering:
   - apiVersion: v1
     appVersion: 8.11.0.0
-    created: "2021-12-13T16:41:58.187218+01:00"
+    created: "2022-04-25T11:58:38.567737025+02:00"
     description: IBM Operational Decision Manager metering service
     digest: c201c12f38caeee07efb38c37a06ed4d3cae3568b2ca2ed8cdf4533aa9e084a7
     home: https://developer.ibm.com/odm/
@@ -24,11 +24,11 @@ entries:
     sources:
     - https://github.com/ODMDev/decisions-metering
     urls:
-    - https://odmdev.github.io/decisions-metering/charts/stable/ibm-odm-metering-21.3.0.tgz
+    - https://decisionsdev.github.io/decisions-metering/charts/stable/ibm-odm-metering-21.3.0.tgz
     version: 21.3.0
   - apiVersion: v1
     appVersion: 8.10.5.1
-    created: "2021-12-13T16:41:58.185628+01:00"
+    created: "2022-04-25T11:58:38.566431872+02:00"
     description: IBM Operational Decision Manager metering service
     digest: 9c46e4f530627859510695a5174bc5bbd4cee617d0b77e2ff672ac95e7d67b00
     home: https://developer.ibm.com/odm/
@@ -49,11 +49,11 @@ entries:
     sources:
     - https://github.com/ODMDev/decisions-metering
     urls:
-    - https://odmdev.github.io/decisions-metering/charts/stable/ibm-odm-metering-21.2.0.tgz
+    - https://decisionsdev.github.io/decisions-metering/charts/stable/ibm-odm-metering-21.2.0.tgz
     version: 21.2.0
   - apiVersion: v1
     appVersion: 8.10.5.0
-    created: "2021-12-13T16:41:58.183873+01:00"
+    created: "2022-04-25T11:58:38.565050081+02:00"
     description: IBM Operational Decision Manager metering service
     digest: 1b05aadbc86ba87d653a7d750a5243891039dbf876088a91b5d961a4ec524186
     home: https://developer.ibm.com/odm/
@@ -74,6 +74,6 @@ entries:
     sources:
     - https://github.com/ODMDev/decisions-metering
     urls:
-    - https://odmdev.github.io/decisions-metering/charts/stable/ibm-odm-metering-21.1.0.tgz
+    - https://decisionsdev.github.io/decisions-metering/charts/stable/ibm-odm-metering-21.1.0.tgz
     version: 21.1.0
-generated: "2021-12-13T16:41:58.181415+01:00"
+generated: "2022-04-25T11:58:38.563632203+02:00"

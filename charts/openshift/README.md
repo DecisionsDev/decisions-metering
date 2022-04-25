@@ -8,7 +8,7 @@ There are two ways to declare the Helm chart repository in the OpenShift catalog
 1. Using the command line
 
 ```console
-$ oc apply -f https://odmdev.github.io/decisions-metering/charts/openshift/HelmRepository.yaml
+$ oc apply -f https://decisionsdev.github.io/decisions-metering/charts/openshift/HelmRepository.yaml
 ```
 
 2. Using the OpenShift web console
@@ -22,7 +22,7 @@ metadata:
   name: odm-metering-repo
 spec:
   connectionConfig:
-    url: 'https://odmdev.github.io/decisions-metering/charts/stable/'
+    url: 'https://decisionsdev.github.io/decisions-metering/charts/stable/'
 ```
 
 You do this only once in your cluster.

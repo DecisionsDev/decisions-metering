@@ -54,7 +54,7 @@ jobs:
       - run: bash test.sh
         working-directory: docker/testing
       - name: Build Helm chart
-        run: helm package ../ibm-odm-metering && helm repo index --url 'https://odmdev.github.io/decisions-metering/charts/stable' ./ && cat index.yaml
+        run: helm package ../ibm-odm-metering && helm repo index --url 'https://decisionsdev.github.io/decisions-metering/charts/stable' ./ && cat index.yaml
         working-directory: charts/stable
       - name: Report Status
         if: always()
