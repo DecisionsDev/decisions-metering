@@ -4,7 +4,7 @@
 IBM® is now hosting product images on the IBM Container Registry, *icr.io*. You can obtain the IBM Operational Decision Manager for Developers image without authenticating by using this IBM-controlled source: *icr.io/odm-k8s*.
 
 ```console
-docker pull icr.io/odm-k8s/odm-metering-service
+docker pull icr.io/odm-k8s/odm-metering-service:8.11-amd64
 ```
 
 # Quick Reference
@@ -12,6 +12,7 @@ docker pull icr.io/odm-k8s/odm-metering-service
 -	**Where to get help**:
 
     [ODM developer community](https://developer.ibm.com/odm/)
+
     [ODM Licensing and metering documentation](https://www.ibm.com/docs/en/odm/8.11.0?topic=kubernetes-licensing-metering)
 
 

@@ -1,5 +1,5 @@
-# What's new in Helm chart 21.0.1
-The version 21.0.1 of the Helm chart installs version 8.11.0.0 of the IBM Operational Decision Manager metering service.
+# What's new in Helm chart 22.0.1
+The version 22.0.1 of the Helm chart installs version 8.11.0.1 of the IBM Operational Decision Manager metering service.
 
 # Prerequisites
 1. Kubernetes 1.17 or higher, with Helm 3.2 or higher.
@@ -20,4 +20,7 @@ None
 # Version History
 | Chart | Date     | Details                           |
 | ----- | -------- | --------------------------------- |
+| 22.0.1 | June 2022 | ODM 8.11.0.1 release |
+| 21.0.3 | Dec 2021 | ODM 8.11.0 release |
+| 21.0.2 | June 2021 | ODM 8.10.5.1 release |
 | 21.0.1 |  2021 | First release |
