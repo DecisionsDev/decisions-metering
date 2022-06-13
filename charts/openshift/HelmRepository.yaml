@@ -4,5 +4,4 @@ metadata:
   name: odm-metering-repo
 spec:
   connectionConfig:
-    url: 'https://odmdev.github.io/decisions-metering/charts/stable/'
-
+    url: 'https://decisionsdev.github.io/decisions-metering/charts/stable/'
