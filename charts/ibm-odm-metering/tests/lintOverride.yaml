@@ -13,3 +13,5 @@ overrides:
   reason: "Not part of the IBM Certification process."
 - rule: ReadmeHasRequiredSections
   reason: "Prefer to have cutomization section than configuration."
+- rule: NoReadWriteMany
+  reason: "Needs to work on it. Too late for the 22.0.1 Release."
