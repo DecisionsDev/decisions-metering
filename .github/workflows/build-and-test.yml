@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3.1.0
       # - run: sudo apt update
       # - run: sudo apt full-upgrade
       - name: Get docker-compose
