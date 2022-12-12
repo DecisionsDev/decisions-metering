@@ -1,4 +1,6 @@
-[![Build Status](https://travis-ci.org/ODMDev/decisions-metering.svg?branch=master)](https://travis-ci.org/ODMDev/decisions-metering)
+[![Build and test](https://github.com/DecisionsDev/decisions-metering/actions/workflows/build-and-test.yml/badge.svg?branch=vnext-release)](https://github.com/DecisionsDev/decisions-metering/actions/workflows/build-and-test.yml) 
+
+[![GitHub release](https://img.shields.io/github/release/DecisionsDev/decisions-metering.svg)](https://github.com/DecisionsDev/decisions-metering/releases) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 # IBM Operational Decision Manager usage metering service
 

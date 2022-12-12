@@ -20,6 +20,7 @@ None
 # Version History
 | Chart | Date     | Details                           |
 | ----- | -------- | --------------------------------- |
+| 22.0.2 | Dec 2022 | ODM 8.11.1.0 release |
 | 22.0.1 | June 2022 | ODM 8.11.0.1 release |
 | 21.0.3 | Dec 2021 | ODM 8.11.0 release |
 | 21.0.2 | June 2021 | ODM 8.10.5.1 release |
