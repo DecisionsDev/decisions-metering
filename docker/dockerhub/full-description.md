@@ -1,10 +1,10 @@
 
 # New: IBM Container Registry
 
-IBM® is now hosting product images on the IBM Container Registry, *icr.io*. You can obtain the IBM Operational Decision Manager for Developers image without authenticating by using this IBM-controlled source: *icr.io/odm-k8s*.
+IBM® is now hosting product images on the IBM Container Registry, *icr.io*. You can obtain the IBM Operational Decision Manager for Developers image without authenticating by using this IBM-controlled source: *icr.io/cpopen/odm-k8s*.
 
 ```console
-docker pull icr.io/odm-k8s/odm-metering-service:8.11-amd64
+docker pull icr.io/cpopen/odm-k8s/odm-metering-service:8.11-amd64
 ```
 
 # Quick Reference
@@ -13,7 +13,7 @@ docker pull icr.io/odm-k8s/odm-metering-service:8.11-amd64
 
     [ODM developer community](https://developer.ibm.com/odm/)
 
-    [ODM Licensing and metering documentation](https://www.ibm.com/docs/en/odm/8.11.0?topic=kubernetes-licensing-metering)
+    [ODM Licensing and metering documentation](https://www.ibm.com/docs/en/odm/8.11.1?topic=kubernetes-licensing-metering)
 
 
 -	**Where to file issues**:  
@@ -46,7 +46,7 @@ The image contains the metering service which exposes HTTP on port 8888 and HTTP
 You must accept the license before you launch the image. The license is available at the end of this page.
 
 ```console
-docker run -e LICENSE=accept  -p 8888:8888 -p 9999:9999 icr.io/odm-k8s/odm-metering-service:8.11-amd64
+docker run -e LICENSE=accept  -p 8888:8888 -p 9999:9999 icr.io/cpopen/odm-k8s/odm-metering-service:8.11-amd64
 ```
 
 When the server is started, use the URL http://localhost:8888 or https://localhost:9999 to display a welcome page.
@@ -69,7 +69,7 @@ To avoid loosing data when you delete the Docker image container, store the data
 You can also store the license files by creating a volume (-v $PWD/ILMT:/config/storage/ILMT).
 
 ```console
-docker run -e LICENSE=accept  -p 8888:8888 -p 9999:9999 -v $PWD/DB:/config/storage/DB -v $PWD/ILMT:/config/storage/ILMT icr.io/odm-k8s/odm-metering-service:8.11-amd64
+docker run -e LICENSE=accept  -p 8888:8888 -p 9999:9999 -v $PWD/DB:/config/storage/DB -v $PWD/ILMT:/config/storage/ILMT icr.io/cpopen/odm-k8s/odm-metering-service:8.11-amd64
 ```
 
 When you first run this command, it creates the metering files in your local folder. When restarting the metering service, it reads and updates these files.
@@ -91,7 +91,7 @@ METERING_PROCESSING_INITIAL_DELAY=6000
 
 To configure the metering service with the configuration property file you can use:
  ```console
-docker run -e LICENSE=accept -p 8888:8888 -p 9999:9999 -v $PWD/mybootstrap.properties:/config/bootstrap.properties icr.io/odm-k8s/odm-metering-service:8.11-amd64
+docker run -e LICENSE=accept -p 8888:8888 -p 9999:9999 -v $PWD/mybootstrap.properties:/config/bootstrap.properties icr.io/cpopen/odm-k8s/odm-metering-service:8.11-amd64
 ```
 
 ## Security
@@ -111,7 +111,7 @@ openssl req -x509 -nodes -days 1000 -newkey rsa:2048 -keyout mycompany.key -out 
 To use it, run the following docker command:
 
  ```console
-docker run -e LICENSE=accept -p 8888:8888 -p 9999:9999 -v $PWD/mycompany.crt:/config/resources/certificate/server.crt -v $PWD/mycompany.key:/config/resources/certificate/server.key icr.io/odm-k8s/odm-metering-service:8.11-amd64
+docker run -e LICENSE=accept -p 8888:8888 -p 9999:9999 -v $PWD/mycompany.crt:/config/resources/certificate/server.crt -v $PWD/mycompany.key:/config/resources/certificate/server.key icr.io/cpopen/odm-k8s/odm-metering-service:8.11-amd64
 ```
 
   # License
