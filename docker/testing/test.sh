@@ -51,11 +51,9 @@ sleep 60
 $(rm -R ilmt ilmt.zip ; true)
 curl -k https://localhost:9999/backup --output ilmt.zip
 unzip -n ilmt.zip -d ilmt
-cat ilmt/*.*
-assertResult "MILLION_MONTHLY_DECISIONS" "0.003"
+$(cat ilmt/*.* ; true)
+assertResult "MILLION_MONTHLY_DECISIONS" "0.005"
 echo "RESULT : $?"
 
-assertResult "MILLION_MONTHLY_DECISIONS" "0.002"
-echo "RESULT : $?"
-assertResult "THOUSAND_MONTHLY_ARTIFACTS" "0.097"
+assertResult "THOUSAND_MONTHLY_ARTIFACTS" "0.079"
 echo "RESULT : $?"
