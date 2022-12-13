@@ -42,7 +42,7 @@ function assertResult() {
         exit 1;
     fi
 }
-
+sleep 60
 # Assert Runtime of the RES Console
 loadRuntime "http://localhost:9080" "2000"
 # Assert Runtime of the Decision Service.
@@ -51,7 +51,7 @@ sleep 60
 $(rm -R ilmt ilmt.zip ; true)
 curl -k https://localhost:9999/backup --output ilmt.zip
 unzip -n ilmt.zip -d ilmt
-
+cat ilmt/*.*
 assertResult "MILLION_MONTHLY_DECISIONS" "0.003"
 echo "RESULT : $?"
 
