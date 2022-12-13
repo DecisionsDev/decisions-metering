@@ -2,12 +2,12 @@ name: Build and test
 on: [push]
 env:
   DOCKER_COMPOSE_VERSION: 1.29.2
-  FROMLIBERTY: ibmcom/websphere-liberty:20.0.0.12-kernel-java8-ibmjava-ubi
+  FROMLIBERTY: ibmcom/websphere-liberty:22.0.0.9-kernel-java8-ibmjava-ubi
   HELM_VERSION: 3.6.2
-  ODM_VERSION: 8.10.5.0
+  ODM_VERSION: 8.11.1.0
   ODMDOCKERDIR: docker
-  ODMIMAGEVERSION: 8.10.5.0_CP4BA2101
-  ODMVERSION: 8.10.5.0-amd64
+  ODMIMAGEVERSION: 8.11.1.0_CP4BA2202
+  ODMVERSION: 8.11.1.0-amd64
   PREFIXIMAGE: odm
 
 jobs:
