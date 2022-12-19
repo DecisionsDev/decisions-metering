@@ -25,10 +25,10 @@ In a shell window, copy and paste the following two lines:
 
 export ROUTE=$(oc get routes {{ .Release.Name }}-route -o jsonpath='{.spec.host}')
 
-echo http://$ROUTE
+echo https://$ROUTE
 
 
-You can also retrieve the route URL in the OpenShift console. 
+You can also retrieve the route URL in the OpenShift console.
 - Open the OpenShift console
 - Open the routes menu and search for {{ .Release.Name }}-route.
 
@@ -37,7 +37,7 @@ In the shell window, copy and paste the following two lines:
 export NODE_PORT=$(kubectl get --namespace {{ .Release.Namespace }} -o jsonpath="{.spec.ports[0].nodePort}" services {{ template "fullname" . }})
 export NODE_IP=$(kubectl get nodes --namespace {{ .Release.Namespace }} -o jsonpath="{.items[0].status.addresses[0].address}")
 
-echo http://$NODE_IP:$NODE_PORT/
+echo https://$NODE_IP:$NODE_PORT/
 
 
 {{- end }}
@@ -59,4 +59,3 @@ Your PersistenceVolumeClaim is not created dynamically.
 Create a Persistence Volume in your cluster, or use the `persistence.useDynamicProvisioning=true` charts parameter.
 {{- end }}
 {{- end }}
-
