@@ -47,7 +47,7 @@ jobs:
       - run: sudo --preserve-env docker-compose -f docker/testing/docker-compose-metering.yml up -d
         env:
           REPOSITORY: ${{ secrets.ARTIFACTORY_URL }}
-      - run: echo "Waiting 100 seconds for ODM to start..." && sleep 100
+      - run: echo "Waiting 100 seconds for ODM to start..." && sleep 300
       - run: sudo --preserve-env docker-compose -f docker/testing/docker-compose-metering.yml logs
         env:
           REPOSITORY: ${{ secrets.ARTIFACTORY_URL }}
