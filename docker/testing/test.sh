@@ -10,7 +10,7 @@ function loadRuntime() {
     echo "---------------------------------------------"
     RESULT=$(curl -X POST -u "odmAdmin:odmAdmin" $ServerURL/DecisionService/rest$RSPATH -b "loanvalidation.json" -T 'loanvalidation.json' -H "Content-Type: application/json; charset=UTF-8" -v)
 
-    echo $RESULT | grep "The borrower's SSN"
+    echo $RESULT | grep "validData"
     if [ $? -ne 0 ]; then
         echo "Cannot verify payload"
         exit 1;
