@@ -6,7 +6,7 @@ After building and customizing your metering service, you are ready to use the r
 
 You can use the ressetup.xml Ant file or write your own to set up the metering feature in Operational Decision Manager. If you use the res-setup.xml template file, some values are predefined such as metering.server.url, but you must customize most of them.
 
-The res-setup task is described at [res-setup](https://www.ibm.com/docs/en/odm/8.11.1?topic=setup-res). To setup metering, use the following guide.
+The res-setup task is described at [res-setup](https://www.ibm.com/docs/en/odm/8.12.0?topic=setup-res). To setup metering, use the following guide.
 
 ## Summary of res-setup usage for metering configuration
 

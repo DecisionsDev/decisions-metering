@@ -1,22 +1,23 @@
 #!/bin/bash
 set -e
 # Perfom et first execution
+RSPATH="/production_deployment/1.0/loan_validation_production/1.0"
 function loadRuntime() {
     ServerURL=$1
     NbRequest=$2
     echo "---------------------------------------------"
     echo "- Executing on $NbRequest on Server URL : $1 "
     echo "---------------------------------------------"
-    RESULT=$(curl -X POST -u "odmAdmin:odmAdmin" $ServerURL/DecisionService/rest/test_deployment/1.0/loan_validation_with_score_and_grade/1.0 -b "loanvalidation.json" -T 'loanvalidation.json' -H "Content-Type: application/json; charset=UTF-8" -v)
+    RESULT=$(curl -X POST -u "odmAdmin:odmAdmin" $ServerURL/DecisionService/rest$RSPATH -b "loanvalidation.json" -T 'loanvalidation.json' -H "Content-Type: application/json; charset=UTF-8" -v)
 
-    echo $RESULT | grep "The borrower's SSN" 
+    echo $RESULT | grep "validData"
     if [ $? -ne 0 ]; then
         echo "Cannot verify payload"
         exit 1;
     fi
 
-    # Execution for the 
-    hey -D "loanvalidation.json" -n $NbRequest -m "POST" -H "Authorization: Basic b2RtQWRtaW46b2RtQWRtaW4=" -T "application/json; charset=UTF-8" $ServerURL/DecisionService/rest/test_deployment/1.0/loan_validation_with_score_and_grade/1.0
+    # Execution for the
+    hey -D "loanvalidation.json" -n $NbRequest -m "POST" -H "Authorization: Basic b2RtQWRtaW46b2RtQWRtaW4=" -T "application/json; charset=UTF-8" $ServerURL/DecisionService/rest$RSPATH
     if [ $? -ne 0 ]; then
         echo "Result of load test seems not good."
         exit 1;
