@@ -20,7 +20,7 @@ None
 # Version History
 | Chart | Date     | Details                           |
 | ----- | -------- | --------------------------------- |
-| 23.0.1 | June 2023 | ODM 8.12.0.0 release |
+| 23.0.1 | June 2023 | ODM 8.12.0.0 release - Support Kubernetes 1.23 or higher |
 | 22.0.2 | Dec 2022 | ODM 8.11.1.0 release |
 | 22.0.1 | June 2022 | ODM 8.11.0.1 release |
 | 21.0.3 | Dec 2021 | ODM 8.11.0 release |
