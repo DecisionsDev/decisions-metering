@@ -32,11 +32,13 @@ function assertResult() {
     Ratio=$2
     ComputeExecution=$Ration*1000000
     # Assert the metering files contains expected metrics
+    echo "Checking Metrics name"
     grep "$Metric" ilmt/*.slmtag
     if [ $? -ne 0 ]; then
         echo "Cannot find the expected value $Metric in the ILMT File. Metrics for runtime"
         exit 1;
     fi
+    echo "Checking Metrics Value"
     grep "<Value>$Ratio</Value>" ilmt/*.slmtag
     if [ $? -ne 0 ]; then
         echo "Cannot find the expected value $Metric in the ILMT File - $ComputeExecution executions"
@@ -53,7 +55,7 @@ sleep 60
 $(rm -R ilmt ilmt.zip ; true)
 curl -k -v https://localhost:9999/backup --output ilmt.zip
 unzip -n ilmt.zip -d ilmt
-#$(cat ilmt/*.* ; true)
+$(cat ilmt/*.* ; true)
 assertResult "MILLION_MONTHLY_DECISIONS" "0.005"
 echo "RESULT : $?"
 
