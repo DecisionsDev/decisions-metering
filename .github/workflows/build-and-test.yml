@@ -52,6 +52,9 @@ jobs:
       - run: sudo --preserve-env docker-compose -f docker/testing/docker-compose-metering.yml logs
         env:
           REPOSITORY: ${{ secrets.ARTIFACTORY_URL }}
+      - run: sudo --preserve-env docker-compose logs
+        env:
+          REPOSITORY: ${{ secrets.ARTIFACTORY_URL }}
       - run: bash test.sh
         working-directory: docker/testing
       - name: Build Helm chart
