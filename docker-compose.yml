@@ -18,3 +18,7 @@ services:
     - 9999:9999
 
 
+networks:
+  default:
+    external:
+      name: decisions-metering_default
