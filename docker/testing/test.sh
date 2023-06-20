@@ -51,7 +51,7 @@ loadRuntime "http://localhost:9080" "2000"
 loadRuntime "http://localhost:9090" "3000"
 sleep 60
 $(rm -R ilmt ilmt.zip ; true)
-curl -k https://localhost:9999/backup --output ilmt.zip
+curl -k -v https://localhost:9999/backup --output ilmt.zip
 unzip -n ilmt.zip -d ilmt
 #$(cat ilmt/*.* ; true)
 assertResult "MILLION_MONTHLY_DECISIONS" "0.005"
