@@ -40,6 +40,7 @@ jobs:
           ODM_URL: ${{ secrets.ODM_URL }}
       - run: bash build.sh
       - run: echo "${{ secrets.ARTIFACTORY_PASSWORD }}" | docker login ${{ secrets.ARTIFACTORY_URL }} --username ${{ secrets.ARTIFACTORY_USER }} --password-stdin
+      - run: sudo docker-compose build
       - run: sudo docker-compose up -d
       - run: sudo --preserve-env docker-compose -f docker/testing/docker-compose-metering.yml pull
         env:
