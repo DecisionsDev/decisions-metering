@@ -18,3 +18,4 @@ To troubleshoot faulty behavior:
 - Review the client configuration and make sure that the settings are correct.
 - Enable low-level logging by using ```----com.ibm.decision.metering.ilmt.service.loggingLevel=TRACE```, and perform a few decision services executions. The corresponding usage appears in the log after some time, depending on the configuration of the metering service.
 - Monitor and check the content of the output directory of the license files to determine whether files are being created.
+  
