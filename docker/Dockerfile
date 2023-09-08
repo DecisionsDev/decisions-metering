@@ -21,7 +21,7 @@ COPY --chown=1001:0 $ODMDOCKERDIR/config /config
 COPY --chown=1001:0 $ODMDOCKERDIR/security/ltpa.keys /config/resources/security/ltpa.keys
 COPY --chown=1001:0 $ODMDOCKERDIR/certificate/server.crt /config/resources/certificate/server.crt
 COPY --chown=1001:0 $ODMDOCKERDIR/certificate/server.key /config/resources/certificate/server.key
-COPY ./target/metering-service.jar $APPS
+COPY ./service/target/metering-service-ODM.jar $APPS/metering-service.jar
 
 RUN chmod -R 777 /config $SCRIPT
 
