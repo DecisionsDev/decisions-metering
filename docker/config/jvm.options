@@ -1,0 +1,1 @@
+-Djdk.tls.client.disabledExtensions="server_name,status_request,signature_algorithms_cert"
