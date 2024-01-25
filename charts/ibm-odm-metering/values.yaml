@@ -57,7 +57,7 @@ persistence:
       storage: 2Gi
 
 readinessProbe:
-  initialDelaySeconds: 300
+  initialDelaySeconds: 200
   periodSeconds: 5
   failureThreshold: 40
 
