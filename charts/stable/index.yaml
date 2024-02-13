@@ -3,9 +3,9 @@ entries:
   ibm-odm-metering:
   - apiVersion: v1
     appVersion: 8.12.0.1
-    created: "2023-11-30T15:20:01.086793+01:00"
+    created: "2024-02-13T14:59:54.717204+01:00"
     description: IBM Operational Decision Manager metering service
-    digest: 02896c88de2ae97a9b31fa54a65b1c2845fcaae50aad3e25bd49ccbe6eb24a99
+    digest: a79b84ab3dc7789d4c9ea5e862118d2e1423a0f260dbe86e87562dce15937f82
     home: https://developer.ibm.com/odm/
     icon: https://raw.githubusercontent.com/ODMDev/ruledesigner/master/icons/automation-decision.png
     keywords:
