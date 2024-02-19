@@ -33,9 +33,9 @@ fi
 
 if [ ! "$METERING_ILMT_OUTPUT_DIRECTORY" ]
 then
-  export METERING_ILMT_OUTPUT_DIRECTORY=/config/storage/ILMT
+  export METERING_ILMT_OUTPUT_DIRECTORY="/config/storage/ILMT"
 
 if [ ! "$METERING_DB_DIRECTORY" ]
 then
-  export METERING_DB_DIRECTORY=/config/storage/DB
+  export METERING_DB_DIRECTORY="/config/storage/DB"
 fi
