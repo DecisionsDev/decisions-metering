@@ -36,19 +36,17 @@ function assertResult() {
     grep "$Metric" ilmt/*.slmtag
     if [ $? -ne 0 ]; then
         echo "Cannot find the expected value $Metric in the ILMT File. Metrics for runtime"
+        sudo --preserve-env docker-compose -f docker-compose-metering.yml logs
+        sudo --preserve-env docker-compose -f ../../docker-compose.yml logs
         exit 1;
-    else 
-        sudo --preserve-env docker-compose -f docker/testing/docker-compose-metering.yml logs
-        sudo --preserve-env docker-compose logs
     fi
     echo "Checking Metrics Value"
     grep "<Value>$Ratio</Value>" ilmt/*.slmtag
     if [ $? -ne 0 ]; then
         echo "Cannot find the expected value $Metric in the ILMT File - $ComputeExecution executions"
+        sudo --preserve-env docker-compose -f docker-compose-metering.yml logs
+        sudo --preserve-env docker-compose -f ../../docker-compose.yml logs
         exit 1;
-    else
-        sudo --preserve-env docker-compose -f docker/testing/docker-compose-metering.yml logs
-        sudo --preserve-env docker-compose logs
     fi
 }
 sleep 60
