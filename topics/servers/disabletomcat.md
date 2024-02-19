@@ -21,5 +21,5 @@ Disable the metering feature on a Tomcat application server by setting the meter
 
 Back to [Setting up Decision Server to integrate with the metering services](../dssetup.md)
 
-© Copyright IBM Corporation 2023
+© Copyright IBM Corporation 2024
 
