@@ -84,10 +84,6 @@ spec:
           env:
           - name: LICENSE
             value: "{{ .Values.license }}"
-          - name: com.ibm.decision.metering.ilmt.service.ILMToutputDirectory
-            value: "/config/storage"
-          - name: com.ibm.decision.metering.ilmt.service.databaseFilePath
-            value: "/config/storage"
           ports:
           - containerPort: 9999
           volumeMounts:

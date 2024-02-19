@@ -30,3 +30,13 @@ if [ ! "$METERING_KEYSTORE_ALIAS" ]
 then
   export METERING_KEYSTORE_ALIAS=odmicpserver
 fi
+
+if [ ! "$METERING_ILMT_OUTPUT_DIRECTORY" ]
+then
+  export METERING_ILMT_OUTPUT_DIRECTORY="/config/storage/ILMT"
+fi
+
+if [ ! "$METERING_DB_DIRECTORY" ]
+then
+  export METERING_DB_DIRECTORY="/config/storage/DB"
+fi
