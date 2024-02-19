@@ -51,7 +51,7 @@ loadRuntime "http://localhost:9080" "2000"
 
 # Assert Runtime of the Decision Service.
 loadRuntime "http://localhost:9090" "3000"
-sleep 70
+sleep 100
 $(rm -R ilmt ilmt.zip ; true)
 curl -k -v https://localhost:9999/backup --output ilmt.zip
 unzip -n ilmt.zip -d ilmt
