@@ -3,9 +3,9 @@ entries:
   ibm-odm-metering:
   - apiVersion: v1
     appVersion: 9.0.0
-    created: "2024-06-07T11:32:35.097567+02:00"
+    created: "2024-06-10T16:42:35.744361+02:00"
     description: IBM Operational Decision Manager metering service
-    digest: a16d79beef9d6f7a7e5ba586583c69b1cb44f711da6324c7d5684601871fd32b
+    digest: 78f44ed0ab0ee444037ab712561ff5c754363e7f2744c2d178d5cee6019c4166
     home: https://developer.ibm.com/odm/
     icon: https://raw.githubusercontent.com/ODMDev/ruledesigner/master/icons/automation-decision.png
     keywords:
@@ -17,7 +17,7 @@ entries:
     - s390x
     - ppc64le
     - ICPRHOCP
-    kubeVersion: '>=1.11.0-0'
+    kubeVersion: '>= 1.24.0-0'
     maintainers:
     - name: ODMDev
     name: ibm-odm-metering
@@ -28,7 +28,7 @@ entries:
     version: 24.0.0
   - apiVersion: v1
     appVersion: 8.12.0.1
-    created: "2024-06-07T11:32:35.096727+02:00"
+    created: "2024-06-10T16:42:35.743318+02:00"
     description: IBM Operational Decision Manager metering service
     digest: 02896c88de2ae97a9b31fa54a65b1c2845fcaae50aad3e25bd49ccbe6eb24a99
     home: https://developer.ibm.com/odm/
@@ -53,7 +53,7 @@ entries:
     version: 23.2.0
   - apiVersion: v1
     appVersion: 8.11.0.0
-    created: "2024-06-07T11:32:35.095864+02:00"
+    created: "2024-06-10T16:42:35.74156+02:00"
     description: IBM Operational Decision Manager metering service
     digest: c201c12f38caeee07efb38c37a06ed4d3cae3568b2ca2ed8cdf4533aa9e084a7
     home: https://developer.ibm.com/odm/
@@ -76,4 +76,4 @@ entries:
     urls:
     - https://decisionsdev.github.io/decisions-metering/charts/stable/ibm-odm-metering-21.3.0.tgz
     version: 21.3.0
-generated: "2024-06-07T11:32:35.094194+02:00"
+generated: "2024-06-10T16:42:35.740408+02:00"
