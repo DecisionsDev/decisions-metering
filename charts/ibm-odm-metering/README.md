@@ -22,7 +22,7 @@ When an  `ibm-odm-metering` instance is running, the endpoint URL of the service
 
 ## Prerequisites
 
-- Kubernetes 1.11+
+- Kubernetes 1.24+
 - Helm 3.2 and later versions
 - One PersistentVolume needs to be created prior to installing the chart if the parameters `persistence.enabled=true` and `persistence.dynamicProvisioning=false`. By default, dynamic provisionning is enabled.
 - Review  and accept the product license:
