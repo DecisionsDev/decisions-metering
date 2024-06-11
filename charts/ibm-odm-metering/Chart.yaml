@@ -3,7 +3,7 @@ description: IBM Operational Decision Manager metering service
 name: ibm-odm-metering
 version: 24.0.0
 appVersion: 9.0.0
-home: https://developer.ibm.com/odm/
+home: https://www.ibm.com/docs/en/odm/9.0.0
 icon: https://raw.githubusercontent.com/ODMDev/ruledesigner/master/icons/automation-decision.png
 sources:
   - https://github.com/ODMDev/decisions-metering
