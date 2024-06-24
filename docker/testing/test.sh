@@ -36,12 +36,16 @@ function assertResult() {
     grep "$Metric" ilmt/*.slmtag
     if [ $? -ne 0 ]; then
         echo "Cannot find the expected value $Metric in the ILMT File. Metrics for runtime"
+        sudo --preserve-env docker-compose -f docker-compose-metering.yml logs
+        sudo --preserve-env docker-compose -f ../../docker-compose.yml logs
         exit 1;
     fi
     echo "Checking Metrics Value"
     grep "<Value>$Ratio</Value>" ilmt/*.slmtag
     if [ $? -ne 0 ]; then
         echo "Cannot find the expected value $Metric in the ILMT File - $ComputeExecution executions"
+        sudo --preserve-env docker-compose -f docker-compose-metering.yml logs
+        sudo --preserve-env docker-compose -f ../../docker-compose.yml logs
         exit 1;
     fi
 }
@@ -51,7 +55,7 @@ loadRuntime "http://localhost:9080" "2000"
 
 # Assert Runtime of the Decision Service.
 loadRuntime "http://localhost:9090" "3000"
-sleep 70
+sleep 100
 $(rm -R ilmt ilmt.zip ; true)
 curl -k -v https://localhost:9999/backup --output ilmt.zip
 unzip -n ilmt.zip -d ilmt

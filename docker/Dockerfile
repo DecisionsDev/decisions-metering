@@ -18,6 +18,7 @@ COPY $ODMDOCKERDIR/wlp* /opt/wlppackage/
 # TODO
 RUN $INSTALLSCRIPT/installFeatures.sh
 COPY --chown=1001:0 $ODMDOCKERDIR/config /config
+COPY --chown=1001:0 $ODMDOCKERDIR/config/jvm.options /config/configDropins/overrides/jvm.options
 COPY --chown=1001:0 $ODMDOCKERDIR/security/ltpa.keys /config/resources/security/ltpa.keys
 COPY --chown=1001:0 $ODMDOCKERDIR/certificate/server.crt /config/resources/certificate/server.crt
 COPY --chown=1001:0 $ODMDOCKERDIR/certificate/server.key /config/resources/certificate/server.key

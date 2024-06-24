@@ -21,4 +21,4 @@ Disable the metering feature on a Liberty app server by setting the metering.ena
 
 Back to [Setting up Decision Server to integrate with the metering services](../dssetup.md)
 
-© Copyright IBM Corporation 2023
+© Copyright IBM Corporation 2024

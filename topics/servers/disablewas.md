@@ -13,5 +13,5 @@ For example, for WebSphere Application Server, the execution unit (XU) is shared
 
 Back to [Setting up Decision Server to integrate with the metering services](../dssetup.md)
 
-© Copyright IBM Corporation 2023
+© Copyright IBM Corporation 2024
 
