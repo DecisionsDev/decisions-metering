@@ -12,7 +12,6 @@ entries:
     - OperationalDecisionManager
     - businessrules
     - Limited
-    - ICP
     - amd64
     - s390x
     - ppc64le
