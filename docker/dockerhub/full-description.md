@@ -49,18 +49,20 @@ You must accept the license before you launch the image. The license is availabl
 docker run -e LICENSE=accept  -p 8888:8888 -p 9999:9999 icr.io/cpopen/odm-k8s/odm-metering-service:9.0-amd64
 ```
 
-When the server is started, use the URL http://localhost:8888 or https://localhost:9999 to display a welcome page.
+When the server is started, use the URL http://localhost:8888 or https://localhost:9999 to display a welcome page. <!-- markdown-link-check-disable-line -->
 
 The metering service receives usage information from Operational Decision Manager and aggregates it.
 
 When the service is available, you can get a zip archive of the ILMT files by using the /backup REST API endpoint.
-In a browser, access the zip archive by using http://localhost:8888/backup or https://localhost:9999/backup
+In a browser, access the zip archive by using http://localhost:8888/backup or https://localhost:9999/backup <!-- markdown-link-check-disable-line -->
 or use the following curl command:
 
+<!-- markdown-link-check-disable -->
 ```console
 curl http://localhost:8888/backup -o backup.zip
 curl -k https://localhost:9999/backup -o backup.zip
 ```
+<!-- markdown-link-check-enable -->
 
 ## Storage
 
