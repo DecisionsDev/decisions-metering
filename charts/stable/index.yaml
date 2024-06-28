@@ -3,7 +3,7 @@ entries:
   ibm-odm-metering:
   - apiVersion: v1
     appVersion: 9.0.0
-    created: "2024-06-11T13:37:54.179562+02:00"
+    created: "2024-06-11T13:37:54.179562+03:00"
     description: IBM Operational Decision Manager metering service
     digest: d860ee71da9ec8c8fe2de3f034ad8b21d01be4e62a8aea885486d6d1f15e78f9
     home: https://www.ibm.com/docs/en/odm/9.0.0
@@ -12,7 +12,6 @@ entries:
     - OperationalDecisionManager
     - businessrules
     - Limited
-    - ICP
     - amd64
     - s390x
     - ppc64le
