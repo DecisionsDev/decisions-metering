@@ -15,7 +15,7 @@ Among the parameters listed in the res-setup task document, the following parame
 Parameter | Description
 :-: | :-:
 metering.api.key | This parameter is not used, but it is mandatory. Use an arbitrary value.
-metering.server.url | To be set to the URL where the metering service is run, for example, http://host.company.com:8888/odm-metering-service.
+metering.server.url | To be set to the URL where the metering service is run, for example, http://host.company.com:8888/odm-metering-service. <!-- markdown-link-check-disable-line -->
 metering.enable | To be set to true so that the metering components can run.
 metering.send.usages | To be set to true so that actual usages are sent to the metering service.
 metering.instance.identifier | If specified, it is used as a reference to identify a metering client instance within Operational Decision Manager. This information appears in the log of the metering service, so it is recommended to be customized.
