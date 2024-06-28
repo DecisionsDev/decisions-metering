@@ -35,7 +35,7 @@ docker pull icr.io/cpopen/odm-k8s/odm-metering-service:9.0-amd64
 
 # Overview
 
-The Operational Decision Manager (ODM) usage metering service image allows you to generate license files that are compliant with the [IBM License Metric Tool](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/welcome/LMT_welcome.html). These license files are based on the observed usage of ODM software.
+The Operational Decision Manager (ODM) usage metering service image allows you to generate license files that are compliant with the [IBM License Metric Tool](https://www.ibm.com/docs/en/license-metric-tool). These license files are based on the observed usage of ODM software.
 
 See the License section at the end of this page for restrictions on the use of this image.
 
