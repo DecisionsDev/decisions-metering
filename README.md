@@ -1,6 +1,6 @@
 # IBM Decisions usage metering service
 
-[IBM License Metric Tool](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/welcome/LMT_welcome.html) inventories IBM software, and monitors its usage and compliance. The Decisions usage metering service produces license files that are compliant with the tool and based on the observed usage of IBM Decisions software.
+[IBM License Metric Tool](https://www.ibm.com/docs/en/license-metric-tool) inventories IBM software, and monitors its usage and compliance. The Decisions usage metering service produces license files that are compliant with the tool and based on the observed usage of IBM Decisions software.
 
 ## IBM Operational Decision Manager
 To configure metering for use with IBM Operation Decision Manager, see the following documentation:[ODM Readme](README_ODM.md)
