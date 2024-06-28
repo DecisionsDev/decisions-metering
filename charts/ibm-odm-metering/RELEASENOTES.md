@@ -18,13 +18,14 @@ None
 [Operational Decision Manager Interim Fixes](http://www.ibm.com/support/docview.wss?uid=swg21640630)
 
 # Version History
-| Chart | Date     | Details                           |
-| ----- | -------- | --------------------------------- |
-| 24.0.0 | June 2024 | ODM 9.0.0 release - Support Kubernetes 1.25 or higher |
-| 23.0.2 | Dec 2023 | ODM 8.12.0.1 release - Support Kubernetes 1.23 or higher |
+| Chart  | Date      | Details                                                  |
+|--------|-----------|----------------------------------------------------------|
+| 24.1.0 | Dec 2024  | ODM 9.0.0.1 release   |
+| 24.0.0 | June 2024 | ODM 9.0.0 release - Support Kubernetes 1.25 or higher    |
+| 23.0.2 | Dec 2023  | ODM 8.12.0.1 release - Support Kubernetes 1.23 or higher |
 | 23.0.1 | June 2023 | ODM 8.12.0.0 release - Support Kubernetes 1.23 or higher |
-| 22.0.2 | Dec 2022 | ODM 8.11.1.0 release |
-| 22.0.1 | June 2022 | ODM 8.11.0.1 release |
-| 21.0.3 | Dec 2021 | ODM 8.11.0 release |
-| 21.0.2 | June 2021 | ODM 8.10.5.1 release |
-| 21.0.1 |  2021 | First release |
+| 22.0.2 | Dec 2022  | ODM 8.11.1.0 release                                     |
+| 22.0.1 | June 2022 | ODM 8.11.0.1 release                                     |
+| 21.0.3 | Dec 2021  | ODM 8.11.0 release                                       |
+| 21.0.2 | June 2021 | ODM 8.10.5.1 release                                     |
+| 21.0.1 | 2021      | First release                                            |
