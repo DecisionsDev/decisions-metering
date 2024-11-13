@@ -32,7 +32,7 @@ jobs:
         run: tar zxfv helm.tar.gz && chmod 755 cv docker-compose linux-amd64/helm hey && sudo mv cv docker-compose linux-amd64/helm hey /usr/local/bin/
       - run: docker-compose --version
       - run: helm version
-      - run: cv lint helm charts/ibm-odm-metering -o charts/ibm-odm-metering/tests/lintOverride.yaml
+      - run: cv lint helm charts/ibm-odm-metering -o charts/ibm-odm-metering/tests/lintOverride.yaml --set license=accept
       - run: bash download-odm.sh
         env:
           ARTIFACTORY_PASSWORD: ${{ secrets.ARTIFACTORY_PASSWORD }}

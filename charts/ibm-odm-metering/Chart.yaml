@@ -3,6 +3,11 @@ description: IBM Operational Decision Manager metering service
 name: ibm-odm-metering
 version: 24.1.0
 appVersion: 9.0.0.1
+description: |-
+  IBM Operational Decision Manager for Developers
+
+    License
+    By installing this product you accept the following license terms: https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-RBPW-WQTC4A
 home: https://www.ibm.com/docs/en/odm/9.0.0
 icon: https://raw.githubusercontent.com/ODMDev/ruledesigner/master/icons/automation-decision.png
 sources:
@@ -11,11 +16,14 @@ keywords:
 - OperationalDecisionManager
 - businessrules
 - Limited
-- ICP
+- RHOCP
+- ROKS
 - amd64
 - s390x
 - ppc64le
 - ICPRHOCP
+- ocpCatalog
 maintainers:
 - name: ODMDev
+- name: IBM
 kubeVersion: ">= 1.25.0-0"

@@ -10,6 +10,7 @@ metadata:
 {{ include "odm-additional-labels" . | indent 4 }}
   annotations:
     helm.sh/hook: test-success
+    productMetric: "FREE"
 spec:
 {{ include "odm-serviceAccountName" . | indent 2 }}
   hostNetwork: false
