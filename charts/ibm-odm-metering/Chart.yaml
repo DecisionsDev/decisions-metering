@@ -21,8 +21,7 @@ keywords:
 - amd64
 - s390x
 - ppc64le
-- ICPRHOCP
-- ocpCatalog
+- Middleware
 maintainers:
 - name: ODMDev
 - name: IBM

@@ -19,5 +19,3 @@ overrides:
   reason: "Needs to work on it. Too late for the 22.0.1 Release."
 - rule: ContainerLivenessOverLongInitialDelaySeconds
   reason: "Metering service take time to start"
-- rule: SCCRunAsArbitraryUserID
-  reason: "Needs to work on it. Too late for the 24.0.1 Release."

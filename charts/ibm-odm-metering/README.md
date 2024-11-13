@@ -343,11 +343,11 @@ readOnlyRootFilesystem: false
 requiredDropCapabilities:
 - ALL
 runAsUser:
-  type: MustRunAsNonRoot
+  type: MustRunAsRange
 seccompProfiles:
 - docker/default
 seLinuxContext:
-  type: RunAsAny
+  type: MustRunAs
 supplementalGroups:
   type: MustRunAs
   ranges:
