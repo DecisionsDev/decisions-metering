@@ -12,7 +12,7 @@ To configure metering for use with IBM Automation Decision Services, see the fol
 
 To troubleshoot faulty behavior:
 
-- Ensure there is no HTTP port conflict that can prevent the service from starting.
+- Ensure there is no HTTP port conflict that can prevent the service from starting. 
 - Check that the service is responding to HTTP requests, for example, load the root server URL (by default ```http://localhost:8888/```) with a browser.
 - Check that the service is accessible from the server environment where the clients are configured.
 - Review the client configuration and make sure that the settings are correct.
