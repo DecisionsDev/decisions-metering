@@ -33,7 +33,6 @@ public class CustomErrorController implements ErrorController  {
     	return GlobalErrorHandler.handleError(request, null);
     }
  
-    @Override
     public String getErrorPath() {
         return "/error";
     }
