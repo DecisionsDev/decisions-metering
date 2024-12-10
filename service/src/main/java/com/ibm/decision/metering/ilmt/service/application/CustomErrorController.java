@@ -34,6 +34,6 @@ public class CustomErrorController implements ErrorController  {
     }
  
     public String getErrorPath() {
-        return "/error";
+        return null;
     }
 }
