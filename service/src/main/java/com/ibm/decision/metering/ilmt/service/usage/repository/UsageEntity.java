@@ -23,6 +23,7 @@ import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 import org.slf4j.Logger;
@@ -46,6 +47,7 @@ public class UsageEntity {
 	@Column(name="TIMESTAMP")
 	private long timestamp;
 	
+	@Lob
 	@Column(name="DEFINITION")
 	private String definition;
 	

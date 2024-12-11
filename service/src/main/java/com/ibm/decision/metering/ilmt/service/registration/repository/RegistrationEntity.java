@@ -20,6 +20,7 @@ package com.ibm.decision.metering.ilmt.service.registration.repository;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 import org.slf4j.Logger;
@@ -34,13 +35,15 @@ import com.ibm.decision.metering.ilmt.service.util.Messages;
 public class RegistrationEntity {
 	private final static Logger LOGGER = Environment.getLogger();
 	
-	@Id	
+	@Id
 	@Column(name="ID")
 	private String id;
 	
+
 	@Column(name="LAST_UPDATE")
 	private long lastUpdate;	
 	
+	@Lob
 	@Column(name="DEFINITION")
 	private String definition;
 	
