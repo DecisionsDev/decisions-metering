@@ -17,7 +17,7 @@
  */
 package com.ibm.decision.metering.ilmt.service.application;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;
