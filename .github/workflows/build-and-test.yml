@@ -38,6 +38,9 @@ jobs:
           ARTIFACTORY_PASSWORD: ${{ secrets.ARTIFACTORY_PASSWORD }}
           ARTIFACTORY_USER: ${{ secrets.ARTIFACTORY_USER }}
           ODM_URL: ${{ secrets.ODM_URL }}
+      - uses: actions/setup-java@v1
+        with: 
+          java-version: 17
       - run: bash build.sh
       - run: echo "${{ secrets.ARTIFACTORY_PASSWORD }}" | docker login ${{ secrets.ARTIFACTORY_URL }} --username ${{ secrets.ARTIFACTORY_USER }} --password-stdin
       - run: sudo docker-compose build
