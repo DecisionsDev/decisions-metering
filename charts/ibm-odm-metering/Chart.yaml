@@ -1,7 +1,7 @@
 apiVersion: v2
 description: IBM Operational Decision Manager metering service
 name: ibm-odm-metering
-version: 24.1.0
+version: 25.0.0
 appVersion: 9.0.0.1
 description: |-
   IBM Operational Decision Manager for Developers
