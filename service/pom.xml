@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.2.0</version>
+		<version>3.4.0</version>
 		<relativePath/>
 	</parent>
 	<groupId>com.ibm.decision</groupId>
@@ -85,7 +85,7 @@
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<version>1.4.200</version>
+			<version>2.2.224</version>
 			<scope>runtime</scope>
 		</dependency>
 
