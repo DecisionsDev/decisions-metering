@@ -232,8 +232,8 @@ public class RegistrationRequest extends RequestBase {
 				+ (operatingSystemVersion == null ? 0 : operatingSystemVersion
 						.hashCode())
 				+ (cloudServicesUsed == null ? 0 : cloudServicesUsed.hashCode())
-				+ new Long(startTime).hashCode()
-				+ new Long(sendTime).hashCode()
+				+ Long.valueOf(startTime).hashCode()
+				+ Long.valueOf(sendTime).hashCode()
 				+ (customerTagData == null ? 0 : customerTagData.hashCode())
 				+ (products == null ? 0 : products.hashCode())
 				+ (metrics == null ? 0 : metrics.hashCode())

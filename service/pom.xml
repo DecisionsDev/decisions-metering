@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.2.4.RELEASE</version>
+		<version>3.4.0</version>
 		<relativePath/>
 	</parent>
 	<groupId>com.ibm.decision</groupId>
@@ -16,7 +16,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
+		<java.version>17</java.version>
 		<odm.home>${env.ODMHOME}</odm.home>
 		<ilmt.jar.file.path>${env.ILMT_JAR_PATH}</ilmt.jar.file.path>
 	</properties>
@@ -63,6 +63,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
+			<exclusions>
+                                <exclusion>
+                                       <groupId>org.yaml</groupId>
+                                       <artifactId>snakeyaml</artifactId>
+                               </exclusion>
+                        </exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -77,13 +83,9 @@
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<version>1.4.200</version>
+			<version>2.2.224</version>
 			<scope>runtime</scope>
 		</dependency>
 
@@ -116,7 +118,7 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.dataformat</groupId>
 			<artifactId>jackson-dataformat-xml</artifactId>
-			<version>2.9.6</version>
+			<version>2.15.2</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
