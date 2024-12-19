@@ -29,10 +29,10 @@ public interface UsageRepository extends CrudRepository<UsageEntity, String> {
 	@Query("SELECT u FROM UsageEntity u WHERE u.id = ?1")
     List<UsageEntity> findByInstanceId(String instanceId);
 	
-	@Query("SELECT m FROM UsageEntity m WHERE m.instanceId = ?1 AND m.report = null")
+	@Query("SELECT m FROM UsageEntity m WHERE m.instanceId = ?1 AND m.report IS null")
     List<UsageEntity> findByInstanceIdWhereNoReport(String instanceId);
 	
-	@Query("SELECT m FROM UsageEntity m WHERE m.report = null")
+	@Query("SELECT m FROM UsageEntity m WHERE m.report IS null")
     List<UsageEntity> finAllUsagesNotReported();
 	
 	@Query("SELECT m FROM UsageEntity m WHERE m.report IS NOT null")

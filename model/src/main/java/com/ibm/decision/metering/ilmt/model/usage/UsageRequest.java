@@ -146,8 +146,8 @@ public class UsageRequest extends RequestBase {
 	public int hashCode() {
 		return 37
 				+ super.hashCode()
-				+ new Long(startTime).hashCode()
-				+ new Long(endTime).hashCode()
+				+ Long.valueOf(startTime).hashCode()
+				+ Long.valueOf(endTime).hashCode()
 				+ (environmentType == null ? 0 : environmentType.hashCode())
 				+ (usageList == null ? 0 : usageList.hashCode())
 				+ (productSpecificData == null ? 0 : productSpecificData
