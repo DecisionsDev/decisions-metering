@@ -2,7 +2,7 @@ name: Build and test
 on: [push]
 env:
   DOCKER_COMPOSE_VERSION: 1.29.2
-  FROMLIBERTY: ibmcom/websphere-liberty:24.0.0.9-kernel-java17-openj9-ubi
+  FROMLIBERTY: appcafe/websphere-liberty:24.0.0.12-kernel-java21-openj9-ubi-minimal-amd64
   HELM_VERSION: 3.6.2
   ODM_VERSION: 9.0.0.1
   ODMDOCKERDIR: docker
