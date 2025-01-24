@@ -11,5 +11,5 @@ Disable the metering feature in J2SE by setting the metering.enable attribute to
 
 Back to [Setting up Decision Server to integrate with the metering services](../dssetup.md)
 
-© Copyright IBM Corporation 2024
+© Copyright IBM Corporation 2025
 
