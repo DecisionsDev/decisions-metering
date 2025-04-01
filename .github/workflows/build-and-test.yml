@@ -42,7 +42,12 @@ jobs:
         with: 
           java-version: 17
       - run: bash build.sh
-      - run: echo "${{ secrets.ARTIFACTORY_PASSWORD }}" | docker login ${{ secrets.ARTIFACTORY_URL }} --username ${{ secrets.ARTIFACTORY_USER }} --password-stdin
+      - name: log in artifactory
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ secrets.ARTIFACTORY_URL }}
+          username: ${{ vars.ARTIFACTORY_USER }}
+          password: ${{ secrets.ARTIFACTORY_PASSWORD }}
       - run: sudo docker-compose build
       - run: sudo docker-compose up -d
       - run: sudo --preserve-env docker-compose -f docker/testing/docker-compose-metering.yml pull
