@@ -370,5 +370,5 @@ Only one pod can be instanciated for the metering service.
 
 ## Documentation
 
-For more information, see [ODM documentation](https://www.ibm.com/docs/en/odm/9.0.0?topic=kubernetes-licensing-metering).
+For more information, see [ODM documentation](https://www.ibm.com/docs/en/odm/9.5.0?topic=kubernetes-licensing-metering).
  
