@@ -25,13 +25,13 @@ You can deploy the IBM Operational Decision Manager usage metering service:
 ## Prerequisites
 
 #### For compilation
-- IBM Operational Decision Manager 9.0.0 or later version
-- Java SDK 17
-- Maven 3.6.3 or later version
+- IBM Operational Decision Manager 9.5.0 or later version
+- Java SDK 21
+- Maven 3.9 or later version
 
 #### For use
-- JRE 17
-- IBM Operational Decision Manager 9.0.0 or later version
+- JRE 21
+- IBM Operational Decision Manager 9.5.0 or later version
 (with configuration set for metering - please see the <i>Configuring the clients</i> section)
 
 ## Compiling the service
