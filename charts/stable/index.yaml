@@ -135,32 +135,4 @@ entries:
     urls:
     - https://decisionsdev.github.io/decisions-metering/charts/stable/ibm-odm-metering-21.3.0.tgz
     version: 21.3.0
-  - apiVersion: v2
-    appVersion: 1.0.0
-    created: "2025-05-28T16:11:16.620639+02:00"
-    description: 'IBM Operational Decision Manager for Developers    License   By
-      installing this product you accept the following license terms: https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-XFJS-ENV5LE'
-    digest: 63cc23d2b5fb0e6a1867475d36fba899c9c76c97151ba35f7d5923f3e66daca5
-    home: https://www.ibm.com/docs/en/odm/9.5.0
-    icon: https://raw.githubusercontent.com/ODMDev/ruledesigner/master/icons/automation-decision.png
-    keywords:
-    - OperationalDecisionManager
-    - businessrules
-    - Limited
-    - RHOCP
-    - ROKS
-    - amd64
-    - s390x
-    - ppc64le
-    - Middleware
-    kubeVersion: '>= 1.25.0-0'
-    maintainers:
-    - name: ODMDev
-    - name: IBM
-    name: ibm-odm-metering
-    sources:
-    - https://github.com/ODMDev/decisions-metering
-    urls:
-    - https://decisionsdev.github.io/decisions-metering/charts/stable/ibm-odm-metering-1.0.0.tgz
-    version: 1.0.0
 generated: "2025-05-28T16:11:16.618978+02:00"
