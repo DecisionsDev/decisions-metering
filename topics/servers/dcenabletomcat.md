@@ -40,5 +40,5 @@ The Decision Center data is now sent to your metering service.
 
 Back to [Setting up Decision Center to integrate with the metering services](../dcsetup.md)
 
-© Copyright IBM Corporation 2024
+© Copyright IBM Corporation 2025
 

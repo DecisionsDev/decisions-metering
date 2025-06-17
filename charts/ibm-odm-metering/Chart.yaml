@@ -1,14 +1,14 @@
 apiVersion: v2
 description: IBM Operational Decision Manager metering service
 name: ibm-odm-metering
-version: 24.1.0
-appVersion: 9.0.0.1
+version: 1.0.0
+appVersion: 1.0.0
 description: |-
   IBM Operational Decision Manager for Developers
 
     License
-    By installing this product you accept the following license terms: https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-RBPW-WQTC4A
-home: https://www.ibm.com/docs/en/odm/9.0.0
+    By installing this product you accept the following license terms: https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-XFJS-ENV5LE
+home: https://www.ibm.com/docs/en/odm/9.5.0
 icon: https://raw.githubusercontent.com/ODMDev/ruledesigner/master/icons/automation-decision.png
 sources:
   - https://github.com/ODMDev/decisions-metering
