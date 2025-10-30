@@ -21,7 +21,7 @@
 		<ilmt.jar.file.path>${env.ILMT_JAR_PATH}</ilmt.jar.file.path>
 		<spring.version>6.2.11</spring.version>
         <spring-boot.version>3.5.7</spring-boot.version>
-		<tomcat-embed.version>10.1.46</tomcat-embed.version>
+		<tomcat-embed.version>10.1.48</tomcat-embed.version>
 	</properties>
 
 	<profiles>
