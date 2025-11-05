@@ -41,6 +41,7 @@ jobs:
       - uses: actions/setup-java@v1
         with: 
           java-version: 21
+          distribution: 'temurin'
       - run: bash build.sh
       - name: log in artifactory
         uses: docker/login-action@v3
