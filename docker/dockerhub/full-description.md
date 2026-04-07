@@ -10,11 +10,8 @@ docker pull icr.io/cpopen/odm-k8s/odm-metering-service:latest-amd64
 # Quick Reference
 
 -	**Where to get help**:
-
-    [ODM developer community](https://developer.ibm.com/odm/)
-
-    [ODM Licensing and metering documentation](https://www.ibm.com/docs/en/odm/9.5.0?topic=kubernetes-licensing-metering)
-
+  * [ODM Documentation](https://www.ibm.com/docs/en/odm/9.5.0?topic=manager-introducing-operational-decision)
+  * [IBM Business Automation Community](https://community.ibm.com/community/user/automation/communities/community-home?CommunityKey=c0005a22-520b-4181-bfad-feffd8bdc022)
 
 -	**Where to file issues**:  
   https://github.com/ODMDev/decisions-metering/issues
