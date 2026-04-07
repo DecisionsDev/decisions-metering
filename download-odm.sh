@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 mkdir ${HOME}/.cache
 
 set -e
@@ -17,7 +17,7 @@ if [ ! -f "$HOME/.cache/$ODM_FILE_NAME" ]; then
 else
     echo "ODM distribution: Load from cache."
 fi
- 
+
 echo "Unzip odm distribution..."
 unzip -q ${HOME}/.cache/${ODM_FILE_NAME}
 
