@@ -4,10 +4,10 @@ env:
   DOCKER_COMPOSE_VERSION: 1.29.2
   FROMLIBERTY: icr.io/appcafe/websphere-liberty:25.0.0.3-kernel-java21-openj9-ubi-minimal
   HELM_VERSION: 3.6.2
-  ODM_VERSION: 9.0.0.1
+  ODM_VERSION: 9.5.0.1
   ODMDOCKERDIR: docker
-  ODMIMAGEVERSION: 9.0.0.0
-  ODMVERSION: 9.0.0.1-amd64
+  ODMIMAGEVERSION: 9.5.0.1
+  ODMVERSION: 9.5.0.1-amd64
   PREFIXIMAGE: odm
 
 jobs:
@@ -45,24 +45,24 @@ jobs:
       - name: log in artifactory
         uses: docker/login-action@v3
         with:
-          registry: ${{ secrets.ARTIFACTORY_URL }}
-          username: ${{ vars.ARTIFACTORY_USER }}
-          password: ${{ secrets.ARTIFACTORY_PASSWORD }}
+          registry: ${{ secrets.ICR_IO_URL }}
+          username: ${{ vars.ICR_IO_USER }}
+          password: ${{ secrets.ICR_IO_PASSWORD }}
       - run: sudo docker-compose build
       - run: sudo docker-compose up -d
       - run: sudo --preserve-env docker-compose -f docker/testing/docker-compose-metering.yml pull
         env:
-          REPOSITORY: ${{ secrets.ARTIFACTORY_URL }}
+          REPOSITORY: ${{ secrets.ICR_IO_URL }}
       - run: sudo --preserve-env docker-compose -f docker/testing/docker-compose-metering.yml up -d
         env:
-          REPOSITORY: ${{ secrets.ARTIFACTORY_URL }}
+          REPOSITORY: ${{ secrets.ICR_IO_URL }}
       - run: echo "Waiting 100 seconds for ODM to start..." && sleep 100
       - run: sudo --preserve-env docker-compose -f docker/testing/docker-compose-metering.yml logs
         env:
-          REPOSITORY: ${{ secrets.ARTIFACTORY_URL }}
+          REPOSITORY: ${{ secrets.ICR_IO_URL }}
       - run: sudo --preserve-env docker-compose logs
         env:
-          REPOSITORY: ${{ secrets.ARTIFACTORY_URL }}
+          REPOSITORY: ${{ secrets.ICR_IO_URL }}
       - run: bash test.sh
         working-directory: docker/testing
       - name: Build Helm chart
