@@ -14,9 +14,9 @@ services:
           - ODMVERSION=$ODMIMAGEVERSION
           - FROMLIBERTY=$FROMLIBERTY
           - FROMLIBERTYBUILD=$FROMLIBERTY
-      secrets:
-        - artifactory_user
-        - artifactory_token
+        secrets:
+          - artifactory_user
+          - artifactory_token
 #    volumes:
 #      - ./metering-options:/config/bootstrap.properties
 #      - ./docker/certificate/keystore.jks:/config/resources/certificate/keystore.jks
