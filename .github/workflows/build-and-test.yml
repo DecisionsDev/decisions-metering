@@ -50,7 +50,7 @@ jobs:
           username: ${{ vars.ICR_IO_USERNAME }}
           password: ${{ secrets.ICR_IO_PASSWORD }}
       - run: sudo docker-compose build
-       env:
+        env:
           ARTIFACTORY_TOKEN: ${{ secrets.ARTIFACTORY_PASSWORD }}
           ARTIFACTORY_USER: ${{ secrets.ARTIFACTORY_USER }}
       - run: sudo docker-compose up -d
