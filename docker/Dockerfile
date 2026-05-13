@@ -16,7 +16,16 @@ COPY $ODMDOCKERDIR/scripts $SCRIPT
 COPY $ODMDOCKERDIR/installscripts $INSTALLSCRIPT
 COPY $ODMDOCKERDIR/wlp* /opt/wlppackage/
 # TODO
-RUN $INSTALLSCRIPT/installFeatures.sh
+RUN --mount=type=secret,id=artifactory_user \
+	--mount=type=secret,id=artifactory_token \
+    if [[ -n $(cat /run/secrets/artifactory_user) ]] ; then \
+    mkdir -p /opt/ibm/wlp/etc \
+    && echo "mavenCentralMirror.url=https://na.artifactory.swg-devops.com/artifactory/hyc-decisions-team-proxy-maven-virtual" > /opt/ibm/wlp/etc/featureUtility.properties \
+    && echo "mavenCentralMirror.user=$(cat /run/secrets/artifactory_user)" >> /opt/ibm/wlp/etc/featureUtility.properties \
+    && echo "mavenCentralMirror.password=$(cat /run/secrets/artifactory_token)" >> /opt/ibm/wlp/etc/featureUtility.properties; \
+    fi
+RUN $INSTALLSCRIPT/installFeatures.sh; \
+    rm -f /opt/ibm/wlp/etc/featureUtility.properties
 COPY --chown=1001:0 $ODMDOCKERDIR/config /config
 COPY --chown=1001:0 $ODMDOCKERDIR/config/jvm.options /config/configDropins/overrides/jvm.options
 COPY --chown=1001:0 $ODMDOCKERDIR/security/ltpa.keys /config/resources/security/ltpa.keys

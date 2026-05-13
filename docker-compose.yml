@@ -1,4 +1,8 @@
-version: '3'
+secrets:
+  artifactory_user:
+    environment: ARTIFACTORY_USER
+  artifactory_token:
+    environment: ARTIFACTORY_TOKEN
 services:
   metering:
     image: $REPOSITORY/metering-service:$ODMIMAGEVERSION
@@ -10,6 +14,9 @@ services:
           - ODMVERSION=$ODMIMAGEVERSION
           - FROMLIBERTY=$FROMLIBERTY
           - FROMLIBERTYBUILD=$FROMLIBERTY
+      secrets:
+        - artifactory_user
+        - artifactory_token
 #    volumes:
 #      - ./metering-options:/config/bootstrap.properties
 #      - ./docker/certificate/keystore.jks:/config/resources/certificate/keystore.jks
