@@ -10,7 +10,7 @@ docker pull icr.io/cpopen/odm-k8s/odm-metering-service:latest-amd64
 # Quick Reference
 
 -	**Where to get help**:
-  * [ODM Documentation](https://www.ibm.com/docs/en/odm/9.5.0?topic=manager-introducing-operational-decision)
+  * [ODM Documentation](https://www.ibm.com/docs/en/odm/9.6.0?topic=overview-introduction)
   * [IBM Business Automation Community](https://community.ibm.com/community/user/automation/communities/community-home?CommunityKey=c0005a22-520b-4181-bfad-feffd8bdc022)
 
 -	**Where to file issues**:  
@@ -110,7 +110,7 @@ openssl req -x509 -nodes -days 1000 -newkey rsa:2048 -keyout mycompany.key -out 
 To use it, run the following docker command:
 
  ```console
-docker run -e LICENSE=accept -p 8888:8888 -p 9999:9999 -v $PWD/mycompany.crt:/config/resources/certificate/server.crt -v $PWD/mycompany.key:/config/resources/certificate/server.key icr.io/cpopen/odm-k8s/odm-metering-service:9.0-amd64
+docker run -e LICENSE=accept -p 8888:8888 -p 9999:9999 -v $PWD/mycompany.crt:/config/resources/certificate/server.crt -v $PWD/mycompany.key:/config/resources/certificate/server.key icr.io/cpopen/odm-k8s/odm-metering-service:latest-amd64
 ```
 
   # License

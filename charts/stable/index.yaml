@@ -3,14 +3,11 @@ entries:
   ibm-odm-metering:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-06-02T14:22:19.361896326+02:00"
-    description: |-
-      IBM Operational Decision Manager for Developers
-
-        License
-        By installing this product you accept the following license terms: https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-XFJS-ENV5LE
-    digest: 5aeb96b5810a1b78ba33698d0043278c79310e1aaf7b4c862187ab9bccf0849a
-    home: https://www.ibm.com/docs/en/odm/9.5.0
+    created: "2026-05-27T15:10:40.838139+02:00"
+    description: 'IBM Operational Decision Manager for Developers    License   By
+      installing this product you accept the following license terms: https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-DHWR-YJBM3D'
+    digest: 8e1e9db44d0a2fd2c4ae954b5700787fa80844071be38366d696fb875b96227a
+    home: https://www.ibm.com/docs/en/odm/9.6.0
     icon: https://raw.githubusercontent.com/ODMDev/ruledesigner/master/icons/automation-decision.png
     keywords:
     - OperationalDecisionManager
@@ -32,4 +29,4 @@ entries:
     urls:
     - https://decisionsdev.github.io/decisions-metering/charts/stable/ibm-odm-metering-1.0.0.tgz
     version: 1.0.0
-generated: "2025-05-28T16:11:16.618978+02:00"
+generated: "2026-05-27T15:10:40.83717+02:00"
