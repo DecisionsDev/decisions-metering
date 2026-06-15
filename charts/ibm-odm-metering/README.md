@@ -6,7 +6,7 @@ The [IBM Operational Decision Manager metering service](https://github.com/ODMDe
 
 The IBM License Metering Tool (ILMT) provides information about the usage of decision artifacts and executed decisions. Users of subscription services can obtain details about these billable artifacts. The license covers consumption in the form of traffic between RuleApps and client applications.
 
-For more information, see the [Operational Decision Manager documentation](https://www.ibm.com/docs/en/odm/9.5.0?topic=kubernetes-licensing-metering).
+For more information, see the [Operational Decision Manager documentation](https://www.ibm.com/docs/en/odm/9.6.0?topic=metering-configuring-hadoop-spark-deployments).
 
 ## Chart Details
 
@@ -22,8 +22,8 @@ When an  `ibm-odm-metering` instance is running, the endpoint URL of the service
 
 ## Prerequisites
 
-- Kubernetes 1.24+
-- Helm 3.2 and later versions
+- Kubernetes 1.28+
+- Helm 3.6 and later versions
 - One PersistentVolume needs to be created prior to installing the chart if the parameters `persistence.enabled=true` and `persistence.dynamicProvisioning=false`. By default, dynamic provisionning is enabled.
 - Review  and accept the product license:
   - Set license=view to print the license agreement.
@@ -234,7 +234,7 @@ $ helm install my-odm-metering-release \
 
 This chart requires a PodSecurityPolicy to be bound to the target namespace prior to installation. To meet this requirement, a specific cluster and namespace might have to be scoped by a cluster administrator.
 
-The predefined PodSecurityPolicy name [`ibm-restricted-psp`](https://ibm.biz/cpkspec-psp) has been verifed for this chart. If your target namespace is bound to this PodSecurityPolicy, you can proceed to install the chart.
+The predefined PodSecurityPolicy name [`ibm-restricted-psp`](https://github.com/IBM/cloud-pak/blob/master/spec/security/scc/README.md) has been verifed for this chart. If your target namespace is bound to this PodSecurityPolicy, you can proceed to install the chart.
 
 To use the `ibm-restricted-psp` psp, you must define the `customization.runAsUser` parameter.
 
@@ -370,5 +370,5 @@ Only one pod can be instanciated for the metering service.
 
 ## Documentation
 
-For more information, see [ODM documentation](https://www.ibm.com/docs/en/odm/9.5.0?topic=kubernetes-licensing-metering).
+For more information, see [ODM documentation](https://www.ibm.com/docs/en/odm/9.6.0?topic=metering-configuring-hadoop-spark-deployments).
  

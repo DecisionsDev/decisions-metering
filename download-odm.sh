@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 mkdir ${HOME}/.cache
 
 set -e

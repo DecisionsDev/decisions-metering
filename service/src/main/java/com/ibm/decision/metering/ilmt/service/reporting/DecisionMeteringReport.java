@@ -1,6 +1,6 @@
 /*
  *
- *   Copyright IBM Corp. 2025
+ *   Copyright IBM Corp. 2026
  *
  *   Licensed under the Apache License, Version 2.0 (the "License");
  *   you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
  *
  */
 package com.ibm.decision.metering.ilmt.service.reporting;
-
+ 
 import java.io.Serializable;
 import java.time.Instant;
 import java.time.LocalDateTime;
