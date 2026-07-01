@@ -59,6 +59,11 @@
 			<systemPath>${ilmt.jar.location}</systemPath>
 		</dependency>
         <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.17.2</version>
+        </dependency>
+        <dependency>
                   <groupId>org.springframework.boot</groupId>
                   <artifactId>spring-boot</artifactId>
                   <version>${spring-boot.version}</version>
