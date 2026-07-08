@@ -29,7 +29,8 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.boot.webmvc.autoconfigure.error.ErrorMvcAutoConfiguration;
+import org.springframework.boot.persistence.autoconfigure.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -38,7 +39,7 @@ import com.ibm.decision.metering.ilmt.service.reporting.MetricConfiguration;
 import com.ibm.decision.metering.ilmt.service.util.Environment;
 import com.ibm.decision.metering.ilmt.service.util.Messages;
 
-@SpringBootApplication
+@SpringBootApplication(exclude = ErrorMvcAutoConfiguration.class)
 @ComponentScan(basePackages = {"com.ibm.decision.metering.ilmt.service.application", "com.ibm.decision.metering.ilmt.service.registration.repository", "com.ibm.decision.metering.ilmt.service.registration", "com.ibm.decision.metering.ilmt.service.usage", "com.ibm.decision.metering.ilmt.service.reporting", "com.ibm.decision.metering.ilmt.service.reporting.repository", "com.ibm.decision.metering.ilmt.service.metric.repository"})
 @EnableJpaRepositories(basePackages = {"com.ibm.decision.metering.ilmt.service.registration.repository", "com.ibm.decision.metering.ilmt.service.usage.repository", "com.ibm.decision.metering.ilmt.service.reporting.repository", "com.ibm.decision.metering.ilmt.service.metric.repository"})
 @EntityScan(basePackages = {"com.ibm.decision.metering.ilmt.service.registration.repository", "com.ibm.decision.metering.ilmt.service.usage.repository", "com.ibm.decision.metering.ilmt.service.reporting.repository", "com.ibm.decision.metering.ilmt.service.metric.repository"})
