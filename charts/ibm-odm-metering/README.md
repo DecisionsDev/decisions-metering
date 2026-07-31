@@ -234,7 +234,7 @@ $ helm install my-odm-metering-release \
 
 This chart requires a PodSecurityPolicy to be bound to the target namespace prior to installation. To meet this requirement, a specific cluster and namespace might have to be scoped by a cluster administrator.
 
-The predefined PodSecurityPolicy name [`ibm-restricted-psp`](https://ibm.biz/cpkspec-psp) has been verifed for this chart. If your target namespace is bound to this PodSecurityPolicy, you can proceed to install the chart.
+The predefined PodSecurityPolicy name [`ibm-restricted-psp`](https://github.com/IBM/cloud-pak/blob/master/spec/security/scc/README.md) has been verifed for this chart. If your target namespace is bound to this PodSecurityPolicy, you can proceed to install the chart.
 
 To use the `ibm-restricted-psp` psp, you must define the `customization.runAsUser` parameter.
 
