@@ -4,7 +4,7 @@ set -ex
 
 GH_API=https://github.ibm.com/api/v3
 GH_REPO=${GH_API}/repos/IBMPrivateCloud/content-verification
-GH_LATEST=${GH_REPO}/releases/tags/v4.8.1
+GH_LATEST=${GH_REPO}/releases/tags/latest
 AUTH="Authorization: token ${GHE_TOKEN}"
 
 response=$(curl --header "${AUTH}" --silent ${GH_LATEST})
