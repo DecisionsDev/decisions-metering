@@ -18,5 +18,9 @@
 
 package com.ibm.decision.metering.ilmt.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
+@JsonDeserialize(as = ObjectNode.class)
 public interface ProductSpecificData {
 }
