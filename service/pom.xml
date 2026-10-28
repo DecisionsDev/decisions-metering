@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>4.0.6</version>
+		<version>4.1.0</version>
 		<relativePath/>
 	</parent>
 	<groupId>com.ibm.decision</groupId>
@@ -20,10 +20,10 @@
 		<odm.home>${env.ODMHOME}</odm.home>
 		<ilmt.jar.file.path>${env.ILMT_JAR_PATH}</ilmt.jar.file.path>
 		<spring-boot.version>4.1.0</spring-boot.version>
-		<tomcat-embed.version>11.0.24</tomcat-embed.version>
-		<spring-framework.version>7.0.8</spring-framework.version>
-		<jackson.version>2.22.1</jackson.version>
-		<jackson-bom.version>3.2.1</jackson-bom.version>
+		<tomcat-embed.version>11.0.25</tomcat-embed.version>
+		<spring-framework.version>7.1.0-M1</spring-framework.version>
+		<jackson.version>2.22.3</jackson.version>
+		<jackson-bom.version>3.2.3</jackson-bom.version>
 		<logback.version>1.5.34</logback.version>
 	</properties>
 
@@ -179,6 +179,51 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-commons</artifactId>
+				<version>4.0.6</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-jpa</artifactId>
+				<version>4.0.6</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-api</artifactId>
+				<version>2.26.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-to-slf4j</artifactId>
+				<version>2.26.1</version>
+			</dependency>
+			<dependency>
+				<groupId>io.micrometer</groupId>
+				<artifactId>micrometer-core</artifactId>
+				<version>1.16.6</version>
+			</dependency>
+			<dependency>
+				<groupId>io.micrometer</groupId>
+				<artifactId>micrometer-commons</artifactId>
+				<version>1.16.6</version>
+			</dependency>
+			<dependency>
+				<groupId>io.micrometer</groupId>
+				<artifactId>micrometer-observation</artifactId>
+				<version>1.16.6</version>
+			</dependency>
+			<dependency>
+				<groupId>io.micrometer</groupId>
+				<artifactId>micrometer-jakarta9</artifactId>
+				<version>1.16.6</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<build>
 		<resources>

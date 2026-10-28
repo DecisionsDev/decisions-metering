@@ -1,0 +1,45 @@
+# Maven build output
+target/
+**/target/
+
+# IDE / Eclipse project files
+.project
+.classpath
+.settings/
+*.iml
+.idea/
+
+# WebSphere Liberty local install (downloaded by build scripts)
+wlp/
+install/
+
+# Downloaded ODM images and binaries
+*.tar
+*.tar.gz
+*.zip
+docker-compose
+linux-amd64/
+hey
+cv
+
+# ILMT output files (written at runtime and during tests)
+ILMT_files/
+ILMT_files_test/
+
+# H2 database files (written at runtime)
+*.data
+*.data.mv.db
+*.data.trace.db
+decision_usage_metering.data*
+
+# Helm packaged chart (generated artifact)
+charts/stable/*.tgz
+charts/stable/index.yaml
+
+# Docker TLS certificates (runtime secrets)
+docker/certificate/server.crt
+docker/certificate/server.key
+docker/security/ltpa.keys
+
+# Secrets baseline (detect-secrets tooling output)
+.secrets.baseline

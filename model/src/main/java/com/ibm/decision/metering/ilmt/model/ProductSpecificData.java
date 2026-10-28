@@ -18,5 +18,47 @@
 
 package com.ibm.decision.metering.ilmt.model;
 
-public interface ProductSpecificData {
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Objects;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class ProductSpecificData {
+
+    private final Map<String, Object> properties = new LinkedHashMap<>();
+
+    public ProductSpecificData() {
+    }
+
+    @JsonAnyGetter
+    public Map<String, Object> getProperties() {
+        return properties;
+    }
+
+    @JsonAnySetter
+    public void setProperty(String key, Object value) {
+        properties.put(key, value);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof ProductSpecificData)) {
+            return false;
+        }
+        return Objects.equals(properties, ((ProductSpecificData) obj).properties);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(properties);
+    }
+
+    @Override
+    public String toString() {
+        return properties.toString();
+    }
 }

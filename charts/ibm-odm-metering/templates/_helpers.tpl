@@ -161,7 +161,7 @@ Image tag or digest.
 {{- if hasPrefix "sha256" .root.Values.image.tag -}}
 image: {{ template "odm.repository.name" .root }}/{{ .containerName }}@{{ .root.Values.image.tag }}
 {{- else -}}
-image: {{ template "odm.repository.name" .root }}/{{ .containerName }}:{{ .root.Values.image.tag }}_{{ .root.Chart.Version }}{{ template "platform" .root }}
+image: {{ template "odm.repository.name" .root }}/{{ .containerName }}:{{ .root.Values.image.tag }}{{ template "platform" .root }}
 {{- end -}}
 {{- end }}
 
